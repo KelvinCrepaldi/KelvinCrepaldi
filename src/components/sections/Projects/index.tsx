@@ -10,6 +10,7 @@ import Project from "../../Project";
 import CustomLink from "@/components/CustomLink";
 
 const Projects = () => {
+  const sliceProject = projects.slice(0, 4);
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -17,7 +18,7 @@ const Projects = () => {
   });
 
   return (
-    <motion.section ref={targetRef} className="max-w-[1200px] m-auto relative">
+    <motion.section ref={targetRef} className="max-w-[1250px] m-auto relative ">
       <div>
         <div>
           <Title title="Projetos" />
@@ -29,13 +30,15 @@ const Projects = () => {
           transition={{ delay: 2, duration: 3 }}
           className="flex flex-wrap justify-center"
         >
-          {projects.map((project: IProject, index) => (
+          {sliceProject.map((project: IProject, index) => (
             <Project project={project} key={index} delay={index} />
           ))}
+        </motion.div>
+        <div className="w-full flex justify-center">
           <CustomLink href={"/portfolio"}>
             Veja mais dos meus projetos!
           </CustomLink>
-        </motion.div>
+        </div>
       </div>
     </motion.section>
   );

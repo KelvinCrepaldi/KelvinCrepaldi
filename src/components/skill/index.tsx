@@ -16,6 +16,7 @@ const Skill = ({ skill }: { skill: ISkillsType }): JSX.Element => {
           src={skill.image}
           className=""
           fill
+          sizes="(max-width: 768px) 100vw"
         ></Image>
       </AnimateDiv>
 

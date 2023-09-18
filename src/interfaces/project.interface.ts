@@ -10,6 +10,7 @@ export interface IProject {
   demoUrl?: string;
 
   images: imagePack[];
+  skills: string[];
   type: string;
   mobile?: boolean;
 }

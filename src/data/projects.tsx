@@ -40,96 +40,172 @@ export const techsData = [
 
 export const projects: IProject[] = [
   {
-    title: "Title test",
+    title: "Do.it",
     description:
-      "Projeto de Portfólio, onde eu guardo informações e projetos pessoais.",
+      "Aplicação simples e prática de anotações para gerenciar tarefas.",
     demoUrl: "https://doit2.vercel.app",
-    repoUrl: "https://doit2.vercel.app",
+    repoUrl: "https://github.com/KelvinCrepaldi/doit-app",
     images: [
       {
         desktopImage: "https://imgur.com/w7fUZWx.jpg",
-        mobileImage: "https://imgur.com/PUZoXPx.jpg",
+        mobileImage: "https://imgur.com/YipFLo2.jpg",
       },
       {
-        desktopImage: "https://imgur.com/uLTLgXp.jpg",
-        mobileImage: "https://imgur.com/uLTLgXp.jpg",
+        desktopImage: "https://imgur.com/WmSRToj.jpg",
+        mobileImage: "https://imgur.com/KXNHp1Q.jpg",
       },
       {
-        desktopImage: "https://imgur.com/8oYfQvZ.jpg",
-        mobileImage: "https://imgur.com/8oYfQvZ.jpg",
+        desktopImage: "https://imgur.com/Ys3TcEE.jpg",
+        mobileImage: "https://imgur.com/tDbYGJE.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/cNQ7ME3.jpg",
+        mobileImage: "https://imgur.com/ZJ8V47S.jpg",
       },
     ],
     type: "fullstack",
     mobile: true,
+    skills: ["Next.js", "Express"],
   },
   {
-    title: "Title test",
+    title: "Do.it",
     description:
-      "Projeto de Portfólio, onde eu guardo informações e projetos pessoais.",
+      "Aplicação simples e prática de anotações para gerenciar tarefas.",
     demoUrl: "https://doit2.vercel.app",
-    repoUrl: "https://doit2.vercel.app",
+    repoUrl: "https://github.com/KelvinCrepaldi/doit-app",
     images: [
       {
         desktopImage: "https://imgur.com/w7fUZWx.jpg",
-        mobileImage: "https://imgur.com/PUZoXPx.jpg",
+        mobileImage: "https://imgur.com/YipFLo2.jpg",
       },
       {
-        desktopImage: "https://imgur.com/uLTLgXp.jpg",
-        mobileImage: "https://imgur.com/uLTLgXp.jpg",
+        desktopImage: "https://imgur.com/WmSRToj.jpg",
+        mobileImage: "https://imgur.com/KXNHp1Q.jpg",
       },
       {
-        desktopImage: "https://imgur.com/8oYfQvZ.jpg",
-        mobileImage: "https://imgur.com/8oYfQvZ.jpg",
+        desktopImage: "https://imgur.com/Ys3TcEE.jpg",
+        mobileImage: "https://imgur.com/tDbYGJE.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/cNQ7ME3.jpg",
+        mobileImage: "https://imgur.com/ZJ8V47S.jpg",
       },
     ],
     type: "fullstack",
     mobile: true,
+    skills: ["Next.js", "Express"],
   },
   {
-    title: "Title test",
+    title: "Do.it",
     description:
-      "Projeto de Portfólio, onde eu guardo informações e projetos pessoais.",
+      "Aplicação simples e prática de anotações para gerenciar tarefas.",
     demoUrl: "https://doit2.vercel.app",
-    repoUrl: "https://doit2.vercel.app",
+    repoUrl: "https://github.com/KelvinCrepaldi/doit-app",
     images: [
       {
         desktopImage: "https://imgur.com/w7fUZWx.jpg",
-        mobileImage: "https://imgur.com/PUZoXPx.jpg",
+        mobileImage: "https://imgur.com/YipFLo2.jpg",
       },
       {
-        desktopImage: "https://imgur.com/uLTLgXp.jpg",
-        mobileImage: "https://imgur.com/uLTLgXp.jpg",
+        desktopImage: "https://imgur.com/WmSRToj.jpg",
+        mobileImage: "https://imgur.com/KXNHp1Q.jpg",
       },
       {
-        desktopImage: "https://imgur.com/8oYfQvZ.jpg",
-        mobileImage: "https://imgur.com/8oYfQvZ.jpg",
+        desktopImage: "https://imgur.com/Ys3TcEE.jpg",
+        mobileImage: "https://imgur.com/tDbYGJE.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/cNQ7ME3.jpg",
+        mobileImage: "https://imgur.com/ZJ8V47S.jpg",
       },
     ],
     type: "fullstack",
     mobile: true,
+    skills: ["Next.js", "Express"],
   },
   {
-    title: "Title test",
+    title: "Do.it",
     description:
-      "Projeto de Portfólio, onde eu guardo informações e projetos pessoais.",
+      "Aplicação simples e prática de anotações para gerenciar tarefas.",
     demoUrl: "https://doit2.vercel.app",
-    repoUrl: "https://doit2.vercel.app",
+    repoUrl: "https://github.com/KelvinCrepaldi/doit-app",
     images: [
       {
         desktopImage: "https://imgur.com/w7fUZWx.jpg",
-        mobileImage: "https://imgur.com/PUZoXPx.jpg",
+        mobileImage: "https://imgur.com/YipFLo2.jpg",
       },
       {
-        desktopImage: "https://imgur.com/uLTLgXp.jpg",
-        mobileImage: "https://imgur.com/uLTLgXp.jpg",
+        desktopImage: "https://imgur.com/WmSRToj.jpg",
+        mobileImage: "https://imgur.com/KXNHp1Q.jpg",
       },
       {
-        desktopImage: "https://imgur.com/8oYfQvZ.jpg",
-        mobileImage: "https://imgur.com/8oYfQvZ.jpg",
+        desktopImage: "https://imgur.com/Ys3TcEE.jpg",
+        mobileImage: "https://imgur.com/tDbYGJE.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/cNQ7ME3.jpg",
+        mobileImage: "https://imgur.com/ZJ8V47S.jpg",
       },
     ],
     type: "fullstack",
     mobile: true,
+    skills: ["Next.js", "Express"],
+  },
+  {
+    title: "Do.it",
+    description:
+      "Aplicação simples e prática de anotações para gerenciar tarefas.",
+    demoUrl: "https://doit2.vercel.app",
+    repoUrl: "https://github.com/KelvinCrepaldi/doit-app",
+    images: [
+      {
+        desktopImage: "https://imgur.com/w7fUZWx.jpg",
+        mobileImage: "https://imgur.com/YipFLo2.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/WmSRToj.jpg",
+        mobileImage: "https://imgur.com/KXNHp1Q.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/Ys3TcEE.jpg",
+        mobileImage: "https://imgur.com/tDbYGJE.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/cNQ7ME3.jpg",
+        mobileImage: "https://imgur.com/ZJ8V47S.jpg",
+      },
+    ],
+    type: "fullstack",
+    mobile: true,
+    skills: ["Next.js", "Express"],
+  },
+  {
+    title: "Do.it",
+    description:
+      "Aplicação simples e prática de anotações para gerenciar tarefas.",
+    demoUrl: "https://doit2.vercel.app",
+    repoUrl: "https://github.com/KelvinCrepaldi/doit-app",
+    images: [
+      {
+        desktopImage: "https://imgur.com/w7fUZWx.jpg",
+        mobileImage: "https://imgur.com/YipFLo2.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/WmSRToj.jpg",
+        mobileImage: "https://imgur.com/KXNHp1Q.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/Ys3TcEE.jpg",
+        mobileImage: "https://imgur.com/tDbYGJE.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/cNQ7ME3.jpg",
+        mobileImage: "https://imgur.com/ZJ8V47S.jpg",
+      },
+    ],
+    type: "fullstack",
+    mobile: true,
+    skills: ["Next.js", "Express"],
   },
 ];
 

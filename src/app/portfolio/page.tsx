@@ -1,13 +1,20 @@
 import Project from "@/components/Project";
+import Title from "@/components/Title";
 import { projects } from "@/data/projects";
 import { IProject } from "@/interfaces/project.interface";
 
 export default function Portfolio() {
   return (
-    <main className="flex flex-wrap justify-center mx-auto max-w-[1200px] ">
-      {projects.map((project: IProject, index) => (
-        <Project project={project} key={index} delay={index} />
-      ))}
+    <main className="flex flex-col  items-center  max-w-[1300px] m-auto  font-jetbrains text-gray-400">
+      <div className=" max-w-[1100px] m-auto w-full px-10 pt-10">
+        <Title title="Projetos"></Title>
+        <p className="w-full mb-10">Navegue pelos resultados do meu trabalho</p>
+      </div>
+      <div className="flex flex-wrap justify-center">
+        {projects.map((project: IProject, index) => (
+          <Project project={project} key={index} delay={index} />
+        ))}
+      </div>
     </main>
   );
 }

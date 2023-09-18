@@ -1,6 +1,7 @@
 import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
-import Image from "next/image";
+import AboutSection from "@/components/sections/About/AboutSection";
+import Contact from "@/components/sections/Contact/Contact";
 
 export default function Home() {
   return (
@@ -8,6 +9,8 @@ export default function Home() {
       <Hero />
       <div className="relative z-10 overflow-x-clip">
         <Projects />
+        <AboutSection />
+        <Contact />
       </div>
     </main>
   );
