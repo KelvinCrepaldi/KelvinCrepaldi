@@ -53,6 +53,7 @@ const Project = ({ project, delay }: { project: IProject; delay: number }) => {
                 src={desktopImage}
                 alt="Desktop print of project"
                 fill
+                sizes="(max-width: 600px) 100vw"
               ></Image>
 
               {mobileImage && (
