@@ -1,10 +1,8 @@
 "use client";
 import { useRef } from "react";
-import BoxLeft from "../../animations/BoxLeft";
-import BoxRight from "../../animations/BoxRight";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-const Hero = () => {
+const Hero = (): JSX.Element => {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,

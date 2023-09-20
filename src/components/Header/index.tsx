@@ -1,9 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
-export default function Header() {
+export default function Header(): JSX.Element {
   const pathname = usePathname();
 
   return (

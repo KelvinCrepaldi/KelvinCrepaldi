@@ -8,30 +8,26 @@ import { IoMdOpen } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
 import { MotionDiv } from "../animations/MotionDiv";
 
-const Project = ({ project, delay }: { project: IProject; delay: number }) => {
+const Project = ({
+  project,
+  delay,
+}: {
+  project: IProject;
+  delay: number;
+}): JSX.Element => {
   const [desktopImage, setDesktopImage] = useState<string | undefined>(
     project.images[0].desktopImage
   );
   const [mobileImage, setMobileImage] = useState<string | undefined>(
     project.images[0].mobileImage
   );
-  const [imageNumber, setImageNumber] = useState(0);
+  const [imageNumber, setImageNumber] = useState<number>(0);
 
   const handleImage = async (index: number) => {
     setDesktopImage(project.images[index].desktopImage);
     setMobileImage(project.images[index].mobileImage);
     setImageNumber(index);
   };
-
-  /* const handleImage = async (index: number) => {
-    setDesktopImage(undefined);
-
-    setInterval(() => {
-      setDesktopImage(project.images[index].desktopImage);
-      setMobileImage(project.images[index].mobileImage);
-      setImageNumber(index);
-    }, 2000);
-  }; */
 
   return (
     <MotionDiv

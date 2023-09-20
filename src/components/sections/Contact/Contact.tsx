@@ -9,7 +9,7 @@ import {
   MotionP,
 } from "@/components/animations/MotionDiv";
 
-const Contact = () => {
+const Contact = (): JSX.Element => {
   return (
     <div className="max-w-[1250px] m-auto mt-20 font-jetbrains p-5 text-center">
       <Title title="Contato"></Title>
@@ -42,7 +42,10 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="flex text-5xl m-1 space-x-2 justify-center"
         >
-          <Link href={"https://www.linkedin.com/in/kelvincrepaldi/"}>
+          <Link
+            className="hover:text-"
+            href={"https://www.linkedin.com/in/kelvincrepaldi/"}
+          >
             <FaLinkedin />
           </Link>
           <Link href={"https://github.com/KelvinCrepaldi?tab=repositories"}>

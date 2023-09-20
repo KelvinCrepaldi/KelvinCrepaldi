@@ -2,6 +2,12 @@ import Project from "@/components/Project";
 import Title from "@/components/Title";
 import { projects } from "@/data/projects";
 import { IProject } from "@/interfaces/project.interface";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Portfólio - Kelvin Crepaldi",
+  description: "Página de portfólio de Kelvin Crepaldi",
+};
 
 export default function Portfolio() {
   return (

@@ -5,7 +5,7 @@ import { skills } from "@/data/skills";
 import { ISkillsType } from "@/interfaces/skill.interface";
 import Image from "next/image";
 
-const AboutSection = () => {
+const AboutSection = (): JSX.Element => {
   return (
     <section className="max-w-[1250px] m-auto mt-20 p-5">
       <Title title="Sobre"></Title>

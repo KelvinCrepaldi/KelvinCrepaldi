@@ -2,7 +2,7 @@
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
 
-const Title = ({ title }: { title: string }) => {
+const Title = ({ title }: { title: string }): JSX.Element => {
   return (
     <motion.h1
       className="font-jetbrains text-teal-400 my-3 flex items-center  font-bold sm:sticky top-[30px] w-full text-lg md:text-xl lg:text-2xl"

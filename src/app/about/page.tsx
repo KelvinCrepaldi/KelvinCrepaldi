@@ -5,7 +5,12 @@ import { skills } from "@/data/skills";
 import { ISkillsType } from "@/interfaces/skill.interface";
 import Skill from "@/components/skill";
 import { MotionDiv, MotionP } from "@/components/animations/MotionDiv";
-import { delay } from "framer-motion";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sobre - Kelvin Crepaldi",
+  description: "Página sobre Kelvin Crepaldi",
+};
 
 export default function About() {
   return (

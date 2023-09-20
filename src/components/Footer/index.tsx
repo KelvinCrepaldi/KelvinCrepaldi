@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Footer() {
+export default function Footer(): JSX.Element {
   return (
     <footer className="p-10 flex flex-col items-center bg-gray-900">
       <ul className="flex space-x-5 justify-center">
