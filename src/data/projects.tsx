@@ -106,7 +106,7 @@ export const projects: IProject[] = [
     repoUrl: "https://github.com/KelvinCrepaldi/pokenext",
     images: [
       {
-        desktopImage: "https://imgur.com/FLduByl.jpg",
+        desktopImage: "https://imgur.com/FB95u2f.jpg",
         mobileImage: "https://imgur.com/BPC80Xn.jpg",
       },
     ],
@@ -204,21 +204,6 @@ export const projects: IProject[] = [
     type: "Back-end",
     mobile: false,
     skills: ["Express.js", "TypeORM", "PostgreSQL"],
-  },
-
-  {
-    title: "Le-Coffee API",
-    description: "Le-Coffee é uma API para um e-commerce de cafés artesanais.",
-    repoUrl: "https://github.com/KelvinCrepaldi/Le-Coffee-API",
-    demoUrl: "https://documenter.getpostman.com/view/19946807/UVsFz8tc",
-    images: [
-      {
-        desktopImage: "https://imgur.com/dcmffSz.jpg",
-      },
-    ],
-    type: "Back-end",
-    mobile: false,
-    skills: ["Python", "Flask", "PostgreSQL"],
   },
 
   {
