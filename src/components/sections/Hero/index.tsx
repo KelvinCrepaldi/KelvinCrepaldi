@@ -20,11 +20,11 @@ const Hero = () => {
     <motion.section
       style={{ opacity }}
       ref={targetRef}
-      className="relative   min-h-[70vh]  lg:items-center   lg:text-center"
+      className="relative min-h-[70vh] lg:items-center lg:text-center"
     >
       <motion.div
         style={{ scale, position }}
-        className="flex flex-col lg:items-center w-full justify-between  p-10 md:p-10 left-0 min-h-[70vh]"
+        className="flex flex-col lg:items-center w-full justify-between  p-5 md:p-10 left-0 min-h-[70vh]"
       >
         <div className="flex flex-col lg:items-center">
           <motion.h1

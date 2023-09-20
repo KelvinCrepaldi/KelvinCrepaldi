@@ -7,7 +7,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <nav className="p-1 m-auto w-full flex-col sticky top-0 z-40 bg-gray-800 font-jetbrains mb-10">
+    <nav className="p-2 pb-4 m-auto w-full flex-col sticky top-0 z-40 bg-gray-800 font-jetbrains">
       <div className="max-w-[1200px] m-auto md:px-10">
         <h1 className="hidden sm:flex  mb-1 text-2xl font-bold text-gray-300">
           Kelvin Crepaldi

@@ -1,11 +1,16 @@
 import { ISkillsType } from "@/interfaces/skill.interface";
 import Image from "next/image";
-import AnimateDiv from "../animations/AnimateDiv";
+import {
+  MotionDiv,
+  MotionP,
+  MotionH1,
+  MotionH2,
+} from "../animations/MotionDiv";
 
 const Skill = ({ skill }: { skill: ISkillsType }): JSX.Element => {
   return (
     <div className="flex p-3 my-4 hover:bg-gray-900 rounded-lg">
-      <AnimateDiv
+      <MotionDiv
         initial={{ x: -100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.1, type: "tween" }}
@@ -18,25 +23,25 @@ const Skill = ({ skill }: { skill: ISkillsType }): JSX.Element => {
           fill
           sizes="(max-width: 768px) 100vw"
         ></Image>
-      </AnimateDiv>
+      </MotionDiv>
 
       <div className="ml-2">
-        <AnimateDiv
+        <MotionH2
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.1, type: "tween" }}
+          className="border-b border-gray-700 text-teal-500"
         >
-          <h2 className="border-b border-gray-700 text-teal-500">
-            {skill.name}
-          </h2>
-        </AnimateDiv>
-        <AnimateDiv
+          {skill.name}
+        </MotionH2>
+
+        <MotionP
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.3, type: "tween" }}
         >
-          <p>{skill.description}</p>
-        </AnimateDiv>
+          {skill.description}
+        </MotionP>
       </div>
     </div>
   );

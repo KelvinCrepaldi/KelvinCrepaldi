@@ -18,7 +18,10 @@ const Projects = () => {
   });
 
   return (
-    <motion.section ref={targetRef} className="max-w-[1250px] m-auto relative ">
+    <motion.section
+      ref={targetRef}
+      className="max-w-[1300px] m-auto relative p-5"
+    >
       <div>
         <div>
           <Title title="Projetos" />
