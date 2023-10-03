@@ -100,20 +100,38 @@ export const projects: IProject[] = [
     skills: ["Next.js", "Express"],
   },
   {
-    title: "PokeNext",
-    description: "Biblioteca de Pokemons em Next.js e tailwind",
-    demoUrl: "https://pokenext-nine-mu.vercel.app",
-    repoUrl: "https://github.com/KelvinCrepaldi/pokenext",
+    title: "Education Demo",
+    description:
+      "Demonstração de EAD (Educação a Distância) - Plataforma de aprendizado online.",
+    demoUrl: "https://educationdemo.vercel.app",
+    repoUrl: "https://github.com/KelvinCrepaldi/educationdemo",
     images: [
       {
-        desktopImage: "https://imgur.com/FB95u2f.jpg",
-        mobileImage: "https://imgur.com/BPC80Xn.jpg",
+        desktopImage: "https://imgur.com/3oLeX6S.jpg",
+        mobileImage: "https://imgur.com/pGeuDYd.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/7lHw0YV.jpg",
+        mobileImage: "https://imgur.com/vcdzfsc.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/a7fU5uY.jpg",
+        mobileImage: "https://imgur.com/SCNPLJc.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/7GXHm1Y.jpg",
+        mobileImage: "https://imgur.com/nGBH0x3.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/lQI5zUW.jpg",
+        mobileImage: "https://imgur.com/rUAN9O8.jpg",
       },
     ],
     type: "Front-end",
     mobile: true,
-    skills: ["Next.js"],
+    skills: ["Next.js", "Tailwind"],
   },
+
   {
     title: "VMBProject",
     description:
@@ -128,6 +146,21 @@ export const projects: IProject[] = [
     type: "Front-end",
     mobile: false,
     skills: ["Vue.js", "Vuetify", "Pinea"],
+  },
+  {
+    title: "PokeNext",
+    description: "Biblioteca de Pokemons em Next.js e tailwind",
+    demoUrl: "https://pokenext-nine-mu.vercel.app",
+    repoUrl: "https://github.com/KelvinCrepaldi/pokenext",
+    images: [
+      {
+        desktopImage: "https://imgur.com/FB95u2f.jpg",
+        mobileImage: "https://imgur.com/BPC80Xn.jpg",
+      },
+    ],
+    type: "Front-end",
+    mobile: true,
+    skills: ["Next.js"],
   },
   {
     title: "Kelvin Crepaldi",
