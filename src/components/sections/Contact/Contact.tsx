@@ -18,7 +18,7 @@ const Contact = (): JSX.Element => {
           initial={{ opacity: 0, x: 200 }}
           transition={{ delay: 0.1, duration: 0.1 }}
           whileInView={{ opacity: 1, x: 0 }}
-          className="m-4 text-2xl  border-gray-900 text-teal-500 "
+          className="m-4"
         >
           Entre em contato comigo!
         </MotionH2>
@@ -40,25 +40,29 @@ const Contact = (): JSX.Element => {
           initial={{ opacity: 0, x: 200 }}
           transition={{ delay: 0.1, duration: 0.4 }}
           whileInView={{ opacity: 1, x: 0 }}
-          className="flex text-5xl m-1 space-x-2 justify-center"
+          className="flex text-5xl m-1 space-x-2 justify-center my-10"
         >
           <Link
-            className="hover:text-"
+            className="hover:text-teal-500"
             href={"https://www.linkedin.com/in/kelvincrepaldi/"}
           >
             <FaLinkedin />
           </Link>
-          <Link href={"https://github.com/KelvinCrepaldi?tab=repositories"}>
+          <Link
+            className="hover:text-teal-500"
+            href={"https://github.com/KelvinCrepaldi?tab=repositories"}
+          >
             <AiFillGithub />
           </Link>
         </MotionDiv>
       </div>
 
-      <div className="flex flex-col items-center text-center max-w-[700px] mx-auto my-10 text-gray-400">
+      <div className="flex flex-col items-center text-center max-w-[700px] mx-auto my-10">
         <MotionP
           initial={{ opacity: 0, x: 200 }}
           transition={{ delay: 0.1, duration: 0.5 }}
           whileInView={{ opacity: 1, x: 0 }}
+          className="text-teal-300"
         >
           Se você gostaria de discutir um projeto, fazer uma pergunta ou
           simplesmente dizer {'"'}oi{'"'}, estou sempre aberto para uma

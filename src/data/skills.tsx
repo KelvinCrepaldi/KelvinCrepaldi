@@ -8,6 +8,10 @@ import githubIcon from "/public/github-icon.svg";
 import framerMotionIcon from "/public/framerMotion-icon.svg";
 import dockerIcon from "/public/docker-icon.svg";
 import postgressIcon from "/public/postgresql-icon.svg";
+import html5 from "/public/html5-icon.png";
+import css3 from "/public/css3-icon.png";
+import javascript from "/public/javascript-icon.png";
+import styledComponentsIcon from "/public/styledcomponents-icon.png";
 
 export interface skillsType {
   name: string;
@@ -16,6 +20,30 @@ export interface skillsType {
 }
 
 export const skills: skillsType[] = [
+  {
+    name: "HTML5",
+    description:
+      "Utilizei HTML5 para estruturar o conteúdo das páginas da web, garantindo acessibilidade e conformidade com os padrões da web.",
+    image: html5,
+  },
+  {
+    name: "CSS3",
+    description:
+      "Utilizei CSS3 para estilizar e aprimorar a apresentação visual das aplicações. Garanti que os layouts fossem responsivos e atraentes, proporcionando aos usuários uma experiência visualmente agradável.",
+    image: css3,
+  },
+  {
+    name: "Javascript",
+    description:
+      "Utilizei JavaScript para adicionar funcionalidades dinâmicas e interatividade às minhas aplicações React, melhorando a experiência do usuário.",
+    image: javascript,
+  },
+  {
+    name: "TypeScript",
+    description:
+      "Desenvolvi aplicações mais seguras e com código mais legível utilizando TypeScript, adicionando tipagem estática ao JavaScript.",
+    image: typescriptIcon,
+  },
   {
     name: "React",
     description:
@@ -41,16 +69,22 @@ export const skills: skillsType[] = [
     image: nextJsIcon,
   },
   {
-    name: "TypeScript",
+    name: "Framer Motion",
     description:
-      "Desenvolvi aplicações mais seguras e com código mais legível utilizando TypeScript, adicionando tipagem estática ao JavaScript.",
-    image: typescriptIcon,
+      "Adicionei animações atraentes e interações suaves às minhas aplicações React com o Framer Motion.",
+    image: framerMotionIcon,
   },
   {
     name: "Tailwind CSS",
     description:
       "Criei interfaces de usuário elegantes e responsivas com o auxílio do Tailwind CSS, economizando tempo e melhorando a consistência do design.",
     image: tailwindIcon,
+  },
+  {
+    name: "Styled-Components",
+    description:
+      "Utilizei Styled-Components para estilizar componentes React de maneira eficiente e modular, garantindo uma aparência consistente e fácil manutenção.",
+    image: styledComponentsIcon,
   },
   {
     name: "Node.js/Express",
@@ -64,12 +98,7 @@ export const skills: skillsType[] = [
       "Colaborei com equipes de desenvolvimento usando o GitHub, facilitando o controle de versão, revisão de código e integração contínua.",
     image: githubIcon,
   },
-  {
-    name: "Framer Motion",
-    description:
-      "Adicionei animações atraentes e interações suaves às minhas aplicações React com o Framer Motion.",
-    image: framerMotionIcon,
-  },
+
   {
     name: "Docker",
     description:

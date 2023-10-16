@@ -6,13 +6,14 @@ import { ISkillsType } from "@/interfaces/skill.interface";
 
 const SkillsList = () => {
   return (
-    <section>
+    <section className="my-20">
       <Title title="Competencias" />
 
       <MotionP
         initial={{ x: 100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.1, type: "tween" }}
+        className="mb-10"
       >
         Estas tecnologias são parte integrante do meu conjunto de habilidades e
         foram essenciais para o sucesso de projetos diversos em meu portfólio.
@@ -20,7 +21,7 @@ const SkillsList = () => {
         qualidade.
       </MotionP>
 
-      <ul className="flex flex-wrap justify-start flex-wrap">
+      <ul className="flex flex-wrap justify-start">
         {skills.map((skill: ISkillsType, index: number) => (
           <Skill key={index} skill={skill} />
         ))}

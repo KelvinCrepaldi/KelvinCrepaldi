@@ -6,7 +6,7 @@ import { AiFillLayout } from "react-icons/ai";
 
 const Apresentation = () => {
   return (
-    <section className="grid lg:grid-cols-2 my-20">
+    <section className="grid lg:grid-cols-2 mb-20 mt-10">
       <MotionP
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}

@@ -1,9 +1,15 @@
 import Image from "next/image";
+import { MotionDiv } from "@/components/animations/MotionDiv";
 
 const CurrentActivities = () => {
   return (
     <div className="grid lg:grid-cols-3 my-20">
-      <div className="flex flex-col items-center justify-around px-5 mb-10 lg:mb-0">
+      <MotionDiv
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="flex flex-col items-center justify-around px-5 mb-10 lg:mb-0"
+      >
         <Image
           src={"/documents.svg"}
           alt="documents illustration"
@@ -19,9 +25,14 @@ const CurrentActivities = () => {
           </strong>{" "}
           detalhadas e artigos especializados.
         </p>
-      </div>
+      </MotionDiv>
 
-      <div className="flex flex-col lg:flex-col-reverse items-center justify-around px-5 mb-10 lg:mb-0">
+      <MotionDiv
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 1.0 }}
+        className="flex flex-col lg:flex-col-reverse items-center justify-around px-5 mb-10 lg:mb-0"
+      >
         <Image
           src={"/tech.svg"}
           alt="documents illustration"
@@ -39,9 +50,14 @@ const CurrentActivities = () => {
           focado em criar projetos pessoais fullstack com Next.js e
           express.js/typeORM + postgreSQL.
         </p>
-      </div>
+      </MotionDiv>
 
-      <div className="flex flex-col items-center justify-around px-5 mb-10 lg:mb-0">
+      <MotionDiv
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="flex flex-col items-center justify-around px-5 mb-10 lg:mb-0"
+      >
         <Image
           src={"/computerEvo.svg"}
           alt="computer illustration"
@@ -62,7 +78,7 @@ const CurrentActivities = () => {
           </strong>
           .
         </p>
-      </div>
+      </MotionDiv>
     </div>
   );
 };

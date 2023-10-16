@@ -74,7 +74,7 @@ export const projects: IProject[] = [
   {
     title: "Pirate's Punch",
     description:
-      "App Ecommerce de venda de bebidas com temática pirata, de um bar fantasioso da ilha de tortuga.",
+      "Ecommerce de venda de bebidas com temática pirata, de um bar fantasioso da ilha de tortuga.",
     demoUrl: "https://piratespunchdrinks.vercel.app",
     repoUrl: "https://github.com/KelvinCrepaldi/piratespunchdrinks",
     images: [
@@ -105,8 +105,7 @@ export const projects: IProject[] = [
   },
   {
     title: "Do.it",
-    description:
-      "Aplicação simples e prática de anotações para gerenciar tarefas.",
+    description: "Website de anotações para gerenciar tarefas.",
     demoUrl: "https://doit2.vercel.app",
     repoUrl: "https://github.com/KelvinCrepaldi/doit-app",
     images: [
@@ -134,7 +133,7 @@ export const projects: IProject[] = [
   {
     title: "VMBProject",
     description:
-      "App para listar negociações de moedas digitais usando a API Mercadobitcoin.",
+      "Página para listar negociações de moedas digitais usando a API Mercadobitcoin.",
     demoUrl: "https://vmb-project.vercel.app",
     repoUrl: "https://github.com/KelvinCrepaldi/VMBProject",
     images: [

@@ -7,7 +7,7 @@ import Project from "../../Project";
 import CustomLink from "@/components/CustomLink";
 
 const Projects = (): JSX.Element => {
-  const sliceProject = projects.slice(0, 4);
+  const sliceProject = projects.slice(0, 2);
 
   return (
     <motion.section className="max-w-[1300px] m-auto relative md:px-10 px-5">
