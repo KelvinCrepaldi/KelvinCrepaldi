@@ -14,6 +14,7 @@ const config: Config = {
       fontFamily: {
         jetbrains: ["var(--jetbrains)"],
         "roboto-mono": ["var(--roboto-mono)"],
+        oxygen: ["var(--oxygen)"],
       },
       aspectRatio: {
         desktop: "16 / 9",

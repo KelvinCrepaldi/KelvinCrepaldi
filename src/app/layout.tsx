@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import "./globals.css";
 import type { Metadata } from "next";
-import { JetBrains_Mono, Roboto_Mono } from "next/font/google";
+import { JetBrains_Mono, Roboto_Mono, Oxygen } from "next/font/google";
 import Footer from "@/components/Footer";
 
 const jetbrains = JetBrains_Mono({
@@ -14,6 +14,13 @@ const roboto = Roboto_Mono({
   display: "swap",
   subsets: ["latin"],
   variable: "--roboto-mono",
+  weight: ["400"],
+});
+
+const oxygen = Oxygen({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--oxygen",
   weight: ["400"],
 });
 
@@ -30,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${jetbrains.variable} ${roboto.variable} text-base md:text-lg lg:text-xl text-white bg-gray-800`}
+        className={`${oxygen.variable} ${jetbrains.variable} ${roboto.variable} text-base md:text-lg lg:text-xl text-white bg-gray-800`}
       >
         <Header></Header>
         {children}

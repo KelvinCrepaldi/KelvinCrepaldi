@@ -10,7 +10,7 @@ const Projects = (): JSX.Element => {
   const sliceProject = projects.slice(0, 4);
 
   return (
-    <motion.section className="max-w-[1300px] m-auto relative p-5">
+    <motion.section className="max-w-[1300px] m-auto relative md:px-10 px-5">
       <div>
         <div>
           <Title title="Projetos" />
@@ -19,7 +19,7 @@ const Projects = (): JSX.Element => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 3 }}
+          transition={{ delay: 0.5, duration: 3 }}
           className="flex flex-wrap justify-center"
         >
           {sliceProject.map((project: IProject, index) => (

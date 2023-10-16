@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function Portfolio() {
   return (
-    <main className="flex flex-col  items-center  max-w-[1300px] m-auto  font-jetbrains text-gray-400 overflow-x-clip">
-      <div className=" max-w-[1100px] m-auto w-full p-10">
+    <main className="flex flex-col  items-center  max-w-[1300px] m-auto  font-jetbrains text-gray-400 overflow-x-clip md:px-10 px-5">
+      <div className=" max-w-[1300px] m-auto w-full ">
         <Title title="Projetos"></Title>
         <p className="w-full mb-10">Navegue pelos resultados do meu trabalho</p>
       </div>

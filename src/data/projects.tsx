@@ -40,6 +40,38 @@ export const techsData = [
 
 export const projects: IProject[] = [
   {
+    title: "Education Demo",
+    description:
+      "Demonstração de EAD (Educação a Distância) - Plataforma de aprendizado online.",
+    demoUrl: "https://educationdemo.vercel.app",
+    repoUrl: "https://github.com/KelvinCrepaldi/educationdemo",
+    images: [
+      {
+        desktopImage: "https://imgur.com/3oLeX6S.jpg",
+        mobileImage: "https://imgur.com/pGeuDYd.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/7lHw0YV.jpg",
+        mobileImage: "https://imgur.com/vcdzfsc.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/a7fU5uY.jpg",
+        mobileImage: "https://imgur.com/SCNPLJc.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/7GXHm1Y.jpg",
+        mobileImage: "https://imgur.com/nGBH0x3.jpg",
+      },
+      {
+        desktopImage: "https://imgur.com/lQI5zUW.jpg",
+        mobileImage: "https://imgur.com/rUAN9O8.jpg",
+      },
+    ],
+    type: "Front-end",
+    mobile: true,
+    skills: ["Next.js", "Tailwind"],
+  },
+  {
     title: "Pirate's Punch",
     description:
       "App Ecommerce de venda de bebidas com temática pirata, de um bar fantasioso da ilha de tortuga.",
@@ -99,39 +131,6 @@ export const projects: IProject[] = [
     mobile: true,
     skills: ["Next.js", "Express"],
   },
-  {
-    title: "Education Demo",
-    description:
-      "Demonstração de EAD (Educação a Distância) - Plataforma de aprendizado online.",
-    demoUrl: "https://educationdemo.vercel.app",
-    repoUrl: "https://github.com/KelvinCrepaldi/educationdemo",
-    images: [
-      {
-        desktopImage: "https://imgur.com/3oLeX6S.jpg",
-        mobileImage: "https://imgur.com/pGeuDYd.jpg",
-      },
-      {
-        desktopImage: "https://imgur.com/7lHw0YV.jpg",
-        mobileImage: "https://imgur.com/vcdzfsc.jpg",
-      },
-      {
-        desktopImage: "https://imgur.com/a7fU5uY.jpg",
-        mobileImage: "https://imgur.com/SCNPLJc.jpg",
-      },
-      {
-        desktopImage: "https://imgur.com/7GXHm1Y.jpg",
-        mobileImage: "https://imgur.com/nGBH0x3.jpg",
-      },
-      {
-        desktopImage: "https://imgur.com/lQI5zUW.jpg",
-        mobileImage: "https://imgur.com/rUAN9O8.jpg",
-      },
-    ],
-    type: "Front-end",
-    mobile: true,
-    skills: ["Next.js", "Tailwind"],
-  },
-
   {
     title: "VMBProject",
     description:
