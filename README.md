@@ -11,11 +11,24 @@
   <img height="180px"  src="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi" />
 </picture>
 
-Formado pela Kenzie Academy como Full Stack, aprendi principais tecnologias de Front End e Back End. Entre as linguagens e tecnologias aprendidas, estão HTML5, CSS3, JavaScript (ES6 +), React, Redux, Python (Django e Flask),Node.js, Express, e SQL. Além de soft skills disponíveis para o mercado de trabalho, Scrum, Kanban.
+<div style="display: inline_block"> <br>
+<img width="44px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
+<img width="44px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
+<img width="44px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
+<img width="44px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+<img width="44px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" />
+<img width="44px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" />     
+<img width="44px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" />       
+<img width="44px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" />       
+<img width="44px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
+</div>
 
-A partir disso estou buscando aprender novas tecnologias que se destacam no mercado, como Next.js, Tailwinds, Framer-motion e focado em criar projetos pessoais fullstack com Next.js e express.js/typeORM + postgreSQL.
+##
 
-
-## contato 
-
-kelvin.crepaldi@hotmail.com
+<div> 
+  <a href="https://www.linkedin.com/in/kelvincrepaldi/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+  <a href="https://kelvincrepaldi.vercel.app" target="_blank"><img src="https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white"></a>
+   <a href = "mailto:kelvin.crepaldi@hotmail.com">kelvin.crepaldi@hotmail.com</a>
+</div>
+           <br>
+Formado pela Kenzie Academy como Full Stack, adquiri habilidades em diversas áreas do desenvolvimento de software, incluindo linguagens de programação e frameworks tanto para Front End quanto para Back End. Além disso, desenvolvi soft skills essenciais, como gestão de projetos utilizando metodologias ágeis, tais como Scrum e Kanban.
