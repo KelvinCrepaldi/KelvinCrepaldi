@@ -4,8 +4,7 @@
     srcset="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi&show_icons=true&theme=dark"
   />
   <img height="200px" src="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi&show_icons=true" />
-</picture>
-<picture>
+</picture><picture>
   <source
     srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=kelvincrepaldi&theme=dark&layout=compact"
   />
@@ -13,6 +12,7 @@
 </picture>
 
 ## Principais projetos:
+
 <div>
    <a href="https://github.com/KelvinCrepaldi/defaultchat"/>
   <picture>
