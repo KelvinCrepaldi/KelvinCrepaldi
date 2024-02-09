@@ -1,4 +1,36 @@
-## Sobre
+## Olá, Eu sou Kelvin Crepaldi
+<picture>
+  <source
+    srcset="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi&show_icons=true&theme=dark"
+  />
+  <img height="200px" src="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi&show_icons=true" />
+</picture>
+<picture>
+  <source
+    srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=kelvincrepaldi&theme=dark&layout=compact"
+  />
+  <img height="200px" src="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi" />
+</picture>
+
+## Principais projetos:
+<div>
+   <a href="https://github.com/KelvinCrepaldi/defaultchat"/>
+  <picture>
+    <source
+      srcset="https://github-readme-stats.vercel.app/api/pin/?username=kelvincrepaldi&repo=defaultchat&theme=dark"
+    />
+    <img height="140px" src="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi" />
+  </picture>
+     <a href="https://github.com/KelvinCrepaldi/piratespunchdrinks"/>
+  <picture>
+    <source
+       srcset="https://github-readme-stats.vercel.app/api/pin/?username=kelvincrepaldi&repo=piratespunchdrinks&theme=dark"
+    />
+    <img height="140px" src="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi" />
+  </picture>
+</div>
+
+
 
 Formado pela Kenzie Academy como Full Stack, aprendi principais tecnologias de Front End e Back End. Entre as linguagens e tecnologias aprendidas, estão HTML5, CSS3, JavaScript (ES6 +), React, Redux, Python (Django e Flask),Node.js, Express, e SQL. Além de soft skills disponíveis para o mercado de trabalho, Scrum, Kanban.
 
