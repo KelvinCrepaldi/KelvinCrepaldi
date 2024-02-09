@@ -3,7 +3,7 @@
   <source
     srcset="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi&show_icons=true&theme=dark"
   />
-  <img height="180px" src="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi&show_icons=true" />
+  <img height="180px" src="https://github-readme-stats.vercel.app/api?username=kelvincrepaldi" />
 </picture><picture>
   <source
     srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=kelvincrepaldi&theme=dark&layout=compact"
