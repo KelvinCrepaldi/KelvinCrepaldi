@@ -239,19 +239,28 @@ function GeometricShape({
 export function AnimatedGeometricBackground() {
   const { scrollYProgress } = useScroll();
   const [configs, setConfigs] = useState<ShapeConfig[] | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const base =
-      (Date.now() ^
-        (Math.floor(Math.random() * 0xffffffff) >>> 0)) >>>
-      0;
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    const randomBytes = new Uint32Array(1);
+    if (typeof crypto !== "undefined" && crypto.getRandomValues) {
+      crypto.getRandomValues(randomBytes);
+    } else {
+      randomBytes[0] = Math.floor(Math.random() * 0xffffffff);
+    }
+    const base = (Date.now() ^ randomBytes[0]) >>> 0;
     setConfigs(
       Array.from({ length: SHAPE_COUNT }, (_, i) => {
         const rng = createRng(base + i * 0x9e3779b1);
         return buildShapeConfig(rng, i);
       }),
     );
-  }, []);
+  }, [mounted]);
 
   return (
     <div
