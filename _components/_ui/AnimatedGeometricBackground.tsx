@@ -213,17 +213,20 @@ function GeometricShape({
   );
 
   return (
-    <div
+    <motion.div
       className="absolute pointer-events-none"
       style={{ left: `${config.leftPct}%`, top: `${config.topPct}%` }}
       data-shape-index={index}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, delay: index * 0.3, ease: "easeOut" }}
     >
       {config.useParallax ? (
         <motion.div style={{ x: xParallax, y: yParallax }}>{inner}</motion.div>
       ) : (
         inner
       )}
-    </div>
+    </motion.div>
   );
 }
 
@@ -238,9 +241,12 @@ export function AnimatedGeometricBackground() {
 
   useEffect(() => {
     if (!mounted) return;
-    setConfigs(
-      Array.from({ length: SHAPE_COUNT }, (_, i) => buildShapeConfig(i)),
-    );
+    const timer = setTimeout(() => {
+      setConfigs(
+        Array.from({ length: SHAPE_COUNT }, (_, i) => buildShapeConfig(i)),
+      );
+    }, 150);
+    return () => clearTimeout(timer);
   }, [mounted]);
 
   return (
