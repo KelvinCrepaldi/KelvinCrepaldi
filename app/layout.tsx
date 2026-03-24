@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Space_Grotesk } from "next/font/google";
 
-import { AnimatedGeometricBackground } from "@/_components/_ui/AnimatedGeometricBackground";
 import { ClickSpark } from "@/_components/_ui/ClickSpark";
 import { CrtOverlay } from "@/_components/_ui/CrtOverlay";
 import { DotTextureBackground } from "@/_components/_ui/DotTextureBackground";
@@ -9,6 +9,14 @@ import { SiteFooter } from "@/_components/SiteFooter";
 import { SiteHeader } from "@/_components/SiteHeader";
 
 import "./globals.css";
+
+const AnimatedGeometricBackground = dynamic(
+  () =>
+    import("@/_components/_ui/AnimatedGeometricBackground").then(
+      (mod) => mod.AnimatedGeometricBackground,
+    ),
+  { ssr: false },
+);
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
