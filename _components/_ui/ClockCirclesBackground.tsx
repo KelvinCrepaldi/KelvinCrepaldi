@@ -151,6 +151,9 @@ type Position = "left" | "right" | "center";
 
 /** Versão mini do círculo com 2 traços, para os nós da timeline */
 export function ClockCircleNode() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   const size = 32;
   const cx = size / 2;
   const cy = size / 2;
@@ -165,6 +168,8 @@ export function ClockCircleNode() {
     x2: cx + (radius + tickLen) * Math.cos(angle),
     y2: cy + (radius + tickLen) * Math.sin(angle),
   }));
+
+  if (!mounted) return null;
 
   return (
     <motion.svg
@@ -196,8 +201,13 @@ export function ClockCircleNode() {
 }
 
 export function ClockCirclesBackground({ position = "left" }: { position?: Position }) {
+  const [mounted, setMounted] = useState(false);
   const isRight = position === "right";
   const isCenter = position === "center";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div
@@ -217,15 +227,17 @@ export function ClockCirclesBackground({ position = "left" }: { position?: Posit
           transform: isCenter ? "none" : isRight ? "translateX(50%)" : "translateX(-50%)",
         }}
       >
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 400 400"
-          fill="none"
-        >
-          {circleData.map((circle, idx) => (
-            <CircleLayer key={idx} circle={circle} circleIdx={idx} />
-          ))}
-        </svg>
+        {mounted && (
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 400 400"
+            fill="none"
+          >
+            {circleData.map((circle, idx) => (
+              <CircleLayer key={idx} circle={circle} circleIdx={idx} />
+            ))}
+          </svg>
+        )}
       </div>
     </div>
   );
