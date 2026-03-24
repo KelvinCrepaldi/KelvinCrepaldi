@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Alinhar <main> e sidebars ao header fixo (ver SiteHeader: h-16) */
+:root {
+  --site-header-height: 4rem;
+}
+
+body {
+  font-family: var(--font-space-grotesk), sans-serif;
+  background-color: #fef9ed;
+}
+
+.dot-texture {
+  background-color: transparent;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(54, 51, 34, 0.11) 1px,
+    transparent 1px
+  );
+  background-size: 14px 14px;
+}
+
+.crt-overlay {
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.02),
+      rgba(0, 255, 0, 0.01),
+      rgba(0, 0, 255, 0.02)
+    );
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.project-md {
+  @apply text-left text-on-surface/90 text-sm leading-relaxed;
+}
+
+.project-md h1 {
+  @apply text-3xl md:text-4xl font-black uppercase tracking-tighter text-on-surface mb-6;
+}
+
+.project-md h2 {
+  @apply text-xl font-bold uppercase tracking-tight text-on-surface mt-10 mb-4;
+}
+
+.project-md h3 {
+  @apply text-lg font-bold text-on-surface mt-8 mb-3;
+}
+
+.project-md p {
+  @apply mb-4 opacity-90;
+}
+
+.project-md ul {
+  @apply list-disc pl-6 mb-4 space-y-2;
+}
+
+.project-md ol {
+  @apply list-decimal pl-6 mb-4 space-y-2;
+}
+
+.project-md a {
+  @apply text-primary underline underline-offset-4 hover:opacity-80;
+}
+
+.project-md code {
+  @apply font-mono text-xs bg-surface-container px-1 py-0.5 border border-outline-variant/30;
+}
+
+.project-md pre {
+  @apply font-mono text-xs bg-surface-container p-4 border border-outline-variant/30 overflow-x-auto mb-4;
+}
+
+.project-md pre code {
+  @apply p-0 border-0 bg-transparent;
+}
+
+.project-md blockquote {
+  @apply border-l-2 border-outline pl-4 italic opacity-80 my-6;
+}
+
+.project-md hr {
+  @apply border-outline-variant/30 my-10;
+}
+
+.project-md table {
+  @apply w-full text-xs border border-outline-variant/30 mb-4;
+}
+
+.project-md th,
+.project-md td {
+  @apply border border-outline-variant/30 px-3 py-2 text-left;
+}
+
+.project-md th {
+  @apply bg-surface-container font-bold uppercase tracking-tighter;
+}
+
+/* Cards de projeto na home — efeito scanline no hover */
+@keyframes scanlines-down {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 4px;
+  }
+}
+
+.card-scanlines {
+  position: relative;
+  overflow: hidden;
+}
+.card-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 2px,
+    rgba(54, 51, 34, 0.05) 2px,
+    rgba(54, 51, 34, 0.05) 4px
+  );
+  background-size: 100% 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: scanlines-down 0.5s linear infinite;
+  animation-play-state: paused;
+}
+.card-scanlines:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}

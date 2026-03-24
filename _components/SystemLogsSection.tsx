@@ -1,0 +1,59 @@
+import { SystemLogRow } from "./SystemLogRow";
+import { BlinkingDotRow } from "./_ui/BlinkingDotRow";
+import { WaitingCursor } from "./_ui/WaitingCursor";
+
+export function SystemLogsSection() {
+  return (
+    <section className="relative z-10 px-6 md:px-12 py-24 bg-surface/85 backdrop-blur-sm overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div>
+          <div className="flex items-center gap-3 mb-12 flex-wrap">
+            <BlinkingDotRow count={5} size="sm" />
+            <h3 className="text-xs font-bold tracking-[0.5em] uppercase text-outline">
+              SYSTEM_LOGS // RECENT_ACTIVITY
+            </h3>
+          </div>
+          <div className="space-y-4">
+            <SystemLogRow
+              level={<span className="text-error">[CRITICAL]</span>}
+              time="09:12:44"
+              message="MIGRATED_DATABASE_TO_NEW_PROTOCOL"
+            />
+            <SystemLogRow
+              level={<span className="text-on-surface/60">[SUCCESS]</span>}
+              time="11:04:12"
+              message="ELECTRON_WRAPPER_V3.0_DEPLOYED"
+            />
+            <SystemLogRow
+              level={<span className="text-on-surface/60">[SUCCESS]</span>}
+              time="14:55:01"
+              message="WASM_OPTIMIZATION_FINISHED"
+            />
+            <SystemLogRow
+              level={<span className="text-on-surface/60">[WAITING]</span>}
+              time="--:--:--"
+              message={<WaitingCursor />}
+            />
+          </div>
+        </div>
+        <div className="relative">
+          <div className="absolute inset-0 bg-on-surface opacity-[0.02] flex items-center justify-center pointer-events-none">
+            <span className="text-[20rem] font-black opacity-10">ARCH</span>
+          </div>
+          <div className="relative z-10 p-8 border border-outline-variant/20 bg-surface-container-highest/30 backdrop-blur-sm">
+            <h5 className="text-xl font-bold mb-6 italic">
+              &quot;Design is the architecture of information, and code is the raw
+              material.&quot;
+            </h5>
+            <p className="text-sm leading-relaxed opacity-70">
+              Operating at the intersection of performance and aesthetics, Kelvin
+              Crepaldi specializes in crafting digital experiences that feel
+              permanent. Each line of code is treated as a component in a larger
+              archival system.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
