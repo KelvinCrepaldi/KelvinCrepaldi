@@ -16,7 +16,7 @@ export function SiteFooter() {
     <footer className="relative z-10 bg-[#363322] dark:bg-[#0a0a0a] text-[#fef9ed] flex flex-col w-full px-8 py-12 gap-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div className="font-space-grotesk text-[10px] tracking-widest uppercase space-y-1">
-          <p>© 2025 Kelvin Crepaldi — Desenvolvedor Front-end</p>
+          <p>© 2026 Kelvin Crepaldi — Desenvolvedor Front-end</p>
           <a
             href={`mailto:${EMAIL}`}
             className="block hover:underline opacity-90"

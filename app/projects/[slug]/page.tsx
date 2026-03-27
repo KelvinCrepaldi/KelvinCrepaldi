@@ -47,7 +47,7 @@ export default async function ProjectPage({ params }: PageProps) {
       : undefined;
 
   return (
-    <div className="relative z-10 flex min-h-[calc(100dvh_-_var(--site-header-height))] flex-col bg-surface-container-low/82 backdrop-blur-sm lg:flex-row lg:items-start">
+    <div className="relative z-10 flex min-h-[calc(100dvh_-_var(--site-header-height))] flex-col backdrop-blur-sm lg:flex-row lg:items-start">
       <ProjectArchiveSidebar currentSlug={slug} projects={navProjects} />
 
       <div className="order-1 flex min-w-0 flex-1 flex-col text-left lg:order-2">
@@ -57,7 +57,7 @@ export default async function ProjectPage({ params }: PageProps) {
           contentGutterClass={PROJECT_CONTENT_GUTTER}
         />
         <div
-          className={`flex flex-1 flex-col ${PROJECT_CONTENT_GUTTER} py-12 md:py-14 lg:py-16`}
+          className={`bg-surface-container-low/60 flex flex-1 flex-col ${PROJECT_CONTENT_GUTTER} py-12 md:py-14 lg:py-16`}
         >
           <div className="w-full max-w-3xl">
             {explanation ? (

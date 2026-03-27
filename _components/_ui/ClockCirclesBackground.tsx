@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+import { useIsMobileLayout } from "@/hooks/useIsMobileLayout";
+
 /* ─── Configuração ───────────────────────────────────────────────────── */
 
 /** Tamanho do círculo: min(vh, vw) */
@@ -77,13 +79,52 @@ const circleData = CIRCLES.map((c) => ({
   ticks: radialTicks(c.radius, c.tickLength, c.tickCount),
 }));
 
+function TickLines({
+  ticks,
+  opacity,
+  strokeWidth,
+}: {
+  ticks: { x1: number; y1: number; x2: number; y2: number }[];
+  opacity: number;
+  strokeWidth: number;
+}) {
+  return (
+    <>
+      {ticks.map((t, i) => (
+        <line
+          key={i}
+          x1={t.x1}
+          y1={t.y1}
+          x2={t.x2}
+          y2={t.y2}
+          stroke={`rgba(54, 51, 34, ${opacity})`}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+        />
+      ))}
+    </>
+  );
+}
+
 function CircleLayer({
   circle,
   circleIdx,
+  staticVisual,
 }: {
   circle: (typeof circleData)[number];
   circleIdx: number;
+  staticVisual: boolean;
 }) {
+  const strokeW = circleIdx === 0 ? 1.5 : 1;
+
+  if (staticVisual) {
+    return (
+      <g>
+        <TickLines ticks={circle.ticks} opacity={circle.opacity} strokeWidth={strokeW} />
+      </g>
+    );
+  }
+
   if (circle.mode === "linear") {
     return (
       <motion.g
@@ -95,23 +136,11 @@ function CircleLayer({
           ease: "linear",
         }}
       >
-        {circle.ticks.map((t, i) => (
-          <line
-            key={i}
-            x1={t.x1}
-            y1={t.y1}
-            x2={t.x2}
-            y2={t.y2}
-            stroke={`rgba(54, 51, 34, ${circle.opacity})`}
-            strokeWidth={circleIdx === 0 ? 1.5 : 1}
-            strokeLinecap="round"
-          />
-        ))}
+        <TickLines ticks={circle.ticks} opacity={circle.opacity} strokeWidth={strokeW} />
       </motion.g>
     );
   }
 
-  // random
   const [rotation, setRotation] = useState(0);
   const { delay, degrees, speed } = circle;
 
@@ -131,18 +160,7 @@ function CircleLayer({
         ease: [0.25, 0.1, 0.25, 1],
       }}
     >
-      {circle.ticks.map((t, i) => (
-        <line
-          key={i}
-          x1={t.x1}
-          y1={t.y1}
-          x2={t.x2}
-          y2={t.y2}
-          stroke={`rgba(54, 51, 34, ${circle.opacity})`}
-          strokeWidth={circleIdx === 0 ? 1.5 : 1}
-          strokeLinecap="round"
-        />
-      ))}
+      <TickLines ticks={circle.ticks} opacity={circle.opacity} strokeWidth={strokeW} />
     </motion.g>
   );
 }
@@ -152,6 +170,8 @@ type Position = "left" | "right" | "center";
 /** Versão mini do círculo com 2 traços, para os nós da timeline */
 export function ClockCircleNode() {
   const [mounted, setMounted] = useState(false);
+  const isMobile = useIsMobileLayout();
+
   useEffect(() => setMounted(true), []);
 
   const size = 32;
@@ -170,6 +190,30 @@ export function ClockCircleNode() {
   }));
 
   if (!mounted) return null;
+
+  if (isMobile) {
+    return (
+      <svg
+        className="absolute inset-0 w-full h-full"
+        viewBox={`0 0 ${size} ${size}`}
+        fill="none"
+        aria-hidden
+      >
+        {ticks.map((t, i) => (
+          <line
+            key={i}
+            x1={t.x1}
+            y1={t.y1}
+            x2={t.x2}
+            y2={t.y2}
+            stroke="rgba(54, 51, 34, 0.35)"
+            strokeWidth={1}
+            strokeLinecap="round"
+          />
+        ))}
+      </svg>
+    );
+  }
 
   return (
     <motion.svg
@@ -202,6 +246,7 @@ export function ClockCircleNode() {
 
 export function ClockCirclesBackground({ position = "left" }: { position?: Position }) {
   const [mounted, setMounted] = useState(false);
+  const isMobile = useIsMobileLayout();
   const isRight = position === "right";
   const isCenter = position === "center";
 
@@ -234,7 +279,12 @@ export function ClockCirclesBackground({ position = "left" }: { position?: Posit
             fill="none"
           >
             {circleData.map((circle, idx) => (
-              <CircleLayer key={idx} circle={circle} circleIdx={idx} />
+              <CircleLayer
+                key={idx}
+                circle={circle}
+                circleIdx={idx}
+                staticVisual={isMobile}
+              />
             ))}
           </svg>
         )}

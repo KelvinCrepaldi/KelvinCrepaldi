@@ -7,18 +7,18 @@ import { ClockCircleNode, ClockCirclesBackground } from "./_ui/ClockCirclesBackg
 
 const ENTRIES = [
   {
-    title: "Desenvolvimento Web Fullstack",
-    subtitle: "Kenzie Academy Brasil",
-    period: "Maio de 2021 — Abril de 2022",
+    title: "Desenvolvedor de Software Front-end Júnior",
+    subtitle: "Adam Robo",
+    period: "Mar 2024 — Atual",
     description:
-      "Curso de 2.000 horas de Desenvolvimento Full Stack que abrange as tecnologias Front End e Back End além de soft skills disponíveis para o mercado de trabalho. Entre as linguagens e tecnologias aprendidas, estão HTML5, CSS3, JavaScript (ES6 +), React, Redux, Python (Django e Flask) e SQL.",
+      "Planejamento, arquitetura e desenvolvimento de sistemas web com React, Vite e Electron. Criação de formulários dinâmicos, componentes reutilizáveis e fluxos complexos, reduzindo o tempo de preenchimento para poucos segundos. Suporte técnico em integrações com APIs internas e sistemas offline-first. Atendimento simultâneo de mais de 600 clientes sem falhas, com redução de 30% no tempo de carregamento.",
   },
   {
-    title: "Desenvolvedor de Software Full Stack",
-    subtitle: "Adam Robo",
-    period: "Abril 2024 — Atual",
+    title: "Desenvolvimento Web Full Stack",
+    subtitle: "Kenzie Academy Brasil",
+    period: "Mai 2021 — Jun 2022",
     description:
-      "Atuo como desenvolvedor full stack, com ampla autonomia no desenvolvimento de aplicações web e desktop. Sou responsável pelo planejamento técnico end-to-end, implementação de interfaces com React, Vite e Tailwind CSS, integrações com APIs e back-end, criação de funcionalidades em PWA com IndexedDB e desenvolvimento desktop com Electron. Também colaboro na organização das tarefas da equipe, definição de prioridades técnicas, realização de testes, correções e evolução contínua dos produtos da empresa.",
+      "Curso intensivo de 2.000 horas cobrindo tecnologias Front-end e Back-end. Entre as linguagens e ferramentas: HTML5, CSS3, JavaScript (ES6+), React, Redux, Python (Django e Flask) e SQL, além de soft skills para o mercado de trabalho.",
   },
 ] as const;
 
@@ -26,7 +26,7 @@ export function TimelineSection() {
   return (
     <section
       id="timeline"
-      className="relative z-10 overflow-hidden bg-surface-container-low/80 backdrop-blur-sm px-6 md:px-12 py-24 border-t border-outline-variant/30"
+      className="relative z-10 overflow-hidden bg-surface-container-low px-6 md:px-12 py-24 border-t border-outline-variant/30 md:bg-surface-container-low/92 md:backdrop-blur-sm"
     >
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-50">
         <ClockCirclesBackground position="center" />

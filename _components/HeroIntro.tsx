@@ -1,9 +1,8 @@
 "use client";
 
-import { Code, Download, Link2 } from "lucide-react";
+import { Github, Linkedin, MapPin } from "lucide-react";
 
 import { AnimatedIconLink } from "./_ui/AnimatedIconLink";
-import { AnimatedPrimaryButton } from "./_ui/AnimatedPrimaryButton";
 import { BlinkingDotRow } from "./_ui/BlinkingDotRow";
 import { StatusDot } from "./_ui/StatusDot";
 
@@ -22,16 +21,25 @@ export function HeroIntro() {
         <br />
         Crepaldi
       </h1>
-      <h2 className="text-2xl md:text-4xl font-light italic text-on-surface opacity-80 mb-12">
-        Front-end Developer
+      <h2 className="text-2xl md:text-4xl font-light italic text-on-surface opacity-80 mb-4">
+        Desenvolvedor Front-end React / JavaScript
       </h2>
-      <div className="flex flex-wrap gap-4 mb-12">
-        <AnimatedPrimaryButton href="#" icon={Download}>
-          Download Resume
-        </AnimatedPrimaryButton>
-        <div className="flex items-center gap-4">
-          <AnimatedIconLink href="#" aria-label="Link portfolio" icon={Link2} />
-          <AnimatedIconLink href="#" aria-label="Código e repositórios" icon={Code} />
+      <p className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-on-surface/50 mb-12">
+        <MapPin className="w-3 h-3" strokeWidth={2} />
+        Curitiba, Brasil
+      </p>
+      <div className="flex flex-wrap items-center gap-4 mb-12">
+        <div className="flex items-center gap-3">
+          <AnimatedIconLink
+            href="https://github.com/KelvinCrepaldi"
+            aria-label="GitHub"
+            icon={Github}
+          />
+          <AnimatedIconLink
+            href="https://www.linkedin.com/in/kelvincrepaldi/"
+            aria-label="LinkedIn"
+            icon={Linkedin}
+          />
         </div>
       </div>
     </div>

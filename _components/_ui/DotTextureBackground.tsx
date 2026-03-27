@@ -1,7 +1,7 @@
 export function DotTextureBackground() {
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-[2] dot-texture"
+      className="pointer-events-none fixed inset-0 z-[2] dot-texture hidden md:block"
       aria-hidden
     />
   );

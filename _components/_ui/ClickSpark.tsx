@@ -2,6 +2,8 @@
 
 import React, { useRef, useEffect, useCallback } from "react";
 
+import { useIsMobileLayout } from "@/hooks/useIsMobileLayout";
+
 export interface ClickSparkProps {
   sparkColor?: string;
   sparkSize?: number;
@@ -35,8 +37,16 @@ export function ClickSpark({
 }: ClickSparkProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sparksRef = useRef<Spark[]>([]);
+  const kickRafRef = useRef<() => void>(() => {});
+  const isMobile = useIsMobileLayout();
+  const disabled = isMobile;
+
+  const effRadius = isMobile ? Math.min(sparkRadius, 36) : sparkRadius;
+  const effCount = isMobile ? Math.min(sparkCount, 4) : sparkCount;
+  const effSize = isMobile ? sparkSize * 0.85 : sparkSize;
 
   useEffect(() => {
+    if (disabled) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -67,7 +77,7 @@ export function ClickSpark({
       ro.disconnect();
       clearTimeout(resizeTimeout);
     };
-  }, []);
+  }, [disabled]);
 
   const easeFunc = useCallback(
     (t: number) => {
@@ -86,12 +96,13 @@ export function ClickSpark({
   );
 
   useEffect(() => {
+    if (disabled) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationId: number;
+    let rafId: number | null = null;
 
     const draw = (timestamp: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -105,8 +116,8 @@ export function ClickSpark({
         const progress = elapsed / duration;
         const eased = easeFunc(progress);
 
-        const distance = eased * sparkRadius * extraScale;
-        const lineLength = sparkSize * (1 - eased);
+        const distance = eased * effRadius * extraScale;
+        const lineLength = effSize * (1 - eased);
 
         const x1 = spark.x + distance * Math.cos(spark.angle);
         const y1 = spark.y + distance * Math.sin(spark.angle);
@@ -123,36 +134,50 @@ export function ClickSpark({
         return true;
       });
 
-      animationId = requestAnimationFrame(draw);
+      if (sparksRef.current.length > 0) {
+        rafId = requestAnimationFrame(draw);
+      } else {
+        rafId = null;
+      }
     };
 
-    animationId = requestAnimationFrame(draw);
+    kickRafRef.current = () => {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(draw);
+      }
+    };
 
     return () => {
-      cancelAnimationFrame(animationId);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
+      kickRafRef.current = () => {};
     };
-  }, [sparkColor, sparkSize, sparkRadius, duration, easeFunc, extraScale]);
+  }, [sparkColor, effSize, effRadius, duration, easeFunc, extraScale, disabled]);
 
   const spawnSparks = useCallback(
     (clientX: number, clientY: number) => {
+      if (disabled) return;
       const canvas = canvasRef.current;
       if (!canvas) return;
       const rect = canvas.getBoundingClientRect();
       const x = clientX - rect.left;
       const y = clientY - rect.top;
       const now = performance.now();
-      const newSparks: Spark[] = Array.from({ length: sparkCount }, (_, i) => ({
+      const newSparks: Spark[] = Array.from({ length: effCount }, (_, i) => ({
         x,
         y,
-        angle: (2 * Math.PI * i) / sparkCount,
+        angle: (2 * Math.PI * i) / effCount,
         startTime: now,
       }));
       sparksRef.current.push(...newSparks);
+      kickRafRef.current();
     },
-    [sparkCount],
+    [effCount, disabled],
   );
 
   useEffect(() => {
+    if (disabled) return;
     if (!globalMode) return;
 
     const onDocClick = (e: MouseEvent) => {
@@ -162,12 +187,17 @@ export function ClickSpark({
 
     document.addEventListener("click", onDocClick, true);
     return () => document.removeEventListener("click", onDocClick, true);
-  }, [globalMode, spawnSparks]);
+  }, [globalMode, spawnSparks, disabled]);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {
+    if (disabled) return;
     if (globalMode) return;
     spawnSparks(e.clientX, e.clientY);
   };
+
+  if (disabled) {
+    return globalMode ? null : <>{children}</>;
+  }
 
   if (globalMode) {
     return (

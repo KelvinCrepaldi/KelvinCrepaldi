@@ -4,7 +4,7 @@ import { WaitingCursor } from "./_ui/WaitingCursor";
 
 export function SystemLogsSection() {
   return (
-    <section className="relative z-10 px-6 md:px-12 py-24 bg-surface/85 backdrop-blur-sm overflow-hidden">
+    <section className="relative z-10 px-6 md:px-12 py-24 bg-surface/94 backdrop-blur-sm overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
         <div>
           <div className="flex items-center gap-3 mb-12 flex-wrap">
@@ -15,19 +15,19 @@ export function SystemLogsSection() {
           </div>
           <div className="space-y-4">
             <SystemLogRow
-              level={<span className="text-error">[CRITICAL]</span>}
-              time="09:12:44"
-              message="MIGRATED_DATABASE_TO_NEW_PROTOCOL"
+              level={<span className="text-on-surface/60">[SUCCESS]</span>}
+              time="08:30:00"
+              message="TOTEM_PLATFORM_V3_DEPLOYED // 600+_CLIENTS"
             />
             <SystemLogRow
               level={<span className="text-on-surface/60">[SUCCESS]</span>}
               time="11:04:12"
-              message="ELECTRON_WRAPPER_V3.0_DEPLOYED"
+              message="PAGE_LOAD_TIME_REDUCED_30%"
             />
             <SystemLogRow
               level={<span className="text-on-surface/60">[SUCCESS]</span>}
               time="14:55:01"
-              message="WASM_OPTIMIZATION_FINISHED"
+              message="OFFLINE_FIRST_SYNC_STABILIZED"
             />
             <SystemLogRow
               level={<span className="text-on-surface/60">[WAITING]</span>}
@@ -42,14 +42,15 @@ export function SystemLogsSection() {
           </div>
           <div className="relative z-10 p-8 border border-outline-variant/20 bg-surface-container-highest/30 backdrop-blur-sm">
             <h5 className="text-xl font-bold mb-6 italic">
-              &quot;Design is the architecture of information, and code is the raw
-              material.&quot;
+              &quot;Interfaces performáticas e resilientes são a base de
+              produtos que escalam.&quot;
             </h5>
             <p className="text-sm leading-relaxed opacity-70">
-              Operating at the intersection of performance and aesthetics, Kelvin
-              Crepaldi specializes in crafting digital experiences that feel
-              permanent. Each line of code is treated as a component in a larger
-              archival system.
+              Desenvolvedor Front-end com 2 anos de experiência em sistemas web
+              de telemedicina e gestão administrativa. Especialista em interfaces
+              dinâmicas com React, Vite e Electron, fluxos de formulários
+              complexos e integração com APIs — garantindo performance,
+              escalabilidade e consistência em cada entrega.
             </p>
           </div>
         </div>

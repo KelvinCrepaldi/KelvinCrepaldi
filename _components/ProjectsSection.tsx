@@ -12,11 +12,15 @@ export function ProjectsSection() {
 
   return (
     <section
-      className="relative z-10 overflow-hidden bg-surface-container-low/80 backdrop-blur-sm px-6 md:px-12 py-24"
+      className="relative z-10 overflow-hidden bg-surface-container-low/92 backdrop-blur-sm px-6 md:px-12 py-24"
       id="projects"
     >
+      <div
+        className="pointer-events-none absolute inset-0 bg-surface/35"
+        aria-hidden
+      />
       <ClockCirclesBackground />
-      <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-4">
+      <div className="relative z-10 mb-16 flex flex-col md:flex-row justify-between items-end gap-4">
         <div>
           <div className="flex items-center gap-3 flex-wrap">
             <BlinkingDotRow count={4} size="sm" className="mb-1" />
@@ -36,7 +40,7 @@ export function ProjectsSection() {
           aria-hidden
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

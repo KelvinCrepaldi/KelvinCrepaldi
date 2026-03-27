@@ -6,7 +6,7 @@ type TechStackPanelProps = {
 
 export function TechStackPanel({ items }: TechStackPanelProps) {
   return (
-    <div className="md:col-span-4 border-l border-outline-variant/30 pl-8 hidden md:flex flex-col justify-end py-12">
+    <div className="col-span-1 md:col-span-4 flex flex-col justify-end py-8 md:py-12 border-t md:border-t-0 border-outline-variant/30 md:border-l md:pl-8">
       <div className="space-y-8">
         <div>
           <p className="text-[10px] font-bold tracking-[0.4em] text-outline mb-4 flex items-center gap-2 flex-wrap">

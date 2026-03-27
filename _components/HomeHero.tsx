@@ -3,11 +3,13 @@ import { TechStackPanel } from "./TechStackPanel";
 
 const DEFAULT_STACK = [
   { label: "React", index: "01" },
-  { label: "Vite", index: "02" },
-  { label: "Next.js", index: "03" },
+  { label: "Next.js", index: "02" },
+  { label: "TypeScript", index: "03" },
   { label: "Electron", index: "04" },
-  { label: "Node.js", index: "05" },
-  { label: "Express", index: "06" },
+  { label: "Vite", index: "05" },
+  { label: "Tailwind CSS", index: "06" },
+  { label: "Node.js", index: "07" },
+  { label: "Express", index: "08" },
 ];
 
 export function HomeHero() {
