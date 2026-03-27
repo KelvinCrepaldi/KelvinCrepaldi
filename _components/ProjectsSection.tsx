@@ -3,7 +3,7 @@ import { LayoutGrid } from "lucide-react";
 import { getAllProjects } from "@/_utils/load-projects";
 
 import { BlinkingDotRow } from "./_ui/BlinkingDotRow";
-import { ClockCirclesBackground } from "./_ui/ClockCirclesBackground";
+import { ClockCircleCanvas, ClockCirclesBackground } from "./_ui/ClockCircles";
 import { ProjectCard } from "./ProjectCard";
 
 export function ProjectsSection() {
@@ -19,7 +19,38 @@ export function ProjectsSection() {
         className="pointer-events-none absolute inset-0 bg-surface/35"
         aria-hidden
       />
-      <ClockCirclesBackground />
+      <ClockCirclesBackground>
+        <ClockCircleCanvas
+          mode="random"
+          radius={180}
+          tickCount={200}
+          tickLength={8}
+          opacity={0.1}
+          strokeWidth={1.5}
+          delay={5}
+          degrees={72}
+          speed={4.5}
+        />
+        <ClockCircleCanvas
+          mode="random"
+          radius={123}
+          tickCount={48}
+          tickLength={8}
+          opacity={0.1}
+          delay={3}
+          degrees={72}
+          speed={2.5}
+        />
+        <ClockCircleCanvas
+          mode="linear"
+          radius={115}
+          tickCount={200}
+          tickLength={5}
+          opacity={0.09}
+          duration={300}
+          direction={-1}
+        />
+      </ClockCirclesBackground>
       <div className="relative z-10 mb-16 flex flex-col md:flex-row justify-between items-end gap-4">
         <div>
           <div className="flex items-center gap-3 flex-wrap">

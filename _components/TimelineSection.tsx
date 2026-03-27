@@ -3,7 +3,11 @@
 import { motion } from "framer-motion";
 
 import { BlinkingDotRow } from "./_ui/BlinkingDotRow";
-import { ClockCircleNode, ClockCirclesBackground } from "./_ui/ClockCirclesBackground";
+import {
+  ClockCircleCanvas,
+  ClockCircleNode,
+  ClockCirclesBackground,
+} from "./_ui/ClockCircles";
 
 const ENTRIES = [
   {
@@ -29,7 +33,38 @@ export function TimelineSection() {
       className="relative z-10 overflow-hidden bg-surface-container-low px-6 md:px-12 py-24 border-t border-outline-variant/30 md:bg-surface-container-low/92 md:backdrop-blur-sm"
     >
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-50">
-        <ClockCirclesBackground position="center" />
+        <ClockCirclesBackground position="center">
+          <ClockCircleCanvas
+            mode="random"
+            radius={180}
+            tickCount={200}
+            tickLength={8}
+            opacity={0.1}
+            strokeWidth={1.5}
+            delay={5}
+            degrees={72}
+            speed={4.5}
+          />
+          <ClockCircleCanvas
+            mode="random"
+            radius={123}
+            tickCount={48}
+            tickLength={8}
+            opacity={0.1}
+            delay={3}
+            degrees={72}
+            speed={2.5}
+          />
+          <ClockCircleCanvas
+            mode="linear"
+            radius={115}
+            tickCount={200}
+            tickLength={5}
+            opacity={0.09}
+            duration={300}
+            direction={-1}
+          />
+        </ClockCirclesBackground>
       </div>
       <div className="max-w-5xl mx-auto relative">
         <div className="flex items-center gap-3 mb-20 flex-wrap">
