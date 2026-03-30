@@ -1,24 +1,24 @@
-/**
- * Catálogo manual de projetos — edite esta lista para controlar ordem, dados exibidos
- * e quais entradas aparecem na home (`listOnHome: false` oculta só da grelha).
- *
- * Explicações em Markdown: `_utils/projects/explanations/{slug}.md`
- */
+import totemMd from "@/_content/projects/totem-platform.md";
+import terminalMd from "@/_content/projects/terminal-core.md";
+import nexusMd from "@/_content/projects/nexus-api.md";
+import voidMd from "@/_content/projects/void-gallery.md";
 
-export type ProjectCatalogEntry = {
+export type Project = {
   slug: string;
   vol: string;
   title: string;
   excerpt: string;
   tags: string[];
   lastStableBuild: string;
-  /** Menor = mais acima na sidebar e na ordem geral */
   sortOrder: number;
-  /** Default: true. `false` = não lista no bloco Selected_Works da home */
+  /** Texto longo em Markdown (corpo da página do projeto) */
+  md: string;
+  subtitle: string;
+  /** `false` = não entra na grelha da home */
   listOnHome?: boolean;
 };
 
-export const PROJECTS_CATALOG: ProjectCatalogEntry[] = [
+const unsorted: Project[] = [
   {
     slug: "totem-platform",
     vol: "VOL_01",
@@ -29,6 +29,8 @@ export const PROJECTS_CATALOG: ProjectCatalogEntry[] = [
     lastStableBuild: "2024.08.15",
     sortOrder: 1,
     listOnHome: true,
+    subtitle: "Plataforma de totens interativos com configuração em nuvem",
+    md: totemMd,
   },
   {
     slug: "terminal-core",
@@ -40,6 +42,8 @@ export const PROJECTS_CATALOG: ProjectCatalogEntry[] = [
     lastStableBuild: "2024.02.28",
     sortOrder: 2,
     listOnHome: true,
+    subtitle: "Aplicação desktop para indexação profunda",
+    md: terminalMd,
   },
   {
     slug: "nexus-api",
@@ -51,6 +55,8 @@ export const PROJECTS_CATALOG: ProjectCatalogEntry[] = [
     lastStableBuild: "2023.11.15",
     sortOrder: 3,
     listOnHome: true,
+    subtitle: "Backend distribuído para ingestão assíncrona",
+    md: nexusMd,
   },
   {
     slug: "void-gallery",
@@ -62,35 +68,24 @@ export const PROJECTS_CATALOG: ProjectCatalogEntry[] = [
     lastStableBuild: "2024.05.01",
     sortOrder: 4,
     listOnHome: true,
+    subtitle: "Motor visual experimental para arquivo em alta definição",
+    md: voidMd,
   },
 ];
 
-export type ProjectListItem = ProjectCatalogEntry & {
-  content: string;
-};
+/** Catálogo ordenado por `sortOrder` — única fonte de verdade. */
+export const PROJECTS_CATALOG = [...unsorted].sort(
+  (a, b) => a.sortOrder - b.sortOrder,
+);
 
-function sortedCatalog(): ProjectCatalogEntry[] {
-  return [...PROJECTS_CATALOG].sort((a, b) => a.sortOrder - b.sortOrder);
+export const projectBySlug = Object.fromEntries(
+  PROJECTS_CATALOG.map((p) => [p.slug, p]),
+) as Record<string, Project>;
+
+export function homeProjects(): Project[] {
+  return PROJECTS_CATALOG.filter((p) => p.listOnHome !== false);
 }
 
-/** Todos os projetos (sidebar, rotas estáticas, etc.) */
-export function getSortedCatalog(): ProjectCatalogEntry[] {
-  return sortedCatalog();
-}
-
-/** Só os que devem aparecer na home */
-export function getHomeCatalogEntries(): ProjectCatalogEntry[] {
-  return sortedCatalog().filter((p) => p.listOnHome !== false);
-}
-
-export function getProjectFromCatalog(
-  slug: string,
-): ProjectCatalogEntry | undefined {
-  return PROJECTS_CATALOG.find((p) => p.slug === slug);
-}
-
-export function catalogEntryToListItem(
-  entry: ProjectCatalogEntry,
-): ProjectListItem {
-  return { ...entry, content: "" };
+export function getProject(slug: string): Project | undefined {
+  return projectBySlug[slug];
 }

@@ -11,7 +11,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
-import { getSortedCatalog } from "@/_utils/projects.config";
+import { PROJECTS_CATALOG } from "@/_utils/projects";
 
 const THRESHOLD_PX = 28;
 
@@ -84,7 +84,7 @@ export function SiteHeader() {
   const mobileLinkBase =
     "block border-b border-outline-variant/25 py-4 text-sm font-bold uppercase tracking-tighter text-on-surface transition-colors hover:bg-surface-container-low/80 active:bg-surface-container";
 
-  const catalog = getSortedCatalog();
+  const catalog = PROJECTS_CATALOG;
 
   return (
     <>
@@ -161,7 +161,7 @@ export function SiteHeader() {
             <motion.button
               type="button"
               aria-label="Fechar menu"
-              className="fixed inset-0 z-[52] bg-[#363322]/55 backdrop-blur-[2px] md:hidden"
+              className="fixed inset-0 z-[52] bg-[#363322]/80 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

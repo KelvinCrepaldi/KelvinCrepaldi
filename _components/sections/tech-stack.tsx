@@ -1,10 +1,10 @@
-import { BlinkingDotRow } from "./_ui/BlinkingDotRow";
+import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
 
-type TechStackPanelProps = {
+type TechStackProps = {
   items: { label: string; index: string }[];
 };
 
-export function TechStackPanel({ items }: TechStackPanelProps) {
+export function TechStack({ items }: TechStackProps) {
   return (
     <div className="col-span-1 md:col-span-4 flex flex-col justify-end py-8 md:py-12 border-t md:border-t-0 border-outline-variant/30 md:border-l md:pl-8">
       <div className="space-y-8">

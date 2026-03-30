@@ -1,3 +1,5 @@
+"use client";
+
 import { BlinkingDot } from "./BlinkingDot";
 
 export function StatusDot() {

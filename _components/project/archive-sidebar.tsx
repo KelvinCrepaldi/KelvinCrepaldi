@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { ProjectListItem } from "@/_utils/types";
+import type { Project } from "@/_utils/projects";
 
 /** Desktop: usa `--site-header-height` (igual ao <main> e ao SiteHeader). */
 const SIDEBAR_DESKTOP_H =
@@ -8,7 +8,7 @@ const SIDEBAR_DESKTOP_H =
 
 type ProjectArchiveSidebarProps = {
   currentSlug: string;
-  projects: ProjectListItem[];
+  projects: Project[];
 };
 
 export function ProjectArchiveSidebar({

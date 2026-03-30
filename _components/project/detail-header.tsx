@@ -1,10 +1,10 @@
-import { BackToArchiveLink } from "./_ui/BackToArchiveLink";
-import { BlinkingDotRow } from "./_ui/BlinkingDotRow";
-import { ProjectTag } from "./ProjectTag";
-import type { ProjectListItem } from "@/_utils/types";
+import { BackToArchiveLink } from "@/_components/_ui/BackToArchiveLink";
+import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
+import { ProjectTag } from "./project-tag";
+import type { Project } from "@/_utils/projects";
 
 type ProjectDetailHeaderProps = {
-  project: ProjectListItem;
+  project: Project;
   subtitle?: string;
   /** Classes de padding horizontal (devem coincidir com a zona do Markdown) */
   contentGutterClass?: string;
@@ -17,7 +17,7 @@ export function ProjectDetailHeader({
 }: ProjectDetailHeaderProps) {
   return (
     <header
-      className={`relative border-b border-outline-variant/20 pt-8 pb-10 backdrop-blur-sm md:pt-10 md:pb-11 lg:pt-11 lg:pb-12 ${contentGutterClass}`}
+      className={`relative border-b border-outline-variant/20 pt-8 pb-10 md:pt-10 md:pb-11 lg:pt-11 lg:pb-12 ${contentGutterClass}`}
     >
       <div className="w-full max-w-3xl text-left">
         <BackToArchiveLink />

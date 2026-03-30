@@ -2,11 +2,11 @@
 
 import { Github, Linkedin, MapPin } from "lucide-react";
 
-import { AnimatedIconLink } from "./_ui/AnimatedIconLink";
-import { BlinkingDotRow } from "./_ui/BlinkingDotRow";
-import { StatusDot } from "./_ui/StatusDot";
+import { AnimatedIconLink } from "@/_components/_ui/animations/AnimatedIconLink";
+import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
+import { StatusDot } from "@/_components/_ui/animations/StatusDot";
 
-export function HeroIntro() {
+export function Intro() {
   return (
     <div className="md:col-span-8 flex flex-col justify-center">
       <div className="mb-4 inline-flex items-center gap-3">

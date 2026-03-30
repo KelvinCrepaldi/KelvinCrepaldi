@@ -1,10 +1,11 @@
-import { SystemLogRow } from "./SystemLogRow";
-import { BlinkingDotRow } from "./_ui/BlinkingDotRow";
-import { WaitingCursor } from "./_ui/WaitingCursor";
+import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
+import { WaitingCursor } from "@/_components/_ui/animations/WaitingCursor";
 
-export function SystemLogsSection() {
+import { SystemLogRow } from "./system-log-row";
+
+export function SystemLogs() {
   return (
-    <section className="relative z-10 px-6 md:px-12 py-24 bg-surface/94 backdrop-blur-sm overflow-hidden">
+    <section className="relative z-10 px-6 md:px-12 py-24 bg-surface/94 overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
         <div>
           <div className="flex items-center gap-3 mb-12 flex-wrap">
@@ -40,7 +41,7 @@ export function SystemLogsSection() {
           <div className="absolute inset-0 bg-on-surface opacity-[0.02] flex items-center justify-center pointer-events-none">
             <span className="text-[20rem] font-black opacity-10">ARCH</span>
           </div>
-          <div className="relative z-10 p-8 border border-outline-variant/20 bg-surface-container-highest/30 backdrop-blur-sm">
+          <div className="relative z-10 p-8 border border-outline-variant/20 bg-surface-container-highest/30">
             <h5 className="text-xl font-bold mb-6 italic">
               &quot;Interfaces performáticas e resilientes são a base de
               produtos que escalam.&quot;

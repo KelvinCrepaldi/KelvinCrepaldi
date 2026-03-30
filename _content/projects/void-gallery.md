@@ -1,8 +1,3 @@
----
-title: Void_Gallery
-subtitle: Motor visual experimental para arquivo em alta definição
----
-
 ## Conceito
 
 **Void_Gallery** explora renderização e navegação de ativos pesados (imagens e cenas 3D) com sensação de "galeria arquivística": navegação deliberada, pouco ruído visual, foco no objeto.

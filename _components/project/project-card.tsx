@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
-import type { ProjectListItem } from "@/_utils/types";
+import type { Project } from "@/_utils/projects";
 
-import { BlinkingDot } from "./_ui/BlinkingDot";
-import { ProjectTag } from "./ProjectTag";
+import { BlinkingDot } from "@/_components/_ui/animations/BlinkingDot";
+import { ProjectTag } from "./project-tag";
 
 const MotionLink = motion.create(Link);
 
 type ProjectCardProps = {
-  project: ProjectListItem;
+  project: Project;
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {

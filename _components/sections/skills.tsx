@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-import { BlinkingDotRow } from "./_ui/BlinkingDotRow";
+import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
 
 const COLUMNS = [
   {
@@ -95,11 +95,11 @@ function SkillColumn({
   );
 }
 
-export function SkillsSection() {
+export function Skills() {
   return (
     <section
       id="skills"
-      className="relative z-10 px-6 md:px-12 py-24 bg-surface-container-low/92 backdrop-blur-sm border-t border-outline-variant/30"
+      className="relative z-10 px-6 md:px-12 py-24 bg-surface-container-low/92 border-t border-outline-variant/30"
     >
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-16 flex-wrap">

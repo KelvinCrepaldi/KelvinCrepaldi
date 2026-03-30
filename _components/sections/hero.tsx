@@ -1,5 +1,5 @@
-import { HeroIntro } from "./HeroIntro";
-import { TechStackPanel } from "./TechStackPanel";
+import { Intro } from "./intro";
+import { TechStack } from "./tech-stack";
 
 const DEFAULT_STACK = [
   { label: "React", index: "01" },
@@ -12,11 +12,11 @@ const DEFAULT_STACK = [
   { label: "Express", index: "08" },
 ];
 
-export function HomeHero() {
+export function Hero() {
   return (
     <section className="relative overflow-hidden px-6 md:px-12 py-16 md:py-32 grid grid-cols-1 md:grid-cols-12 gap-8">
-      <HeroIntro />
-      <TechStackPanel items={DEFAULT_STACK} />
+      <Intro />
+      <TechStack items={DEFAULT_STACK} />
     </section>
   );
 }

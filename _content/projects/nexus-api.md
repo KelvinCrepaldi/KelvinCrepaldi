@@ -1,8 +1,3 @@
----
-title: Nexus_API
-subtitle: Backend distribuído para ingestão assíncrona
----
-
 ## Resumo
 
 **Nexus_API** orquestra ingestão assíncrona a partir de múltiplos sensores remotos, com foco em **durabilidade de mensagens** e **idempotência** nos handlers.

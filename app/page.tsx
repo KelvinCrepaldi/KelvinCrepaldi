@@ -1,25 +1,27 @@
-import { HomeHero } from "@/_components/HomeHero";
-import { ProjectsSection } from "@/_components/ProjectsSection";
-import { SkillsSection } from "@/_components/SkillsSection";
-import { SystemLogsSection } from "@/_components/SystemLogsSection";
-import { TimelineSection } from "@/_components/TimelineSection";
+import {
+  Hero,
+  Projects,
+  Skills,
+  SystemLogs,
+  Timeline,
+} from "@/_components/sections";
 import { LazyRenderOnView } from "@/_components/_ui/LazyRenderOnView";
 
 export default function HomePage() {
   return (
     <>
-      <HomeHero />
+      <Hero />
       <LazyRenderOnView placeholderClassName="min-h-[70vh]">
-        <ProjectsSection />
+        <Projects />
       </LazyRenderOnView>
       <LazyRenderOnView placeholderClassName="min-h-[60vh]">
-        <TimelineSection />
+        <Timeline />
       </LazyRenderOnView>
       <LazyRenderOnView placeholderClassName="min-h-[56vh]">
-        <SkillsSection />
+        <Skills />
       </LazyRenderOnView>
       <LazyRenderOnView placeholderClassName="min-h-[52vh]">
-        <SystemLogsSection />
+        <SystemLogs />
       </LazyRenderOnView>
     </>
   );

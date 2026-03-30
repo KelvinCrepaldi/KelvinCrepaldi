@@ -1,8 +1,3 @@
----
-title: Terminal_Core
-subtitle: Aplicação desktop para indexação profunda
----
-
 ## Visão geral
 
 **Terminal_Core** é uma aplicação desktop construída com **Electron** e **Node.js**, focada em manipulação e indexação de arquivos em profundidade, com uma UX que lembra terminais clássicos — porém com camadas de segurança e auditoria explícitas.
