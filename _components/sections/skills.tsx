@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
 
 const COLUMNS = [
@@ -13,6 +11,9 @@ const COLUMNS = [
       "Electron",
       "TypeScript",
       "JavaScript",
+      "Vite",
+      "Node.js",
+      "Express",
       "Tailwind CSS",
       "Styled Components",
       "Redux",
@@ -55,69 +56,209 @@ const COLUMNS = [
   },
 ] as const;
 
-function SkillColumn({
-  header,
-  items,
-  colIndex,
+const STATUS_BADGE = {
+  compiled: "[COMPILED]",
+  stable: "[STABLE]",
+  active: "[ATIVO]",
+  sync: "[SYNC]",
+  root: "[ROOT_ACCESS]",
+  uplink: "[UPLINK]",
+} as const;
+
+function Badge({
+  children,
+  variant = "filled",
 }: {
-  header: string;
-  items: readonly string[];
-  colIndex: number;
+  children: string;
+  variant?: "filled" | "outline";
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.4, delay: colIndex * 0.12 }}
+    <span
+      className={
+        variant === "filled"
+          ? "font-mono text-[10px] bg-on-surface text-surface px-2 py-0.5 font-bold"
+          : "font-mono text-[10px] border border-on-surface px-2 py-0.5 font-bold text-secondary"
+      }
     >
-      <p className="text-[10px] font-bold tracking-[0.4em] text-outline mb-5 flex items-center gap-2 flex-wrap">
-        <BlinkingDotRow count={2} size="sm" />
-        {header}
-      </p>
-      <ul className="grid grid-cols-1 gap-1.5">
-        {items.map((item) => (
-          <li
-            key={item}
-            className="flex items-center gap-2 text-sm text-on-surface/85 group"
-          >
-            <span
-              className="w-1 h-1 bg-on-surface/30 shrink-0"
-              aria-hidden
-            />
-            <span className="group-hover:translate-x-1 transition-transform">
-              {item}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </motion.div>
+      {children}
+    </span>
   );
 }
 
 export function Skills() {
+  const competencies = COLUMNS[0].items;
+  const tools = COLUMNS[1].items;
+  const soft = COLUMNS[2].items;
+
+  const featured = competencies.slice(0, 3);
+  const rest = competencies.slice(3);
+  const restLeft = rest.slice(0, Math.ceil(rest.length / 2));
+  const restRight = rest.slice(Math.ceil(rest.length / 2));
   return (
     <section
       id="skills"
       className="relative z-10 px-6 md:px-12 py-24 bg-surface-container-low/92 border-t border-outline-variant/30"
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-3 mb-16 flex-wrap">
-          <BlinkingDotRow count={4} size="sm" className="mb-1" />
-          <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-on-surface">
-            Skills_&_Tools
+      <div className="max-w-7xl mx-auto">
+        <header className="mb-16 border-l-4 border-on-surface pl-6">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="w-2 h-2 bg-on-surface" aria-hidden />
+            <span className="font-mono text-xs uppercase tracking-tighter opacity-60">
+              ROOT/INVENTARIO_SISTEMA/HABILIDADES.EXE
+            </span>
+          </div>
+          <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-4 text-on-surface">
+            Manifesto
+            <br />
+            Tech_Stack
           </h3>
-        </div>
+          <p className="max-w-xl text-base md:text-lg opacity-80 leading-relaxed text-on-surface">
+            Uma auditoria granular dos protocolos técnicos e ferramentas usadas
+            para construção digital de alta performance.
+          </p>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-          {COLUMNS.map((col, i) => (
-            <SkillColumn
-              key={col.header}
-              header={col.header}
-              items={col.items}
-              colIndex={i}
-            />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-0 border border-outline-variant/30">
+          {/* [01] Competências técnicas */}
+          <section className="md:col-span-7 p-8 border-b md:border-b-0 md:border-r border-outline-variant/30 bg-surface-container-low">
+            <div className="flex justify-between items-start mb-12 gap-6 flex-wrap">
+              <div>
+                <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
+                  [01] COMPETÊNCIAS_TÉCNICAS
+                </p>
+                <span className="text-2xl font-bold uppercase tracking-tight text-on-surface">
+                  Engenharia de Interface
+                </span>
+              </div>
+              <span className="font-mono text-[10px] opacity-40 text-on-surface">
+                PRIORIDADE: ALPHA
+              </span>
+            </div>
+
+            <div className="space-y-6">
+              {featured.map((label) => (
+                <div
+                  key={label}
+                  className="group border-l-2 border-on-surface/20 pl-4 py-1 hover:border-on-surface transition-colors"
+                >
+                  <div className="flex flex-wrap justify-between items-center gap-4">
+                    <span className="text-xl font-bold uppercase tracking-tight text-on-surface">
+                      {label}
+                    </span>
+                    <div className="flex gap-2">
+                      <Badge>{STATUS_BADGE.compiled}</Badge>
+                      <Badge variant="outline">{STATUS_BADGE.stable}</Badge>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              <div className="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-outline-variant/20">
+                {[restLeft, restRight].map((col, colIdx) => (
+                  <div key={colIdx} className="space-y-3">
+                    {col.map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-center justify-between group"
+                      >
+                        <div className="flex items-center gap-2 font-mono text-xs">
+                          <Badge>{STATUS_BADGE.compiled}</Badge>
+                          <Badge variant="outline">{STATUS_BADGE.stable}</Badge>
+                        </div>
+                        <span className="font-mono text-[11px] opacity-80 text-on-surface group-hover:opacity-100 transition-opacity">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Coluna direita (soft) */}
+          <div className="md:col-span-5">
+            <section className="p-8 bg-surface border-b border-outline-variant/30">
+              <div className="flex justify-between items-start mb-8 gap-6 flex-wrap">
+                <div>
+                  <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
+                    [02] PROTOCOLOS_OPERACIONAIS
+                  </p>
+                  <span className="text-xl font-bold uppercase tracking-tight text-on-surface">
+                    Metodologias &amp; Soft Skills
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <BlinkingDotRow count={3} size="sm" className="opacity-70" />
+                </div>
+              </div>
+
+              <ul className="space-y-3">
+                {soft.map((item, i) => {
+                  const status =
+                    i === 0
+                      ? STATUS_BADGE.active
+                      : i === 1
+                        ? STATUS_BADGE.sync
+                        : i === 2
+                          ? STATUS_BADGE.root
+                          : i === 3
+                            ? STATUS_BADGE.uplink
+                            : STATUS_BADGE.stable;
+
+                  return (
+                    <li
+                      key={item}
+                      className="flex items-center justify-between border-b border-outline-variant/20 pb-2 gap-4"
+                    >
+                      <span className="font-mono text-xs text-on-surface">
+                        {item.toUpperCase()}
+                      </span>
+                      <span className="text-[10px] font-bold text-secondary uppercase shrink-0">
+                        {status}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          </div>
+
+          {/* [03] Ferramentas */}
+          <section className="md:col-span-12 p-8 border-t border-outline-variant/30 bg-surface-container">
+            <div className="flex flex-col md:flex-row justify-between md:items-center mb-10 gap-4">
+              <div>
+                <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
+                  [03] BANCADA_DE_TRABALHO
+                </p>
+                <span className="text-xl font-bold uppercase tracking-tight text-on-surface">
+                  Ferramentas &amp; Utilitários
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-surface border border-outline-variant text-xs font-mono uppercase">
+                  OS: LINUX/WIN
+                </span>
+                <span className="px-3 py-1 bg-surface border border-outline-variant text-xs font-mono uppercase">
+                  ENV: PRODUCTION_READY
+                </span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {tools.map((tool) => (
+                <div
+                  key={tool}
+                  className="p-4 bg-surface-container-lowest border border-outline-variant/20 group hover:bg-on-surface hover:text-surface transition-all"
+                >
+                  <div className="font-bold text-sm mb-1 uppercase">{tool}</div>
+                  <div className="font-mono text-[9px] opacity-60">
+                    UTILITARIO
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </div>
     </section>
