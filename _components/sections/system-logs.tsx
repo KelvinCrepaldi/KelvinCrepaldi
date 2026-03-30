@@ -1,7 +1,26 @@
 import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
 import { WaitingCursor } from "@/_components/_ui/animations/WaitingCursor";
 
+import { SystemLogFeed, type SystemLogFeedEntry } from "./system-log-feed";
 import { SystemLogRow } from "./system-log-row";
+
+const SYSTEM_LOG_FEED_ENTRIES: SystemLogFeedEntry[] = [
+  {
+    status: "[SUCCESS]",
+    time: "08:30:00",
+    message: "TOTEM_PLATFORM_V3_DEPLOYED // 600+_CLIENTS",
+  },
+  {
+    status: "[SUCCESS]",
+    time: "11:04:12",
+    message: "PAGE_LOAD_TIME_REDUCED_30%",
+  },
+  {
+    status: "[SUCCESS]",
+    time: "14:55:01",
+    message: "OFFLINE_FIRST_SYNC_STABILIZED",
+  },
+];
 
 export function SystemLogs() {
   return (
@@ -15,20 +34,11 @@ export function SystemLogs() {
             </h3>
           </div>
           <div className="space-y-4">
-            <SystemLogRow
-              level={<span className="text-on-surface/60">[SUCCESS]</span>}
-              time="08:30:00"
-              message="TOTEM_PLATFORM_V3_DEPLOYED // 600+_CLIENTS"
-            />
-            <SystemLogRow
-              level={<span className="text-on-surface/60">[SUCCESS]</span>}
-              time="11:04:12"
-              message="PAGE_LOAD_TIME_REDUCED_30%"
-            />
-            <SystemLogRow
-              level={<span className="text-on-surface/60">[SUCCESS]</span>}
-              time="14:55:01"
-              message="OFFLINE_FIRST_SYNC_STABILIZED"
+            <SystemLogFeed
+              entries={SYSTEM_LOG_FEED_ENTRIES}
+              maxVisible={4}
+              baseIntervalMs={400}
+              lengthFactorMs={15}
             />
             <SystemLogRow
               level={<span className="text-on-surface/60">[WAITING]</span>}
@@ -48,10 +58,10 @@ export function SystemLogs() {
             </h5>
             <p className="text-sm leading-relaxed opacity-70">
               Desenvolvedor Front-end com 2 anos de experiência em sistemas web
-              de telemedicina e gestão administrativa. Especialista em interfaces
-              dinâmicas com React, Vite e Electron, fluxos de formulários
-              complexos e integração com APIs — garantindo performance,
-              escalabilidade e consistência em cada entrega.
+              de telemedicina e gestão administrativa. Especialista em
+              interfaces dinâmicas com React, Vite e Electron, fluxos de
+              formulários complexos e integração com APIs — garantindo
+              performance, escalabilidade e consistência em cada entrega.
             </p>
           </div>
         </div>
