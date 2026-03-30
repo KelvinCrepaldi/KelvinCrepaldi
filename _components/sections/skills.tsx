@@ -97,36 +97,36 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="relative z-10 px-6 md:px-12 py-24 bg-surface-container-low/92 border-t border-outline-variant/30"
+      className="relative z-10 px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24 bg-surface-container-low/92 border-t border-outline-variant/30"
     >
-      <div className="max-w-7xl mx-auto">
-        <header className="mb-16 border-l-4 border-on-surface pl-6">
+      <div className="w-full">
+        <header className="mb-10 sm:mb-12 md:mb-16 border-l-4 border-on-surface pl-4 sm:pl-6">
           <div className="flex items-center gap-2 mb-2">
             <span className="w-2 h-2 bg-on-surface" aria-hidden />
             <span className="font-mono text-xs uppercase tracking-tighter opacity-60">
               ROOT/INVENTARIO_SISTEMA/HABILIDADES.EXE
             </span>
           </div>
-          <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-4 text-on-surface">
+          <h3 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-3 sm:mb-4 text-on-surface">
             Manifesto
             <br />
             Tech_Stack
           </h3>
-          <p className="max-w-xl text-base md:text-lg opacity-80 leading-relaxed text-on-surface">
+          <p className="max-w-2xl text-sm sm:text-base md:text-lg opacity-80 leading-relaxed text-on-surface">
             Uma auditoria granular dos protocolos técnicos e ferramentas usadas
             para construção digital de alta performance.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-0 border border-outline-variant/30">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-0 border border-outline-variant/30 w-full">
           {/* [01] Competências técnicas */}
-          <section className="md:col-span-7 p-8 border-b md:border-b-0 md:border-r border-outline-variant/30 bg-surface-container-low">
-            <div className="flex justify-between items-start mb-12 gap-6 flex-wrap">
+          <section className="md:col-span-7 p-5 sm:p-6 md:p-8 border-b md:border-b-0 md:border-r border-outline-variant/30 bg-surface-container-low">
+            <div className="flex justify-between items-start mb-8 sm:mb-10 md:mb-12 gap-4 sm:gap-6 flex-wrap">
               <div>
                 <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
                   [01] COMPETÊNCIAS_TÉCNICAS
                 </p>
-                <span className="text-2xl font-bold uppercase tracking-tight text-on-surface">
+                <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight text-on-surface">
                   Engenharia de Interface
                 </span>
               </div>
@@ -142,7 +142,7 @@ export function Skills() {
                   className="group border-l-2 border-on-surface/20 pl-4 py-1 hover:border-on-surface transition-colors"
                 >
                   <div className="flex flex-wrap justify-between items-center gap-4">
-                    <span className="text-xl font-bold uppercase tracking-tight text-on-surface">
+                    <span className="text-lg sm:text-xl font-bold uppercase tracking-tight text-on-surface">
                       {label}
                     </span>
                     <div className="flex gap-2">
@@ -153,19 +153,19 @@ export function Skills() {
                 </div>
               ))}
 
-              <div className="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-outline-variant/20">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-8 border-t border-outline-variant/20">
                 {[restLeft, restRight].map((col, colIdx) => (
                   <div key={colIdx} className="space-y-3">
                     {col.map((item) => (
                       <div
                         key={item}
-                        className="flex items-center justify-between group"
+                        className="flex items-center justify-between group gap-3"
                       >
-                        <div className="flex items-center gap-2 font-mono text-xs">
+                        <div className="flex items-center gap-2 font-mono text-xs shrink-0">
                           <Badge>{STATUS_BADGE.compiled}</Badge>
                           <Badge variant="outline">{STATUS_BADGE.stable}</Badge>
                         </div>
-                        <span className="font-mono text-[11px] opacity-80 text-on-surface group-hover:opacity-100 transition-opacity">
+                        <span className="font-mono text-[11px] opacity-80 text-on-surface group-hover:opacity-100 transition-opacity text-right">
                           {item}
                         </span>
                       </div>
@@ -178,13 +178,13 @@ export function Skills() {
 
           {/* Coluna direita (soft) */}
           <div className="md:col-span-5">
-            <section className="p-8 bg-surface border-b border-outline-variant/30">
-              <div className="flex justify-between items-start mb-8 gap-6 flex-wrap">
+            <section className="p-5 sm:p-6 md:p-8 bg-surface border-b border-outline-variant/30">
+              <div className="flex justify-between items-start mb-6 sm:mb-8 gap-4 sm:gap-6 flex-wrap">
                 <div>
                   <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
                     [02] PROTOCOLOS_OPERACIONAIS
                   </p>
-                  <span className="text-xl font-bold uppercase tracking-tight text-on-surface">
+                  <span className="text-lg sm:text-xl font-bold uppercase tracking-tight text-on-surface">
                     Metodologias &amp; Soft Skills
                   </span>
                 </div>
@@ -211,7 +211,7 @@ export function Skills() {
                       key={item}
                       className="flex items-center justify-between border-b border-outline-variant/20 pb-2 gap-4"
                     >
-                      <span className="font-mono text-xs text-on-surface">
+                      <span className="font-mono text-[11px] sm:text-xs text-on-surface">
                         {item.toUpperCase()}
                       </span>
                       <span className="text-[10px] font-bold text-secondary uppercase shrink-0">
@@ -225,13 +225,13 @@ export function Skills() {
           </div>
 
           {/* [03] Ferramentas */}
-          <section className="md:col-span-12 p-8 border-t border-outline-variant/30 bg-surface-container">
-            <div className="flex flex-col md:flex-row justify-between md:items-center mb-10 gap-4">
+          <section className="md:col-span-12 p-5 sm:p-6 md:p-8 border-t border-outline-variant/30 bg-surface-container">
+            <div className="flex flex-col md:flex-row justify-between md:items-center mb-8 sm:mb-10 gap-4">
               <div>
                 <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
                   [03] BANCADA_DE_TRABALHO
                 </p>
-                <span className="text-xl font-bold uppercase tracking-tight text-on-surface">
+                <span className="text-lg sm:text-xl font-bold uppercase tracking-tight text-on-surface">
                   Ferramentas &amp; Utilitários
                 </span>
               </div>
@@ -245,7 +245,7 @@ export function Skills() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
               {tools.map((tool) => (
                 <div
                   key={tool}
