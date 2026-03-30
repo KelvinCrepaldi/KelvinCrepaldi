@@ -155,21 +155,31 @@ export function Skills() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-8 border-t border-outline-variant/20">
                 {[restLeft, restRight].map((col, colIdx) => (
-                  <div key={colIdx} className="space-y-3">
-                    {col.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-center justify-between group gap-3"
-                      >
-                        <div className="flex items-center gap-2 font-mono text-xs shrink-0">
+                  <div
+                    key={colIdx}
+                    className="grid grid-cols-[max-content_1fr] divide-x divide-on-surface/50"
+                  >
+                    <div className="space-y-3 pr-4">
+                      {col.map((item) => (
+                        <div
+                          key={`badges-${item}`}
+                          className="flex items-center gap-2 font-mono text-xs"
+                        >
                           <Badge>{STATUS_BADGE.compiled}</Badge>
                           <Badge variant="outline">{STATUS_BADGE.stable}</Badge>
                         </div>
-                        <span className="font-mono text-[11px] opacity-80 text-on-surface group-hover:opacity-100 transition-opacity text-right">
+                      ))}
+                    </div>
+                    <div className="space-y-3 pl-4">
+                      {col.map((item) => (
+                        <div
+                          key={`label-${item}`}
+                          className="font-mono text-[11px] opacity-80 text-on-surface hover:opacity-100 transition-opacity text-left"
+                        >
                           {item}
-                        </span>
-                      </div>
-                    ))}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
