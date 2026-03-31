@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 
+import { LayoutGrid } from "lucide-react";
 import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
 import LoadingAnimation from "../_ui/animations/LoadingOk";
 
@@ -13,69 +14,6 @@ import {
   SOFT_SKILLS,
   type TechWithIcon,
 } from "./skills-tech-data";
-import { SystemLogFeed, type SystemLogFeedEntry } from "./system-log-feed";
-
-const OPERATOR_LOG_ENTRIES: SystemLogFeedEntry[] = [
-  {
-    status: "INFO",
-    time: "08:12:03",
-    message:
-      "totem-platform · Dashboard/API sync: offline-first cache habilitado; atualização aplicada",
-  },
-  {
-    status: "OK",
-    time: "08:12:11",
-    message:
-      "totem-platform · Supabase Storage: builds e configs sincronizados; RLS OK",
-  },
-  {
-    status: "INFO",
-    time: "08:12:18",
-    message:
-      "terminal-core · Indexação: checkpoint salvo; workers avançando com backpressure controlado",
-  },
-  {
-    status: "SYNC",
-    time: "08:12:26",
-    message:
-      "nexus-api · Ingestão assíncrona: idempotência preservada; duplicatas descartadas",
-  },
-  {
-    status: "OK",
-    time: "08:12:33",
-    message:
-      "void-gallery · Render progressivo: assets arquivados com qualidade; orçamento de GPU preservado",
-  },
-  {
-    status: "INFO",
-    time: "08:12:41",
-    message: "nexus-api · Gateway admin: healthcheck OK; filas sob controle",
-  },
-  {
-    status: "WARN",
-    time: "08:12:48",
-    message:
-      "nexus-api · Backpressure: storage degradado; reprocessamento seguro iniciado",
-  },
-  {
-    status: "OK",
-    time: "08:12:55",
-    message:
-      "totem-platform · Métricas: fila estável; GC de caches obsoletos executado com sucesso",
-  },
-  {
-    status: "INFO",
-    time: "08:13:02",
-    message:
-      "terminal-core · Health: latência p95 dentro do alvo; checkpoints consistentes",
-  },
-  {
-    status: "OK",
-    time: "08:13:09",
-    message:
-      "electron/main · Shell: single-instance lock ativo; IPC respondeu OK",
-  },
-];
 
 const STATUS_BADGE = {
   compiled: "[COMPILED]",
@@ -108,6 +46,12 @@ function FeaturedStatusLabels() {
 
 export function Skills() {
   const soft = SOFT_SKILLS;
+  const totalTech = String(
+    FRONT_FRAMEWORKS.length +
+      BACKEND_STACK.length +
+      ECOSYSTEM_LIBS.length +
+      BANCADA_TOOLS.length,
+  ).padStart(3, "0");
 
   const durationsByTech = useMemo(() => {
     const map = new Map<string, number>();
@@ -124,25 +68,28 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="relative z-10 px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24 bg-surface-container-low/92 border-t border-outline-variant/30"
+      className="relative z-10 px-4 sm:px-6 md:px-12 pt-16 pb-28 sm:pt-20 sm:pb-32 md:pt-24 md:pb-44 bg-surface-container-low/92 border-t border-outline-variant/30"
     >
-      <div className="w-full">
-        <header className="mb-10 sm:mb-12 md:mb-16 border-l-4 border-on-surface pl-4 sm:pl-6">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 bg-on-surface" aria-hidden />
-            <span className="font-mono text-xs uppercase tracking-tighter opacity-60">
-              ROOT/INVENTARIO_SISTEMA/HABILIDADES.EXE
-            </span>
+      <div className="w-full lg:max-w-6xl lg:mx-auto">
+        <header className="relative z-10 mb-16 flex flex-col md:flex-row justify-between items-end gap-4">
+          <div>
+            <div className="flex items-center gap-3 flex-wrap">
+              <BlinkingDotRow count={4} size="sm" className="mb-1" />
+              <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-on-surface">
+                Tech_Stack
+              </h3>
+            </div>
+            <p className="text-sm opacity-60 mt-2 font-mono flex items-center gap-2 flex-wrap">
+              <BlinkingDotRow count={3} size="sm" className="opacity-70" />
+              TOTAL_RECORDS: {totalTech}
+            </p>
           </div>
-          <h3 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-3 sm:mb-4 text-on-surface">
-            Manifesto
-            <br />
-            Tech_Stack
-          </h3>
-          <p className="max-w-2xl text-sm sm:text-base md:text-lg opacity-80 leading-relaxed text-on-surface">
-            Uma auditoria granular dos protocolos técnicos e ferramentas usadas
-            para construção digital de alta performance.
-          </p>
+          <div className="h-px bg-outline-variant flex-grow mx-8 hidden md:block mb-4" />
+          <LayoutGrid
+            className="w-10 h-10 md:w-12 md:h-12 opacity-20 text-on-surface shrink-0"
+            strokeWidth={1.25}
+            aria-hidden
+          />
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-0 border border-outline-variant/30 w-full">
@@ -151,7 +98,7 @@ export function Skills() {
             <div className="space-y-10 sm:space-y-12">
               {/* [01] Front-end */}
               <div>
-                <div className="flex justify-between items-start mb-8 sm:mb-10 md:mb-12 gap-4 sm:gap-6 flex-wrap">
+                <div className="flex justify-between items-start mb-6 sm:mb-8 md:mb-10 gap-4 sm:gap-6 flex-wrap">
                   <div>
                     <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
                       [01] INTERFACE_&_FRAMEWORKS
@@ -165,23 +112,25 @@ export function Skills() {
                   </span>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {FRONT_FRAMEWORKS.map((tech, index) => (
                     <div
                       key={tech.name}
-                      className="group border-l-2 border-on-surface/20 pl-4 py-1 hover:border-on-surface transition-colors"
+                      className="group border-l-2 border-on-surface/20 pl-3 py-1 hover:border-on-surface transition-colors"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-                        <span className="text-lg sm:text-xl font-bold uppercase tracking-tight text-on-surface min-w-0">
-                          {tech.name}
+                        <span className="flex items-center gap-2 min-w-0">
+                          <StackIcon
+                            tech={tech}
+                            className="size-4 shrink-0 text-on-surface/55"
+                          />
+                          <span className="text-base sm:text-lg font-bold uppercase tracking-tight text-on-surface min-w-0">
+                            {tech.name}
+                          </span>
                         </span>
                         <div className="flex items-center gap-2 shrink-0">
                           <LoadingAnimation durationSec={2 + index * 0.35} />
                           <FeaturedStatusLabels />
-                          <StackIcon
-                            tech={tech}
-                            className="size-3.5 shrink-0 text-on-surface/45"
-                          />
                         </div>
                       </div>
                     </div>
@@ -191,7 +140,7 @@ export function Skills() {
 
               {/* [02] Backend */}
               <div className="pt-10 border-t border-outline-variant/20">
-                <div className="flex justify-between items-start mb-8 sm:mb-10 md:mb-12 gap-4 sm:gap-6 flex-wrap">
+                <div className="flex justify-between items-start mb-6 sm:mb-8 md:mb-10 gap-4 sm:gap-6 flex-wrap">
                   <div>
                     <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
                       [02] RUNTIME_&_DADOS
@@ -205,23 +154,25 @@ export function Skills() {
                   </span>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {BACKEND_STACK.map((tech, index) => (
                     <div
                       key={tech.name}
-                      className="group border-l-2 border-on-surface/20 pl-4 py-1 hover:border-on-surface transition-colors"
+                      className="group border-l-2 border-on-surface/20 pl-3 py-1 hover:border-on-surface transition-colors"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-                        <span className="text-lg sm:text-xl font-bold uppercase tracking-tight text-on-surface min-w-0">
-                          {tech.name}
+                        <span className="flex items-center gap-2 min-w-0">
+                          <StackIcon
+                            tech={tech}
+                            className="size-4 shrink-0 text-on-surface/55"
+                          />
+                          <span className="text-base sm:text-lg font-bold uppercase tracking-tight text-on-surface min-w-0">
+                            {tech.name}
+                          </span>
                         </span>
                         <div className="flex items-center gap-2 shrink-0">
                           <LoadingAnimation durationSec={2 + index * 0.35} />
                           <FeaturedStatusLabels />
-                          <StackIcon
-                            tech={tech}
-                            className="size-3.5 shrink-0 text-on-surface/45"
-                          />
                         </div>
                       </div>
                     </div>
@@ -264,99 +215,66 @@ export function Skills() {
             </div>
           </section>
 
-          {/* Coluna direita: faixa preta + [04] */}
-          <div className="md:col-span-5 flex flex-col md:h-full min-h-0 border-b md:border-b-0">
-            <div className="shrink-0 bg-surface-container-low/92 px-5 sm:px-6 md:px-8 py-5 sm:py-6 border-b border-outline-variant/30">
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-0 md:mb-3">
-                <p className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-widest text-secondary/90">
-                  [00] CANAL_OPERADOR
-                </p>
-                <BlinkingDotRow
-                  count={3}
-                  size="sm"
-                  className="opacity-70 [&>span]:bg-emerald-400"
-                />
-              </div>
-              <SystemLogFeed
-                entries={OPERATOR_LOG_ENTRIES}
-                maxVisible={4}
-                baseIntervalMs={650}
-                lengthFactorMs={8}
-                tone="default"
-              />
-            </div>
-
-            <section className="flex-1 flex flex-col min-h-0 p-5 sm:p-6 md:p-8 bg-surface md:border-b-0 border-b border-outline-variant/30">
-              <div className="mb-8 sm:mb-10 shrink-0">
+          {/* Coluna direita: [04] acima de [05] */}
+          <section className="md:col-span-5 p-5 sm:p-6 md:p-8 bg-surface border-b md:border-b-0 border-outline-variant/30">
+            <div className="pb-10 border-b border-outline-variant/20">
+              <div className="mb-8 sm:mb-10">
                 <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
-                  [04] PROTOCOLOS_OPERACIONAIS
+                  [04] BANCADA_DE_TRABALHO
                 </p>
                 <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight text-on-surface">
-                  Metodologias &amp; Soft Skills
-                </span>
-              </div>
-
-              <ul className="grid grid-cols-1 gap-y-2 flex-1 content-start w-full max-w-[18rem]">
-                {soft.map((item) => (
-                  <li key={item} className="flex items-center gap-3">
-                    <span className="font-mono text-[11px] opacity-80 text-on-surface shrink-0">
-                      {item}
-                    </span>
-                    <span
-                      className="flex-1 h-px bg-repeat-x opacity-60 [background-image:radial-gradient(circle,rgba(54,51,34,0.40)_1px,transparent_1.5px)] [background-size:6px_2px] [background-position:left_center]"
-                      aria-hidden
-                    />
-                    <LoadingAnimation
-                      durationSec={durationsBySoft.get(item) ?? 3}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </div>
-
-          {/* [05] Bancada */}
-          <section className="md:col-span-12 p-5 sm:p-6 md:p-8 border-t border-outline-variant/30 bg-surface-container">
-            <div className="flex flex-col md:flex-row justify-between md:items-center mb-8 sm:mb-10 gap-4">
-              <div>
-                <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
-                  [05] BANCADA_DE_TRABALHO
-                </p>
-                <span className="text-lg sm:text-xl font-bold uppercase tracking-tight text-on-surface">
                   Ferramentas &amp; Utilitários
                 </span>
               </div>
-              <div className="flex flex-wrap gap-2">
-                <span className="font-mono text-[10px] border border-on-surface px-2 py-0.5 font-bold text-secondary uppercase">
-                  OS: LINUX/WIN
-                </span>
-                <span className="font-mono text-[10px] bg-on-surface text-surface px-2 py-0.5 font-bold uppercase">
-                  ENV: PRODUCTION_READY
-                </span>
+
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                {BANCADA_TOOLS.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="group flex flex-row items-start gap-2 border border-outline-variant/30 bg-surface-container-low/90 px-2.5 py-2.5 border-l-2 border-l-on-surface/25 hover:border-l-on-surface hover:bg-surface-container-low transition-colors"
+                  >
+                    <StackIcon
+                      tech={tech}
+                      className="size-5 shrink-0 text-on-surface mt-0.5 opacity-90"
+                    />
+                    <div className="flex min-w-0 flex-1 flex-col gap-1">
+                      <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-tight text-on-surface leading-tight">
+                        {tech.name}
+                      </span>
+                      <span className="font-mono text-[8px] text-on-surface/35 uppercase tracking-wider">
+                        [OPERATOR - TOOLKIT]
+                      </span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3">
-              {BANCADA_TOOLS.map((tech) => (
-                <div
-                  key={tech.name}
-                  className="group flex flex-row items-start gap-2.5 border border-outline-variant/30 bg-surface-container-low/90 pl-3 pr-3 py-3 border-l-2 border-l-on-surface/25 hover:border-l-on-surface hover:bg-surface-container-low transition-colors"
-                >
-                  <StackIcon
-                    tech={tech}
-                    className="size-5 shrink-0 text-on-surface mt-0.5 opacity-90"
-                  />
-                  <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-                    <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-tight text-on-surface leading-tight">
-                      {tech.name}
-                    </span>
-                    <span className="font-mono text-[9px] text-secondary/90 uppercase tracking-wider">
-                      bancada · util
-                    </span>
-                  </div>
-                </div>
-              ))}
+            <div className="mb-8 sm:mb-10">
+              <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
+                [05] PROTOCOLOS_OPERACIONAIS
+              </p>
+              <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight text-on-surface">
+                Metodologias &amp; Soft Skills
+              </span>
             </div>
+
+            <ul className="grid grid-cols-1 gap-y-2">
+              {soft.map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="font-mono text-[11px] opacity-80 text-on-surface shrink-0">
+                    {item}
+                  </span>
+                  <span
+                    className="flex-1 h-px bg-repeat-x opacity-60 [background-image:radial-gradient(circle,rgba(54,51,34,0.40)_1px,transparent_1.5px)] [background-size:6px_2px] [background-position:left_center]"
+                    aria-hidden
+                  />
+                  <LoadingAnimation
+                    durationSec={durationsBySoft.get(item) ?? 3}
+                  />
+                </li>
+              ))}
+            </ul>
           </section>
         </div>
       </div>

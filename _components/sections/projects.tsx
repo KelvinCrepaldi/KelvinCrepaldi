@@ -18,13 +18,9 @@ export function Projects() {
 
   return (
     <section
-      className="relative z-10 overflow-hidden bg-surface-container-low/92 px-6 md:px-12 py-24"
+      className="relative z-10 overflow-hidden px-6 md:px-12 pt-24 pb-36 md:pb-44"
       id="projects"
     >
-      <div
-        className="pointer-events-none absolute inset-0 bg-surface/35"
-        aria-hidden
-      />
       {!isMobile && (
         <ClockCirclesBackground>
           <ClockCircleCanvas
@@ -59,30 +55,32 @@ export function Projects() {
           />
         </ClockCirclesBackground>
       )}
-      <div className="relative z-10 mb-16 flex flex-col md:flex-row justify-between items-end gap-4">
-        <div>
-          <div className="flex items-center gap-3 flex-wrap">
-            <BlinkingDotRow count={4} size="sm" className="mb-1" />
-            <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-on-surface">
-              Selected_Works
-            </h3>
+      <div className="w-full lg:max-w-6xl lg:mx-auto">
+        <div className="relative z-10 mb-16 flex flex-col md:flex-row justify-between items-end gap-4">
+          <div>
+            <div className="flex items-center gap-3 flex-wrap">
+              <BlinkingDotRow count={4} size="sm" className="mb-1" />
+              <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-on-surface">
+                Selected_Works
+              </h3>
+            </div>
+            <p className="text-sm opacity-60 mt-2 font-mono flex items-center gap-2 flex-wrap">
+              <BlinkingDotRow count={3} size="sm" className="opacity-70" />
+              TOTAL_RECORDS: {total}
+            </p>
           </div>
-          <p className="text-sm opacity-60 mt-2 font-mono flex items-center gap-2 flex-wrap">
-            <BlinkingDotRow count={3} size="sm" className="opacity-70" />
-            TOTAL_RECORDS: {total}
-          </p>
+          <div className="h-px bg-outline-variant flex-grow mx-8 hidden md:block mb-4" />
+          <LayoutGrid
+            className="w-10 h-10 md:w-12 md:h-12 opacity-20 text-on-surface shrink-0"
+            strokeWidth={1.25}
+            aria-hidden
+          />
         </div>
-        <div className="h-px bg-outline-variant flex-grow mx-8 hidden md:block mb-4" />
-        <LayoutGrid
-          className="w-10 h-10 md:w-12 md:h-12 opacity-20 text-on-surface shrink-0"
-          strokeWidth={1.25}
-          aria-hidden
-        />
-      </div>
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
       </div>
     </section>
   );

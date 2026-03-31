@@ -107,52 +107,57 @@ export function SiteHeader() {
         style={{ backdropFilter: "blur(12px)" }}
         aria-label="Navegação principal"
       >
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Link
-            href="/"
-            className={`text-xl font-black tracking-widest inline-block transition-colors duration-300 ${
+        <div className="w-full lg:max-w-6xl lg:mx-auto flex items-center justify-between">
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <Link
+              href="/"
+              className={`text-xl font-black tracking-widest inline-block transition-colors duration-300 ${
+                isScrolled ? "text-[#fef9ed]" : "text-[#363322]"
+              }`}
+              onClick={closeMenu}
+            >
+              THE_ARCHIVIST
+            </Link>
+          </motion.div>
+          <div className="hidden md:flex gap-8 font-space-grotesk uppercase tracking-tighter font-bold text-sm">
+            <Link href="/" className={isHome ? activeHome : inactive}>
+              HOME
+            </Link>
+            <Link
+              href="/#projects"
+              className={isProjects ? activeProjects : inactive}
+            >
+              PROJECTS
+            </Link>
+            <Link className={inactive} href="/#timeline" onClick={closeMenu}>
+              ABOUT
+            </Link>
+            <Link className={inactive} href="/#skills" onClick={closeMenu}>
+              SKILLS
+            </Link>
+            <Link className={inactive} href="/#contact" onClick={closeMenu}>
+              CONTACT
+            </Link>
+          </div>
+          <motion.button
+            type="button"
+            className={`relative z-[60] md:hidden p-2 transition-colors duration-300 ${
               isScrolled ? "text-[#fef9ed]" : "text-[#363322]"
             }`}
-            onClick={closeMenu}
+            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav-drawer"
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            onClick={() => setMenuOpen((o) => !o)}
           >
-            THE_ARCHIVIST
-          </Link>
-        </motion.div>
-        <div className="hidden md:flex gap-8 font-space-grotesk uppercase tracking-tighter font-bold text-sm">
-          <Link href="/" className={isHome ? activeHome : inactive}>
-            HOME
-          </Link>
-          <Link
-            href="/#projects"
-            className={isProjects ? activeProjects : inactive}
-          >
-            PROJECTS
-          </Link>
-          <a className={inactive} href="#">
-            ABOUT
-          </a>
-          <a className={inactive} href="#">
-            CONTACT
-          </a>
+            {menuOpen ? (
+              <X className="h-7 w-7" strokeWidth={2} />
+            ) : (
+              <Menu className="h-7 w-7" strokeWidth={2} />
+            )}
+          </motion.button>
         </div>
-        <motion.button
-          type="button"
-          className={`relative z-[60] md:hidden p-2 transition-colors duration-300 ${
-            isScrolled ? "text-[#fef9ed]" : "text-[#363322]"
-          }`}
-          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-nav-drawer"
-          whileTap={{ scale: 0.9 }}
-          whileHover={{ scale: 1.05 }}
-          onClick={() => setMenuOpen((o) => !o)}
-        >
-          {menuOpen ? (
-            <X className="h-7 w-7" strokeWidth={2} />
-          ) : (
-            <Menu className="h-7 w-7" strokeWidth={2} />
-          )}
-        </motion.button>
       </motion.nav>
 
       <AnimatePresence>
@@ -208,12 +213,27 @@ export function SiteHeader() {
                   >
                     PROJECTS
                   </Link>
-                  <a className={mobileLinkBase} href="#" onClick={closeMenu}>
+                  <Link
+                    className={mobileLinkBase}
+                    href="/#timeline"
+                    onClick={closeMenu}
+                  >
                     ABOUT
-                  </a>
-                  <a className={mobileLinkBase} href="#" onClick={closeMenu}>
+                  </Link>
+                  <Link
+                    className={mobileLinkBase}
+                    href="/#skills"
+                    onClick={closeMenu}
+                  >
+                    SKILLS
+                  </Link>
+                  <Link
+                    className={mobileLinkBase}
+                    href="/#contact"
+                    onClick={closeMenu}
+                  >
                     CONTACT
-                  </a>
+                  </Link>
                 </nav>
 
                 {isProjects ? (

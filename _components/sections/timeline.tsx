@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { LayoutGrid } from "lucide-react";
 
 import { useIsMobileLayout } from "@/hooks/useIsMobileLayout";
 import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
@@ -12,7 +13,7 @@ import {
 
 const ENTRIES = [
   {
-    title: "Desenvolvedor de Software Front-end Júnior",
+    title: "Desenvolvedor de Software",
     subtitle: "Adam Robo",
     period: "Mar 2024 — Atual",
     description:
@@ -29,11 +30,12 @@ const ENTRIES = [
 
 export function Timeline() {
   const isMobile = useIsMobileLayout();
+  const total = String(ENTRIES.length).padStart(3, "0");
 
   return (
     <section
       id="timeline"
-      className="relative z-10 overflow-hidden bg-surface-container-low px-6 md:px-12 py-24 border-t border-outline-variant/30 md:bg-surface-container-low/92"
+      className="relative z-10 overflow-hidden bg-surface-container-low px-6 md:px-12 pt-24 pb-36 md:pb-44 border-t border-outline-variant/30"
     >
       {!isMobile && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-50">
@@ -71,12 +73,26 @@ export function Timeline() {
           </ClockCirclesBackground>
         </div>
       )}
-      <div className="max-w-5xl mx-auto relative">
-        <div className="flex items-center gap-3 mb-20 flex-wrap">
-          <BlinkingDotRow count={4} size="sm" className="mb-1" />
-          <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-on-surface">
-            Timeline
-          </h3>
+      <div className="w-full relative lg:max-w-5xl lg:mx-auto">
+        <div className="relative z-10 mb-16 flex flex-col md:flex-row justify-between items-end gap-4">
+          <div>
+            <div className="flex items-center gap-3 flex-wrap">
+              <BlinkingDotRow count={4} size="sm" className="mb-1" />
+              <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-on-surface">
+                Timeline
+              </h3>
+            </div>
+            <p className="text-sm opacity-60 mt-2 font-mono flex items-center gap-2 flex-wrap">
+              <BlinkingDotRow count={3} size="sm" className="opacity-70" />
+              TOTAL_RECORDS: {total}
+            </p>
+          </div>
+          <div className="h-px bg-outline-variant flex-grow mx-8 hidden md:block mb-4" />
+          <LayoutGrid
+            className="w-10 h-10 md:w-12 md:h-12 opacity-20 text-on-surface shrink-0"
+            strokeWidth={1.25}
+            aria-hidden
+          />
         </div>
 
         <div className="relative">
