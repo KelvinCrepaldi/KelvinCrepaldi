@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "THE_ARCHIVIST // KELVIN CREPALDI",
-  description: "Kelvin Crepaldi — Desenvolvedor Front-end React/JavaScript | Curitiba, Brasil",
+  description: "Kelvin Crepaldi — Desenvolvedor de Software | Curitiba, Brasil",
 };
 
 export default function RootLayout({

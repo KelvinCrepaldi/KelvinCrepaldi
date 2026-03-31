@@ -22,7 +22,7 @@ export function Intro() {
         Crepaldi
       </h1>
       <h2 className="text-2xl md:text-4xl font-light italic text-on-surface opacity-80 mb-4">
-        Desenvolvedor Front-end React / JavaScript
+        Desenvolvedor de Software
       </h2>
       <p className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-on-surface/50 mb-12">
         <MapPin className="w-3 h-3" strokeWidth={2} />
