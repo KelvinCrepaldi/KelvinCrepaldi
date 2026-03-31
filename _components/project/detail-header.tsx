@@ -17,7 +17,7 @@ export function ProjectDetailHeader({
 }: ProjectDetailHeaderProps) {
   return (
     <header
-      className={`relative border-b border-outline-variant/20 pt-8 pb-10 md:pt-10 md:pb-11 lg:pt-11 lg:pb-12 ${contentGutterClass}`}
+      className={`relative bg-surface border-b border-outline-variant/20 pt-8 pb-10 md:pt-10 md:pb-11 lg:pt-11 lg:pb-12 ${contentGutterClass}`}
     >
       <div className="w-full max-w-3xl text-left">
         <BackToArchiveLink />

@@ -17,7 +17,7 @@ export function ProjectArchiveSidebar({
 }: ProjectArchiveSidebarProps) {
   return (
     <aside
-      className={`order-2 hidden w-full shrink-0 flex-col border-b-2 border-outline-variant/35 lg:order-1 lg:flex lg:w-[min(17.5rem,100vw)] lg:border-b-0 lg:border-r-2 lg:pl-0 lg:pr-0 lg:pt-0 lg:sticky lg:top-[var(--site-header-height)] ${SIDEBAR_DESKTOP_H}`}
+      className={`order-2 hidden w-full shrink-0 flex-col border-b-2 border-outline-variant/35 bg-surface lg:order-1 lg:flex lg:w-[min(17.5rem,100vw)] lg:border-b-0 lg:border-r-2 lg:pl-0 lg:pr-0 lg:pt-0 lg:sticky lg:top-[var(--site-header-height)] ${SIDEBAR_DESKTOP_H}`}
       aria-label="Índice de volumes"
     >
       <div className="shrink-0 border-b border-outline-variant/25 bg-surface-container-low/82 px-4 py-3">

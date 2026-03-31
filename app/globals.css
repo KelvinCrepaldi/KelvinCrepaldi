@@ -16,10 +16,10 @@ body {
   background-color: transparent;
   background-image: radial-gradient(
     circle at center,
-    rgba(54, 51, 34, 0.11) 1px,
-    transparent 1px
+    rgba(54, 51, 34, 0.07) 0.85px,
+    transparent 0.85px
   );
-  background-size: 14px 14px;
+  background-size: 16px 16px;
 }
 
 .crt-overlay {
