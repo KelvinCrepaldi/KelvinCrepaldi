@@ -116,7 +116,7 @@ export function SiteHeader() {
               }`}
               onClick={closeMenu}
             >
-              THE_ARCHIVIST
+              DEV_WORKBENCH
             </Link>
           </motion.div>
           <div className="hidden md:flex gap-8 font-space-grotesk uppercase tracking-tighter font-bold text-sm">

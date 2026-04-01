@@ -58,6 +58,7 @@ export type TechWithIcon = {
 /** [01] Front-end — frameworks com maior peso */
 export const FRONT_FRAMEWORKS: TechWithIcon[] = [
   { name: "React", icon: SiReact },
+  { name: "Vite", icon: SiVite },
   { name: "Next.js", icon: SiNextdotjs },
   { name: "Electron", icon: SiElectron },
   { name: "TypeScript", icon: SiTypescript },
@@ -84,7 +85,6 @@ export const ECOSYSTEM_LIBS: TechWithIcon[] = [
   { name: "i18n", icon: SiI18Next },
   { name: "HTML", icon: SiHtml5 },
   { name: "CSS", icon: SiCss },
-  { name: "Vite", icon: SiVite },
 ];
 
 /** [05] Bancada — ferramentas e utilitários */

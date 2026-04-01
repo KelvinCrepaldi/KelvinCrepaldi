@@ -15,11 +15,6 @@ import {
   type TechWithIcon,
 } from "./skills-tech-data";
 
-const STATUS_BADGE = {
-  compiled: "[COMPILED]",
-  stable: "[STABLE]",
-} as const;
-
 function StackIcon({
   tech,
   className,
@@ -31,18 +26,8 @@ function StackIcon({
   return <Icon className={className} aria-hidden />;
 }
 
-function FeaturedStatusLabels() {
-  return (
-    <>
-      <span className="font-mono text-[9px] font-bold uppercase text-on-surface/50 tabular-nums">
-        {STATUS_BADGE.compiled}
-      </span>
-      <span className="font-mono text-[9px] font-bold uppercase text-on-surface/50 tabular-nums">
-        {STATUS_BADGE.stable}
-      </span>
-    </>
-  );
-}
+const DOTTED_RULE =
+  "flex-1 h-px bg-repeat-x opacity-60 [background-image:radial-gradient(circle,rgba(54,51,34,0.40)_1px,transparent_1.5px)] [background-size:6px_2px] [background-position:left_center]";
 
 export function Skills() {
   const soft = SOFT_SKILLS;
@@ -112,30 +97,24 @@ export function Skills() {
                   </span>
                 </div>
 
-                <div className="space-y-4">
+                <ul className="grid grid-cols-1 gap-y-3">
                   {FRONT_FRAMEWORKS.map((tech, index) => (
-                    <div
+                    <li
                       key={tech.name}
-                      className="group border-l-2 border-on-surface/20 pl-3 py-1 hover:border-on-surface transition-colors"
+                      className="group flex min-w-0 items-center gap-3 border-l-2 border-on-surface/20 py-1 pl-3 transition-colors hover:border-on-surface"
                     >
-                      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-                        <span className="flex items-center gap-2 min-w-0">
-                          <StackIcon
-                            tech={tech}
-                            className="size-4 shrink-0 text-on-surface/55"
-                          />
-                          <span className="text-base sm:text-lg font-bold uppercase tracking-tight text-on-surface min-w-0">
-                            {tech.name}
-                          </span>
-                        </span>
-                        <div className="flex items-center gap-2 shrink-0">
-                          <LoadingAnimation durationSec={2 + index * 0.35} />
-                          <FeaturedStatusLabels />
-                        </div>
-                      </div>
-                    </div>
+                      <StackIcon
+                        tech={tech}
+                        className="size-4 shrink-0 text-on-surface opacity-85"
+                      />
+                      <span className="shrink-0 font-mono text-[11px] text-on-surface opacity-80">
+                        {tech.name}
+                      </span>
+                      <span className={DOTTED_RULE} aria-hidden />
+                      <LoadingAnimation durationSec={2 + index * 0.35} />
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
 
               {/* [02] Backend */}
@@ -154,30 +133,24 @@ export function Skills() {
                   </span>
                 </div>
 
-                <div className="space-y-4">
+                <ul className="grid grid-cols-1 gap-y-3">
                   {BACKEND_STACK.map((tech, index) => (
-                    <div
+                    <li
                       key={tech.name}
-                      className="group border-l-2 border-on-surface/20 pl-3 py-1 hover:border-on-surface transition-colors"
+                      className="group flex min-w-0 items-center gap-3 border-l-2 border-on-surface/20 py-1 pl-3 transition-colors hover:border-on-surface"
                     >
-                      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-                        <span className="flex items-center gap-2 min-w-0">
-                          <StackIcon
-                            tech={tech}
-                            className="size-4 shrink-0 text-on-surface/55"
-                          />
-                          <span className="text-base sm:text-lg font-bold uppercase tracking-tight text-on-surface min-w-0">
-                            {tech.name}
-                          </span>
-                        </span>
-                        <div className="flex items-center gap-2 shrink-0">
-                          <LoadingAnimation durationSec={2 + index * 0.35} />
-                          <FeaturedStatusLabels />
-                        </div>
-                      </div>
-                    </div>
+                      <StackIcon
+                        tech={tech}
+                        className="size-4 shrink-0 text-on-surface opacity-85"
+                      />
+                      <span className="shrink-0 font-mono text-[11px] text-on-surface opacity-80">
+                        {tech.name}
+                      </span>
+                      <span className={DOTTED_RULE} aria-hidden />
+                      <LoadingAnimation durationSec={2 + index * 0.35} />
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
 
               {/* [03] Ecossistema */}
@@ -201,10 +174,7 @@ export function Skills() {
                       <span className="font-mono text-[11px] opacity-80 text-on-surface">
                         {tech.name}
                       </span>
-                      <span
-                        className="flex-1 h-px bg-repeat-x opacity-60 [background-image:radial-gradient(circle,rgba(54,51,34,0.40)_1px,transparent_1.5px)] [background-size:6px_2px] [background-position:left_center]"
-                        aria-hidden
-                      />
+                      <span className={DOTTED_RULE} aria-hidden />
                       <LoadingAnimation
                         durationSec={durationsByTech.get(tech.name) ?? 3}
                       />
