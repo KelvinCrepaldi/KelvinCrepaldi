@@ -100,7 +100,7 @@ body {
   @apply bg-surface-container font-bold uppercase tracking-tighter;
 }
 
-/* Cards de projeto na home — efeito scanline no hover */
+/* CRT — linhas a descer; na home só com hover; com --always fica sempre (página projeto) */
 @keyframes scanlines-down {
   0% {
     background-position: 0 0;
@@ -113,29 +113,55 @@ body {
 .card-scanlines {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
-@media (min-width: 768px) {
+/* Overlay CRT: acima da imagem (fill) e de filhos posicionados */
+.card-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 2px,
+    rgba(54, 51, 34, 0.07) 2px,
+    rgba(54, 51, 34, 0.07) 4px
+  );
+  background-size: 100% 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: scanlines-down 0.5s linear infinite;
+  animation-play-state: paused;
+}
+
+.card-scanlines:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.card-scanlines--always::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
   .card-scanlines::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 2px,
-      rgba(54, 51, 34, 0.05) 2px,
-      rgba(54, 51, 34, 0.05) 4px
-    );
-    background-size: 100% 4px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    animation: scanlines-down 0.5s linear infinite;
-    animation-play-state: paused;
+    animation: none;
+    background-position: 0 0;
   }
-  .card-scanlines:hover::after {
-    opacity: 1;
-    animation-play-state: running;
+}
+
+/* Conteúdo fica abaixo do overlay (::after não é filho no DOM, mas empilha por z-index) */
+.card-scanlines > * {
+  z-index: 0;
+}
+
+/* Cards na home: efeito só a partir de md */
+@media (max-width: 767px) {
+  .card-scanlines:not(.card-scanlines--always)::after {
+    display: none;
   }
 }

@@ -76,7 +76,7 @@ export function Projects() {
             aria-hidden
           />
         </div>
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}

@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-import type { Project } from "@/_utils/projects";
+import { projectCoverUrl, type Project } from "@/_utils/projects";
 
 import { BlinkingDot } from "@/_components/_ui/animations/BlinkingDot";
 import { ProjectTag } from "./project-tag";
@@ -16,46 +17,73 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const coverSrc = projectCoverUrl(project.slug, 960, 576);
+
   return (
     <MotionLink
       href={`/projects/${project.slug}`}
-      className="card-scanlines group relative bg-surface border border-outline-variant/25 p-6 flex flex-col min-h-[400px] text-left transition-colors duration-300 hover:border-on-surface/50"
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 380, damping: 22 }}
+      className="card-scanlines group relative flex min-h-[400px] flex-col overflow-hidden border border-outline-variant/25 bg-surface text-left transition-colors duration-300 hover:border-on-surface/50"
     >
-      <div className="flex justify-between items-start mb-8">
-        <span className="text-[10px] font-bold tracking-widest opacity-40 inline-flex items-center gap-2 text-on-surface">
-          <BlinkingDot size="sm" delay={0.2} className="opacity-60 bg-on-surface" />
-          {project.vol}
-        </span>
-        <motion.span
-          className="text-on-surface inline-flex"
-          initial={false}
-          whileHover={{ x: 3, y: -3 }}
-          transition={{ type: "spring", stiffness: 400, damping: 18 }}
-        >
-          <ArrowUpRight
-            className="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity"
-            strokeWidth={2}
+      <div className="relative aspect-video w-full shrink-0 overflow-hidden">
+        <div className="absolute inset-y-0 left-[-9%] h-full w-[118%] translate-x-[5%] transition-transform duration-0 ease-linear will-change-transform group-hover:translate-x-[-6%] group-hover:duration-[10000ms] motion-reduce:translate-x-0 motion-reduce:group-hover:translate-x-0 motion-reduce:transition-none">
+          <Image
+            src={coverSrc}
+            alt={`Capa do projeto ${project.title}`}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover grayscale transition-[filter] duration-700 ease-out group-hover:grayscale-0"
+            priority={false}
           />
-        </motion.span>
-      </div>
-      <div className="flex-grow">
-        <h4 className="text-2xl font-bold uppercase mb-4 group-hover:italic transition-all text-on-surface">
-          {project.title}
-        </h4>
-        <p className="text-sm text-on-surface/70 leading-relaxed mb-6">
-          {project.excerpt}
-        </p>
-      </div>
-      <div>
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <ProjectTag key={tag} label={tag} />
-          ))}
         </div>
-        <div className="mt-6 pt-6 border-t border-outline-variant/15 text-[9px] font-mono opacity-40">
-          LAST_STABLE_BUILD: {project.lastStableBuild}
+        <div
+          className="pointer-events-none absolute inset-0 bg-primary opacity-100 mix-blend-color transition-opacity duration-500 ease-out group-hover:opacity-0"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-surface/15 to-transparent transition-opacity duration-500 group-hover:via-surface/25"
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(0,0,0,0.35)_2px,rgba(0,0,0,0.35)_3px)] opacity-[0.12] mix-blend-overlay transition-opacity duration-500 group-hover:opacity-[0.08]" />
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <div className="mb-8 flex items-start justify-between">
+          <span className="inline-flex items-center gap-2 text-[10px] font-bold tracking-widest text-on-surface opacity-40">
+            <BlinkingDot
+              size="sm"
+              delay={0.2}
+              className="bg-on-surface opacity-60"
+            />
+            {project.vol}
+          </span>
+          <motion.span
+            className="inline-flex text-on-surface"
+            initial={false}
+            whileHover={{ x: 3, y: -3 }}
+            transition={{ type: "spring", stiffness: 400, damping: 18 }}
+          >
+            <ArrowUpRight
+              className="h-5 w-5 opacity-40 transition-opacity group-hover:opacity-100"
+              strokeWidth={2}
+            />
+          </motion.span>
+        </div>
+        <div className="flex-grow">
+          <h4 className="mb-4 text-2xl font-bold uppercase text-on-surface transition-all">
+            {project.title}
+          </h4>
+          <p className="mb-4 text-sm leading-relaxed text-on-surface/70">
+            {project.excerpt}
+          </p>
+        </div>
+        <div>
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <ProjectTag key={tag} label={tag} />
+            ))}
+          </div>
+          <div className="mt-6 border-t border-outline-variant/15 pt-2 font-mono text-[9px] opacity-40">
+            LAST_STABLE_BUILD: {project.lastStableBuild}
+          </div>
         </div>
       </div>
     </MotionLink>

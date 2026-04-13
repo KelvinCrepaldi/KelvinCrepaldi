@@ -18,6 +18,21 @@ export type Project = {
   listOnHome?: boolean;
 };
 
+const PICSUM_BASE = "https://picsum.photos";
+
+/**
+ * Capa placeholder estável por `slug` (Lorem Picsum com seed).
+ * Mesma URL no card da home e no cabeçalho do detalhe — só variar `width`/`height` conforme o layout.
+ */
+export function projectCoverUrl(
+  slug: string,
+  width = 1200,
+  height = 675,
+): string {
+  const safe = encodeURIComponent(slug);
+  return `${PICSUM_BASE}/seed/${safe}/${width}/${height}`;
+}
+
 const unsorted: Project[] = [
   {
     slug: "totem-platform",
@@ -57,20 +72,7 @@ const unsorted: Project[] = [
     listOnHome: true,
     subtitle: "Backend distribuído para ingestão assíncrona",
     md: nexusMd,
-  },
-  {
-    slug: "void-gallery",
-    vol: "VOL_04",
-    title: "Void_Gallery",
-    excerpt:
-      "Experimental visual engine built with Next.js for high-definition asset archival and rendering.",
-    tags: ["Next.js", "Three.js"],
-    lastStableBuild: "2024.05.01",
-    sortOrder: 4,
-    listOnHome: true,
-    subtitle: "Motor visual experimental para arquivo em alta definição",
-    md: voidMd,
-  },
+  }
 ];
 
 /** Catálogo ordenado por `sortOrder` — única fonte de verdade. */
