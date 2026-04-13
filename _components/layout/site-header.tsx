@@ -11,6 +11,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
+import { ThemeToggle } from "@/_components/theme/theme-toggle";
 import { PROJECTS_CATALOG } from "@/_utils/projects";
 
 const THRESHOLD_PX = 28;
@@ -64,27 +65,31 @@ export function SiteHeader() {
       : null;
 
   const inactive = isScrolled
-    ? "text-[#fef9ed]/55 hover:text-[#fef9ed] transition-colors duration-150"
-    : "text-[#363322]/60 hover:text-[#363322] transition-colors duration-150";
+    ? "text-surface/55 hover:text-surface dark:text-on-surface/55 dark:hover:text-on-surface transition-colors duration-150"
+    : "text-on-surface/60 hover:text-on-surface transition-colors duration-150";
 
   const activeHome = isScrolled
-    ? "text-[#fef9ed] border-b-2 border-[#fef9ed] pb-1"
-    : "text-[#363322] border-b-2 border-[#363322] pb-1";
+    ? "text-surface border-b-2 border-surface pb-1 dark:text-on-surface dark:border-on-surface"
+    : "text-on-surface border-b-2 border-on-surface pb-1";
 
   const activeProjects = isScrolled
-    ? "text-[#fef9ed] border-b-2 border-[#fef9ed] pb-1"
-    : "text-[#363322] border-b-2 border-[#363322] pb-1";
+    ? "text-surface border-b-2 border-surface pb-1 dark:text-on-surface dark:border-on-surface"
+    : "text-on-surface border-b-2 border-on-surface pb-1";
 
   const bottomRule =
     !isHome &&
     (isScrolled
-      ? "border-b border-[#fef9ed]/25"
+      ? "border-b border-surface/25 dark:border-on-surface/25"
       : "border-b border-on-surface/18");
 
   const mobileLinkBase =
     "block border-b border-outline-variant/25 py-4 text-sm font-bold uppercase tracking-tighter text-on-surface transition-colors hover:bg-surface-container-low/80 active:bg-surface-container";
 
   const catalog = PROJECTS_CATALOG;
+
+  const headerChrome = isScrolled
+    ? "text-surface dark:text-on-surface"
+    : "text-on-surface";
 
   return (
     <>
@@ -100,63 +105,67 @@ export function SiteHeader() {
                 boxShadow: "0 12px 40px rgba(0,0,0,0.18)",
               }
             : {
-                backgroundColor: "rgba(254, 249, 237, 0.85)",
+                backgroundColor: "rgb(var(--header-unscrolled) / 0.85)",
                 boxShadow: "0 0 0 rgba(0,0,0,0)",
               }
         }
         style={{ backdropFilter: "blur(12px)" }}
         aria-label="Navegação principal"
       >
-        <div className="w-full lg:max-w-6xl lg:mx-auto flex items-center justify-between">
+        <div className="flex w-full items-center justify-between gap-3 lg:max-w-6xl lg:mx-auto">
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Link
               href="/"
-              className={`text-xl font-black tracking-widest inline-block transition-colors duration-300 ${
-                isScrolled ? "text-[#fef9ed]" : "text-[#363322]"
-              }`}
+              className={`text-xl font-black tracking-widest inline-block transition-colors duration-300 ${headerChrome}`}
               onClick={closeMenu}
             >
-              DEV_WORKBENCH
+              main/kelvin :: Developer
             </Link>
           </motion.div>
-          <div className="hidden md:flex gap-8 font-space-grotesk uppercase tracking-tighter font-bold text-sm">
-            <Link href="/" className={isHome ? activeHome : inactive}>
-              HOME
-            </Link>
-            <Link
-              href="/#projects"
-              className={isProjects ? activeProjects : inactive}
-            >
-              PROJECTS
-            </Link>
-            <Link className={inactive} href="/#timeline" onClick={closeMenu}>
-              ABOUT
-            </Link>
-            <Link className={inactive} href="/#skills" onClick={closeMenu}>
-              SKILLS
-            </Link>
-            <Link className={inactive} href="/#contact" onClick={closeMenu}>
-              CONTACT
-            </Link>
+
+          <div className="hidden min-w-0 flex-1 items-center justify-end gap-6 md:flex">
+            <div className="flex gap-8 font-space-grotesk text-sm font-bold uppercase tracking-tighter">
+              <Link href="/" className={isHome ? activeHome : inactive}>
+                HOME
+              </Link>
+              <Link
+                href="/#projects"
+                className={isProjects ? activeProjects : inactive}
+              >
+                PROJECTS
+              </Link>
+              <Link className={inactive} href="/#timeline" onClick={closeMenu}>
+                ABOUT
+              </Link>
+              <Link className={inactive} href="/#skills" onClick={closeMenu}>
+                SKILLS
+              </Link>
+              <Link className={inactive} href="/#contact" onClick={closeMenu}>
+                CONTACT
+              </Link>
+            </div>
+            <ThemeToggle className={headerChrome} />
           </div>
-          <motion.button
-            type="button"
-            className={`relative z-[60] md:hidden p-2 transition-colors duration-300 ${
-              isScrolled ? "text-[#fef9ed]" : "text-[#363322]"
-            }`}
-            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav-drawer"
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.05 }}
-            onClick={() => setMenuOpen((o) => !o)}
-          >
-            {menuOpen ? (
-              <X className="h-7 w-7" strokeWidth={2} />
-            ) : (
-              <Menu className="h-7 w-7" strokeWidth={2} />
-            )}
-          </motion.button>
+
+          <div className="flex shrink-0 items-center gap-1 md:hidden">
+            <ThemeToggle className={headerChrome} />
+            <motion.button
+              type="button"
+              className={`relative z-[60] p-2 transition-colors duration-300 ${headerChrome}`}
+              aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav-drawer"
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              onClick={() => setMenuOpen((o) => !o)}
+            >
+              {menuOpen ? (
+                <X className="h-7 w-7" strokeWidth={2} />
+              ) : (
+                <Menu className="h-7 w-7" strokeWidth={2} />
+              )}
+            </motion.button>
+          </div>
         </div>
       </motion.nav>
 
@@ -166,7 +175,7 @@ export function SiteHeader() {
             <motion.button
               type="button"
               aria-label="Fechar menu"
-              className="fixed inset-0 z-[52] bg-[#363322]/80 md:hidden"
+              className="fixed inset-0 z-[52] bg-on-surface/80 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -178,7 +187,7 @@ export function SiteHeader() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="mobile-nav-title"
-              className="fixed right-0 bottom-0 left-0 z-[53] flex max-h-[calc(100dvh-var(--site-header-height))] flex-col overflow-hidden border-t-2 border-outline-variant/40 bg-surface shadow-[0_-8px_32px_rgba(54,51,34,0.12)] md:hidden"
+              className="fixed right-0 bottom-0 left-0 z-[53] flex max-h-[calc(100dvh-var(--site-header-height))] flex-col overflow-hidden border-t-2 border-outline-variant/40 bg-surface shadow-[0_-8px_32px_rgba(0,0,0,0.14)] dark:shadow-[0_-8px_32px_rgba(0,0,0,0.35)] md:hidden"
               style={{ top: HEADER_H }}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}

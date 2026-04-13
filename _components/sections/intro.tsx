@@ -10,7 +10,6 @@ export function Intro() {
   return (
     <div className="md:col-span-8 flex flex-col justify-center">
       <div className="mb-4 inline-flex items-center gap-3">
-        <StatusDot />
         <BlinkingDotRow count={3} className="opacity-80" size="sm" />
         <span className="text-xs font-bold uppercase tracking-[0.3em] opacity-60">
           SYSTEM_OPERATOR: ACTIVE
@@ -22,7 +21,7 @@ export function Intro() {
         Crepaldi
       </h1>
       <h2 className="text-2xl md:text-4xl font-light italic text-on-surface opacity-80 mb-4">
-        Desenvolvedor de Software
+        Desenvolvedor de Software <StatusDot />
       </h2>
       <p className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-on-surface/50 mb-12">
         <MapPin className="w-3 h-3" strokeWidth={2} />
