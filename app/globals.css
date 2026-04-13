@@ -2,14 +2,133 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 /* Alinhar <main> e sidebars ao header fixo (ver SiteHeader: h-16) */
 :root {
   --site-header-height: 4rem;
+  /* Barra do header sem scroll: translúcido sobre o fundo da página */
+  --header-unscrolled: 254 249 237;
+  /* Tema claro — superfície = creme, texto = marrom do antigo footer */
+  --footer-surface: 54 51 34;
+  --secondary-fixed-dim: 221 211 200;
+  --primary-fixed-dim: 221 210 206;
+  --on-error-container: 116 36 16;
+  --error: 158 66 44;
+  --on-tertiary: 255 248 240;
+  --on-primary-container: 87 80 77;
+  --error-dim: 92 18 2;
+  --on-secondary-container: 87 81 73;
+  --on-primary-fixed-variant: 97 90 87;
+  --on-surface: 54 51 34;
+  --on-tertiary-fixed-variant: 105 98 85;
+  --surface-variant: 233 227 201;
+  --on-secondary-fixed-variant: 97 90 82;
+  --on-tertiary-container: 94 88 75;
+  --inverse-on-surface: 160 157 147;
+  --tertiary-dim: 89 82 70;
+  --on-tertiary-fixed: 76 70 58;
+  --secondary-fixed: 235 225 214;
+  --on-primary-fixed: 68 62 59;
+  --secondary-dim: 89 82 74;
+  --surface-container-highest: 233 227 201;
+  --tertiary: 101 94 81;
+  --background: 254 249 237;
+  --on-background: 54 51 34;
+  --outline: 127 123 102;
+  --secondary: 101 94 86;
+  --on-error: 255 247 246;
+  --surface-container-low: 249 243 228;
+  --inverse-surface: 15 14 8;
+  --surface-tint: 100 93 89;
+  --surface-container: 244 238 219;
+  --primary-container: 235 224 220;
+  --on-secondary: 255 248 242;
+  --primary-fixed: 235 224 220;
+  --secondary-container: 235 225 214;
+  --on-surface-variant: 99 95 76;
+  --surface: 254 249 237;
+  --primary-dim: 88 81 78;
+  --tertiary-container: 247 237 220;
+  --inverse-primary: 255 251 255;
+  --surface-container-lowest: 255 255 255;
+  --primary: 100 93 89;
+  --surface-container-high: 238 232 210;
+  --error-container: 254 139 112;
+  --on-primary: 255 246 242;
+  --tertiary-fixed-dim: 233 222 206;
+  --on-secondary-fixed: 69 62 55;
+  --tertiary-fixed: 247 237 220;
+  --outline-variant: 184 178 155;
+  --surface-bright: 254 249 237;
+  --surface-dim: 225 218 190;
+}
+
+.dark {
+  --header-unscrolled: 54 51 34;
+  /* Tema escuro — fundo da página = antigo footer (#363322); texto = creme (#fef9ed) */
+  --footer-surface: 32 30 22;
+  --secondary-fixed-dim: 90 86 78;
+  --primary-fixed-dim: 88 84 80;
+  --on-error-container: 255 180 160;
+  --error: 242 120 100;
+  --on-tertiary: 28 26 20;
+  --on-primary-container: 220 215 205;
+  --error-dim: 200 80 60;
+  --on-secondary-container: 215 210 200;
+  --on-primary-fixed-variant: 200 195 185;
+  --on-surface: 254 249 237;
+  --on-tertiary-fixed-variant: 210 205 190;
+  --surface-variant: 72 68 52;
+  --on-secondary-fixed-variant: 200 195 185;
+  --on-tertiary-container: 205 200 185;
+  --inverse-on-surface: 70 66 52;
+  --tertiary-dim: 190 185 170;
+  --on-tertiary-fixed: 235 230 215;
+  --secondary-fixed: 75 71 56;
+  --on-primary-fixed: 245 240 225;
+  --secondary-dim: 175 170 155;
+  --surface-container-highest: 88 84 66;
+  --tertiary: 195 190 175;
+  --background: 54 51 34;
+  --on-background: 254 249 237;
+  --outline: 140 135 118;
+  --secondary: 185 180 165;
+  --on-error: 40 20 15;
+  --surface-container-low: 60 57 42;
+  --inverse-surface: 254 249 237;
+  --surface-tint: 200 195 180;
+  --surface-container: 66 62 46;
+  --primary-container: 75 71 58;
+  --on-secondary: 35 32 24;
+  --primary-fixed: 80 76 62;
+  --secondary-container: 72 68 54;
+  --on-surface-variant: 200 195 175;
+  --surface: 54 51 34;
+  --primary-dim: 210 205 195;
+  --tertiary-container: 70 66 52;
+  --inverse-primary: 50 46 38;
+  --surface-container-lowest: 42 40 30;
+  --primary: 210 205 195;
+  --surface-container-high: 72 68 52;
+  --error-container: 180 70 50;
+  --on-primary: 35 32 26;
+  --tertiary-fixed-dim: 68 64 52;
+  --on-secondary-fixed: 240 235 220;
+  --tertiary-fixed: 75 71 58;
+  --outline-variant: 95 91 76;
+  --surface-bright: 62 58 44;
+  --surface-dim: 48 46 34;
 }
 
 body {
   font-family: var(--font-space-grotesk), sans-serif;
-  background-color: #fef9ed;
 }
 
 .dot-texture {
@@ -20,6 +139,14 @@ body {
     transparent 0.85px
   );
   background-size: 16px 16px;
+}
+
+.dark .dot-texture {
+  background-image: radial-gradient(
+    circle at center,
+    rgba(254, 249, 237, 0.06) 0.85px,
+    transparent 0.85px
+  );
 }
 
 .crt-overlay {
@@ -140,6 +267,16 @@ body {
 .card-scanlines:hover::after {
   opacity: 1;
   animation-play-state: running;
+}
+
+.dark .card-scanlines::after {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 2px,
+    rgba(254, 249, 237, 0.06) 2px,
+    rgba(254, 249, 237, 0.06) 4px
+  );
 }
 
 .card-scanlines--always::after {

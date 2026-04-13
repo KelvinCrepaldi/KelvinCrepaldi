@@ -39,7 +39,9 @@ export default function LoadingAnimation({
       className="font-mono text-[10px] font-bold uppercase shrink-0 px-2 py-0.5 tabular-nums"
     >
       {done ? (
-        <span className="text-emerald-700/60">[OK]</span>
+        <span className="text-emerald-700/80 dark:text-emerald-400/90">
+          [OK]
+        </span>
       ) : (
         <span className="inline-flex items-center gap-1 text-on-surface/50">
           <span>[</span>

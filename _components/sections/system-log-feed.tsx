@@ -29,18 +29,26 @@ export function logStatusClassName(
     key === "FAIL" ||
     key === "FAILED"
   ) {
-    return dark ? "font-bold text-red-400" : "font-bold text-red-600";
+    return dark
+      ? "font-bold text-red-400"
+      : "font-bold text-red-600 dark:text-red-400";
   }
 
   if (key === "OK" || key === "SYNC" || key === "DONE" || key === "SUCCESS") {
-    return dark ? "font-bold text-green-400" : "font-bold text-green-700";
+    return dark
+      ? "font-bold text-green-400"
+      : "font-bold text-green-700 dark:text-emerald-400";
   }
 
   if (key === "INFO") {
-    return dark ? "font-bold text-sky-400" : "font-bold text-blue-600";
+    return dark
+      ? "font-bold text-sky-400"
+      : "font-bold text-blue-600 dark:text-sky-400";
   }
 
-  return dark ? "font-bold text-sky-400" : "font-bold text-blue-600";
+  return dark
+    ? "font-bold text-sky-400"
+    : "font-bold text-blue-600 dark:text-sky-400";
 }
 
 type SystemLogFeedProps = {

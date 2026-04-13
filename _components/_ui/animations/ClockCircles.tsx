@@ -8,7 +8,21 @@ import { useIsMobileLayout } from "@/hooks/useIsMobileLayout";
 export const CLOCK_CANVAS_LOGICAL = 400;
 const CX = 200;
 const CY = 200;
-const STROKE = "rgba(54, 51, 34,";
+
+/** Cor dos traços alinhada ao tema (`--on-surface` no globals.css). */
+function getOnSurfaceRgba(opacity: number): string {
+  if (typeof window === "undefined") {
+    return `rgba(54, 51, 34, ${opacity})`;
+  }
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue("--on-surface")
+    .trim();
+  const parts = raw.split(/\s+/).filter(Boolean).map(Number);
+  if (parts.length !== 3 || parts.some((n) => Number.isNaN(n))) {
+    return `rgba(54, 51, 34, ${opacity})`;
+  }
+  return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, ${opacity})`;
+}
 
 /** Tamanho do bloco do fundo: min(vh, vw) */
 const SIZE_VH = "90";
@@ -37,7 +51,7 @@ function drawRadialTicks(
   ctx.translate(CX, CY);
   ctx.rotate(rad);
   ctx.translate(-CX, -CY);
-  ctx.strokeStyle = `${STROKE} ${opacity})`;
+  ctx.strokeStyle = getOnSurfaceRgba(opacity);
   ctx.lineWidth = strokeWidth;
   ctx.lineCap = "round";
   for (let i = 0; i < count; i++) {
@@ -223,7 +237,16 @@ export function ClockCircleCanvas({
     const parent = canvas.parentElement;
     const ro = parent ? new ResizeObserver(syncAndPaint) : null;
     if (parent) ro!.observe(parent);
-    return () => ro?.disconnect();
+
+    const obs = new MutationObserver(syncAndPaint);
+    obs.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => {
+      ro?.disconnect();
+      obs.disconnect();
+    };
   }, [staticVisual, mounted, paint]);
 
   if (!mounted) return null;
@@ -294,11 +317,10 @@ export function ClockCircleNode() {
   const cy = size / 2;
   const r = 14;
   const tickLen = 1;
-  const stroke = "rgba(54, 51, 34, 0.35)";
 
   return (
     <svg
-      className="absolute inset-0 h-full w-full md:origin-center md:[animation:spin_8s_linear_infinite]"
+      className="absolute inset-0 h-full w-full text-on-surface/35 md:origin-center md:[animation:spin_8s_linear_infinite]"
       viewBox={`0 0 ${size} ${size}`}
       fill="none"
       aria-hidden
@@ -310,7 +332,7 @@ export function ClockCircleNode() {
           y1={cy + r * Math.sin(angle)}
           x2={cx + (r + tickLen) * Math.cos(angle)}
           y2={cy + (r + tickLen) * Math.sin(angle)}
-          stroke={stroke}
+          stroke="currentColor"
           strokeWidth={1}
           strokeLinecap="round"
         />
