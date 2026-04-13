@@ -26,8 +26,30 @@ function StackIcon({
   return <Icon className={className} aria-hidden />;
 }
 
-const DOTTED_RULE =
-  "flex-1 h-px bg-repeat-x opacity-60 [background-image:radial-gradient(circle,rgba(54,51,34,0.40)_1px,transparent_1.5px)] [background-size:6px_2px] [background-position:left_center]";
+const DOTTED_LEADER =
+  "flex-1 h-px min-w-[12px] bg-repeat-x opacity-60 [background-image:radial-gradient(circle,rgba(54,51,34,0.40)_1px,transparent_1.5px)] [background-size:6px_2px] [background-position:left_center]";
+
+function TechStackListItem({
+  tech,
+  durationSec,
+}: {
+  tech: TechWithIcon;
+  durationSec: number;
+}) {
+  return (
+    <li className="group flex min-w-0 items-center gap-3 border-l-2 border-on-surface/20 py-1 pl-3 transition-colors hover:border-on-surface">
+      <StackIcon
+        tech={tech}
+        className="size-4 shrink-0 text-on-surface opacity-85 sm:size-[1.125rem]"
+      />
+      <span className="shrink-0 font-mono text-[11px] text-on-surface opacity-80 sm:text-xs">
+        {tech.name}
+      </span>
+      <span className={DOTTED_LEADER} aria-hidden />
+      <LoadingAnimation durationSec={durationSec} />
+    </li>
+  );
+}
 
 export function Skills() {
   const soft = SOFT_SKILLS;
@@ -41,6 +63,8 @@ export function Skills() {
   const durationsByTech = useMemo(() => {
     const map = new Map<string, number>();
     for (const t of ECOSYSTEM_LIBS) map.set(t.name, 2 + (t.name.length % 4));
+    FRONT_FRAMEWORKS.forEach((t, i) => map.set(t.name, 2 + i * 0.35));
+    BACKEND_STACK.forEach((t, i) => map.set(t.name, 2 + i * 0.35));
     return map;
   }, []);
 
@@ -60,7 +84,7 @@ export function Skills() {
           <div>
             <div className="flex items-center gap-3 flex-wrap">
               <BlinkingDotRow count={4} size="sm" className="mb-1" />
-              <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-on-surface">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter text-on-surface">
                 Tech_Stack
               </h3>
             </div>
@@ -83,102 +107,66 @@ export function Skills() {
             <div className="space-y-10 sm:space-y-12">
               {/* [01] Front-end */}
               <div>
-                <div className="flex justify-between items-start mb-6 sm:mb-8 md:mb-10 gap-4 sm:gap-6 flex-wrap">
-                  <div>
-                    <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
-                      [01] INTERFACE_&_FRAMEWORKS
-                    </p>
-                    <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight text-on-surface">
-                      Stack de front-end
-                    </span>
-                  </div>
-                  <span className="font-mono text-[10px] opacity-40 text-on-surface">
-                    CAMADA: FRONTEND
+                <div className="mb-6 sm:mb-8">
+                  <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-secondary mb-1">
+                    [01] INTERFACE_&_FRAMEWORKS
+                  </p>
+                  <span className="text-base sm:text-lg font-bold uppercase tracking-tight text-on-surface">
+                    Stack de front-end
                   </span>
                 </div>
 
                 <ul className="grid grid-cols-1 gap-y-3">
-                  {FRONT_FRAMEWORKS.map((tech, index) => (
-                    <li
+                  {FRONT_FRAMEWORKS.map((tech) => (
+                    <TechStackListItem
                       key={tech.name}
-                      className="group flex min-w-0 items-center gap-3 border-l-2 border-on-surface/20 py-1 pl-3 transition-colors hover:border-on-surface"
-                    >
-                      <StackIcon
-                        tech={tech}
-                        className="size-4 shrink-0 text-on-surface opacity-85"
-                      />
-                      <span className="shrink-0 font-mono text-[11px] text-on-surface opacity-80">
-                        {tech.name}
-                      </span>
-                      <span className={DOTTED_RULE} aria-hidden />
-                      <LoadingAnimation durationSec={2 + index * 0.35} />
-                    </li>
+                      tech={tech}
+                      durationSec={durationsByTech.get(tech.name) ?? 3}
+                    />
                   ))}
                 </ul>
               </div>
 
               {/* [02] Backend */}
               <div className="pt-10 border-t border-outline-variant/20">
-                <div className="flex justify-between items-start mb-6 sm:mb-8 md:mb-10 gap-4 sm:gap-6 flex-wrap">
-                  <div>
-                    <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
-                      [02] RUNTIME_&_DADOS
-                    </p>
-                    <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight text-on-surface">
-                      Servidor, APIs e persistência
-                    </span>
-                  </div>
-                  <span className="font-mono text-[10px] opacity-40 text-on-surface">
-                    CAMADA: BACKEND
+                <div className="mb-6 sm:mb-8">
+                  <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-secondary mb-1">
+                    [02] RUNTIME_&_DADOS
+                  </p>
+                  <span className="text-base sm:text-lg font-bold uppercase tracking-tight text-on-surface">
+                    Servidor, APIs e persistência
                   </span>
                 </div>
 
                 <ul className="grid grid-cols-1 gap-y-3">
-                  {BACKEND_STACK.map((tech, index) => (
-                    <li
+                  {BACKEND_STACK.map((tech) => (
+                    <TechStackListItem
                       key={tech.name}
-                      className="group flex min-w-0 items-center gap-3 border-l-2 border-on-surface/20 py-1 pl-3 transition-colors hover:border-on-surface"
-                    >
-                      <StackIcon
-                        tech={tech}
-                        className="size-4 shrink-0 text-on-surface opacity-85"
-                      />
-                      <span className="shrink-0 font-mono text-[11px] text-on-surface opacity-80">
-                        {tech.name}
-                      </span>
-                      <span className={DOTTED_RULE} aria-hidden />
-                      <LoadingAnimation durationSec={2 + index * 0.35} />
-                    </li>
+                      tech={tech}
+                      durationSec={durationsByTech.get(tech.name) ?? 3}
+                    />
                   ))}
                 </ul>
               </div>
 
               {/* [03] Ecossistema */}
               <div className="pt-10 border-t border-outline-variant/20">
-                <div className="mb-8 sm:mb-10">
-                  <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
+                <div className="mb-6 sm:mb-8">
+                  <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-secondary mb-1">
                     [03] ECOSISTEMA_&_BIBLIOTECAS
                   </p>
-                  <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight text-on-surface">
+                  <span className="text-base sm:text-lg font-bold uppercase tracking-tight text-on-surface">
                     Libs, estado, UI e fundação web
                   </span>
                 </div>
 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                   {ECOSYSTEM_LIBS.map((tech) => (
-                    <li key={tech.name} className="flex items-center gap-3">
-                      <StackIcon
-                        tech={tech}
-                        className="size-4 shrink-0 text-on-surface opacity-85"
-                      />
-                      <span className="font-mono text-[11px] opacity-80 text-on-surface">
-                        {tech.name}
-                      </span>
-                      <span className={DOTTED_RULE} aria-hidden />
-                      <LoadingAnimation
-                        durationSec={durationsByTech.get(tech.name) ?? 3}
-                      />
-                    </li>
+                    <TechStackListItem
+                      key={tech.name}
+                      tech={tech}
+                      durationSec={durationsByTech.get(tech.name) ?? 3}
+                    />
                   ))}
                 </ul>
               </div>
@@ -188,11 +176,11 @@ export function Skills() {
           {/* Coluna direita: [04] acima de [05] */}
           <section className="md:col-span-5 p-5 sm:p-6 md:p-8 bg-surface border-b md:border-b-0 border-outline-variant/30">
             <div className="pb-10 border-b border-outline-variant/20">
-              <div className="mb-8 sm:mb-10">
-                <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
+              <div className="mb-6 sm:mb-8">
+                <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-secondary mb-1">
                   [04] BANCADA_DE_TRABALHO
                 </p>
-                <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight text-on-surface">
+                <span className="text-base sm:text-lg font-bold uppercase tracking-tight text-on-surface">
                   Ferramentas &amp; Utilitários
                 </span>
               </div>
@@ -205,10 +193,10 @@ export function Skills() {
                   >
                     <StackIcon
                       tech={tech}
-                      className="size-5 shrink-0 text-on-surface mt-0.5 opacity-90"
+                      className="size-[1.375rem] shrink-0 text-on-surface mt-0.5 opacity-90 sm:size-6"
                     />
                     <div className="flex min-w-0 flex-1 flex-col gap-1">
-                      <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-tight text-on-surface leading-tight">
+                      <span className="font-mono text-xs sm:text-[13px] font-bold uppercase tracking-tight text-on-surface leading-tight">
                         {tech.name}
                       </span>
                       <span className="font-mono text-[8px] text-on-surface/35 uppercase tracking-wider">
@@ -220,11 +208,11 @@ export function Skills() {
               </div>
             </div>
 
-            <div className="mb-8 sm:mb-10">
-              <p className="font-mono text-sm font-bold uppercase tracking-widest text-secondary mb-1">
+            <div className="mb-6 sm:mb-8">
+              <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-secondary mb-1">
                 [05] PROTOCOLOS_OPERACIONAIS
               </p>
-              <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight text-on-surface">
+              <span className="text-base sm:text-lg font-bold uppercase tracking-tight text-on-surface">
                 Metodologias &amp; Soft Skills
               </span>
             </div>
@@ -232,13 +220,10 @@ export function Skills() {
             <ul className="grid grid-cols-1 gap-y-2">
               {soft.map((item) => (
                 <li key={item} className="flex items-center gap-3">
-                  <span className="font-mono text-[11px] opacity-80 text-on-surface shrink-0">
+                  <span className="font-mono text-xs opacity-80 text-on-surface shrink-0">
                     {item}
                   </span>
-                  <span
-                    className="flex-1 h-px bg-repeat-x opacity-60 [background-image:radial-gradient(circle,rgba(54,51,34,0.40)_1px,transparent_1.5px)] [background-size:6px_2px] [background-position:left_center]"
-                    aria-hidden
-                  />
+                  <span className={DOTTED_LEADER} aria-hidden />
                   <LoadingAnimation
                     durationSec={durationsBySoft.get(item) ?? 3}
                   />
