@@ -1,7 +1,10 @@
+import Image from "next/image";
+
+import { FauxTerminalWindow } from "@/_components/_ui/faux-terminal-window";
 import { BackToArchiveLink } from "@/_components/_ui/BackToArchiveLink";
 import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
+import { projectCoverUrl, type Project } from "@/_utils/projects";
 import { ProjectTag } from "./project-tag";
-import type { Project } from "@/_utils/projects";
 
 type ProjectDetailHeaderProps = {
   project: Project;
@@ -15,9 +18,11 @@ export function ProjectDetailHeader({
   subtitle,
   contentGutterClass = "px-6 md:px-10 lg:px-12 xl:px-14",
 }: ProjectDetailHeaderProps) {
+  const heroSrc = projectCoverUrl(project.slug, 1600, 720);
+
   return (
     <header
-      className={`relative bg-surface border-b border-outline-variant/20 pt-8 pb-10 md:pt-10 md:pb-11 lg:pt-11 lg:pb-12 ${contentGutterClass}`}
+      className={`relative border-b border-outline-variant/20 bg-surface pt-8 pb-10 md:pt-10 md:pb-12 lg:pt-11 lg:pb-14 ${contentGutterClass}`}
     >
       <div className="w-full max-w-3xl text-left">
         <BackToArchiveLink />
@@ -46,6 +51,21 @@ export function ProjectDetailHeader({
           </div>
         </div>
       </div>
+
+      <FauxTerminalWindow
+        className="mt-8 w-full md:mt-10"
+        title={`${project.vol}//preview`}
+        bodyClassName="card-scanlines card-scanlines--always aspect-video max-h-[min(22rem,42vh)] w-full overflow-hidden md:max-h-[min(26rem,48vh)]"
+      >
+        <Image
+          src={heroSrc}
+          alt={`Capa do projeto ${project.title}`}
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, min(1152px, 90vw)"
+          className="object-cover"
+        />
+      </FauxTerminalWindow>
     </header>
   );
 }
