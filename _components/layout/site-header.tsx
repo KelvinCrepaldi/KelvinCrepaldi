@@ -12,6 +12,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 import { ThemeToggle } from "@/_components/theme/theme-toggle";
+import { LOGS_CATALOG, formatLogDate } from "@/_utils/logs";
 import { PROJECTS_CATALOG } from "@/_utils/projects";
 
 const THRESHOLD_PX = 28;
@@ -59,9 +60,14 @@ export function SiteHeader() {
 
   const isHome = pathname === "/";
   const isProjects = pathname.startsWith("/projects");
+  const isLogs = pathname.startsWith("/log");
   const projectSlug =
     pathname.startsWith("/projects/") && pathname.length > "/projects/".length
       ? pathname.slice("/projects/".length).split("/")[0]
+      : null;
+  const logSlug =
+    pathname.startsWith("/log/") && pathname.length > "/log/".length
+      ? pathname.slice("/log/".length).split("/")[0]
       : null;
 
   const inactive = isScrolled
@@ -76,6 +82,10 @@ export function SiteHeader() {
     ? "text-surface border-b-2 border-surface pb-1 dark:text-on-surface dark:border-on-surface"
     : "text-on-surface border-b-2 border-on-surface pb-1";
 
+  const activeLogs = isScrolled
+    ? "text-surface border-b-2 border-surface pb-1 dark:text-on-surface dark:border-on-surface"
+    : "text-on-surface border-b-2 border-on-surface pb-1";
+
   const bottomRule =
     !isHome &&
     (isScrolled
@@ -86,6 +96,7 @@ export function SiteHeader() {
     "block border-b border-outline-variant/25 py-4 text-sm font-bold uppercase tracking-tighter text-on-surface transition-colors hover:bg-surface-container-low/80 active:bg-surface-container";
 
   const catalog = PROJECTS_CATALOG;
+  const logsCatalog = LOGS_CATALOG;
 
   const headerChrome = isScrolled
     ? "text-surface dark:text-on-surface"
@@ -134,7 +145,10 @@ export function SiteHeader() {
               >
                 PROJECTS
               </Link>
-              <Link className={inactive} href="/#timeline" onClick={closeMenu}>
+              <Link href="/log" className={isLogs ? activeLogs : inactive}>
+                LOG
+              </Link>
+              <Link className={inactive} href="/#about" onClick={closeMenu}>
                 ABOUT
               </Link>
               <Link className={inactive} href="/#skills" onClick={closeMenu}>
@@ -223,8 +237,15 @@ export function SiteHeader() {
                     PROJECTS
                   </Link>
                   <Link
+                    href="/log"
+                    className={`${mobileLinkBase} ${isLogs ? "bg-on-surface/5" : ""}`}
+                    onClick={closeMenu}
+                  >
+                    LOG
+                  </Link>
+                  <Link
                     className={mobileLinkBase}
-                    href="/#timeline"
+                    href="/#about"
                     onClick={closeMenu}
                   >
                     ABOUT
@@ -296,6 +317,61 @@ export function SiteHeader() {
                     </ul>
                     <p className="mt-4 text-[8px] font-mono text-on-surface/35">
                       :: SELECT_ENTRY_TO_MOUNT_VOLUME
+                    </p>
+                  </div>
+                ) : null}
+
+                {isLogs ? (
+                  <div className="mt-6 border-t-2 border-outline-variant/30 pt-5">
+                    <p className="mb-3 text-[9px] font-mono uppercase tracking-[0.4em] text-outline">
+                      LOG_INDEX // ENTRIES
+                    </p>
+                    <p className="mb-3 text-[10px] font-mono text-on-surface/45">
+                      CHRONO_LINK_PROTOCOL
+                    </p>
+                    <ul className="flex flex-col gap-1" role="list">
+                      {logsCatalog.map((log) => {
+                        const active = logSlug === log.slug;
+                        return (
+                          <li key={log.slug}>
+                            <Link
+                              href={`/log/${log.slug}`}
+                              onClick={closeMenu}
+                              className={[
+                                "block border border-transparent px-3 py-3 transition-colors",
+                                active
+                                  ? "border-on-surface bg-on-surface text-surface"
+                                  : "text-on-surface hover:border-outline-variant/40 hover:bg-surface-container-high/90",
+                              ].join(" ")}
+                            >
+                              <span
+                                className={
+                                  active
+                                    ? "text-[9px] font-mono uppercase tracking-widest text-surface/70"
+                                    : "text-[9px] font-mono uppercase tracking-widest text-outline"
+                                }
+                              >
+                                {log.logId}
+                              </span>
+                              <span className="mt-0.5 block text-xs font-bold uppercase tracking-tight">
+                                {log.title}
+                              </span>
+                              <span
+                                className={
+                                  active
+                                    ? "mt-0.5 block truncate font-mono text-[9px] text-surface/50"
+                                    : "mt-0.5 block truncate font-mono text-[9px] text-on-surface/40"
+                                }
+                              >
+                                {formatLogDate(log.publishedAt)}
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <p className="mt-4 text-[8px] font-mono text-on-surface/35">
+                      :: SELECT_ENTRY_TO_MOUNT_LOG
                     </p>
                   </div>
                 ) : null}
