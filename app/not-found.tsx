@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="relative z-10 px-6 md:px-12 pt-24 pb-28">
+    <div className="relative z-10 px-6 md:px-12 pt-24 pb-28">
       <div className="w-full lg:max-w-5xl lg:mx-auto">
         <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-outline">
           ERROR_PROTOCOL // 404_NOT_FOUND
@@ -23,6 +23,6 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
