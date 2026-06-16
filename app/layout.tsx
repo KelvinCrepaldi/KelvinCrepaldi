@@ -8,6 +8,8 @@ import { ThemeProvider } from "@/_components/theme/theme-provider";
 import { CrtOverlay } from "@/_components/_ui/CrtOverlay";
 import { DotTextureBackground } from "@/_components/_ui/DotTextureBackground";
 
+import { siteConfig } from "@/_utils/site";
+
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -17,8 +19,22 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "KELVIN CREPALDI // DEV",
-  description: "Kelvin Crepaldi — Desenvolvedor de Software | Curitiba, Brasil",
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.title,
+  description: siteConfig.description,
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
 };
 
 const themeInitScript = `
@@ -29,7 +45,7 @@ const themeInitScript = `
     var dark;
     if (t === 'dark') dark = true;
     else if (t === 'light') dark = false;
-    else dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    else dark = true;
     document.documentElement.classList.toggle('dark', dark);
   } catch (e) {}
 })();
@@ -44,9 +60,9 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       suppressHydrationWarning
-      className={spaceGrotesk.variable}
+      className={`${spaceGrotesk.variable} dark`}
     >
-      <body className="relative bg-surface text-on-surface selection:bg-on-surface selection:text-surface overflow-x-hidden font-body antialiased transition-colors duration-300">
+      <body className="relative bg-surface text-on-surface selection:bg-on-surface selection:text-surface overflow-x-hidden font-body antialiased">
         <Script
           id="theme-init"
           strategy="beforeInteractive"
