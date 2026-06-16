@@ -1,3 +1,5 @@
+import { Activity } from "lucide-react";
+
 import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
 import { WaitingCursor } from "@/_components/_ui/animations/WaitingCursor";
 
@@ -29,14 +31,32 @@ export function SystemLogs() {
       className="relative z-10 px-6 md:px-12 pt-24 pb-36 md:pb-44 bg-surface-container-low overflow-hidden"
     >
       <div className="w-full lg:max-w-6xl lg:mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div>
-            <div className="flex items-center gap-3 mb-12 flex-wrap">
-              <BlinkingDotRow count={5} size="sm" />
-              <h3 className="text-xs font-bold tracking-[0.5em] uppercase text-outline">
-                SYSTEM_LOGS // RECENT_ACTIVITY
+        <header className="relative z-10 mb-12 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <div className="mb-1 flex flex-wrap items-center gap-3">
+              <BlinkingDotRow count={4} size="sm" />
+              <h3 className="text-4xl font-black uppercase tracking-tighter text-on-surface md:text-6xl">
+                System_Logs
               </h3>
             </div>
+            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm opacity-60">
+              <BlinkingDotRow count={3} size="sm" className="opacity-70" />
+              ATIVIDADE // registros recentes e princípios que guiam o trabalho
+            </p>
+          </div>
+          <div className="mb-4 hidden h-px flex-grow bg-outline-variant md:mx-8 md:block" />
+          <Activity
+            className="h-10 w-10 shrink-0 text-on-surface opacity-20 md:h-12 md:w-12"
+            strokeWidth={1.25}
+            aria-hidden
+          />
+        </header>
+
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
+          <div>
+            <p className="mb-8 font-mono text-[10px] uppercase tracking-[0.4em] text-outline">
+              RECENT_ACTIVITY // FEED
+            </p>
             <div className="space-y-4">
               <SystemLogFeed
                 entries={SYSTEM_LOG_FEED_ENTRIES}

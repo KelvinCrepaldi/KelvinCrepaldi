@@ -82,8 +82,11 @@ export function Timeline() {
                 Timeline
               </h3>
             </div>
-            <p className="text-sm opacity-60 mt-2 font-mono flex items-center gap-2 flex-wrap">
+            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm opacity-60">
               <BlinkingDotRow count={3} size="sm" className="opacity-70" />
+              TRAJETÓRIA // experiência profissional e formação ao longo do tempo
+            </p>
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-on-surface/45">
               TOTAL_RECORDS: {total}
             </p>
           </div>
