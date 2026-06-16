@@ -1,5 +1,6 @@
 "use client";
 
+import { MotionConfig } from "framer-motion";
 import {
   createContext,
   useCallback,
@@ -34,18 +35,14 @@ function readUserPreference(): Theme | null {
   }
 }
 
-function getSystemTheme(): Theme {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
+const DEFAULT_THEME: Theme = "dark";
 
 function syncDom(next: Theme) {
   document.documentElement.classList.toggle("dark", next === "dark");
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("light");
+  const [theme, setThemeState] = useState<Theme>(DEFAULT_THEME);
   const [ready, setReady] = useState(false);
 
   const applyUserTheme = useCallback((next: Theme) => {
@@ -59,21 +56,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const stored = readUserPreference();
-    const resolved = stored ?? getSystemTheme();
+    const resolved = readUserPreference() ?? DEFAULT_THEME;
     setThemeState(resolved);
     syncDom(resolved);
     setReady(true);
-
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const onSystemChange = () => {
-      if (readUserPreference() !== null) return;
-      const next = getSystemTheme();
-      setThemeState(next);
-      syncDom(next);
-    };
-    mq.addEventListener("change", onSystemChange);
-    return () => mq.removeEventListener("change", onSystemChange);
   }, []);
 
   const setTheme = useCallback(
@@ -93,7 +79,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    <MotionConfig reducedMotion="user">
+      <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    </MotionConfig>
   );
 }
 
