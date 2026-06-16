@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { ProjectArchiveMobileNav } from "@/_components/project/archive-mobile-nav";
 import { ProjectArchiveSidebar } from "@/_components/project/archive-sidebar";
 import { ProjectDetailHeader } from "@/_components/project/detail-header";
 import { MarkdownArticle } from "@/_components/project/markdown-article";
-import { getProject, PROJECTS_CATALOG } from "@/_utils/projects";
+import { getProject, PROJECTS_CATALOG, projectCoverUrl } from "@/_utils/projects";
+import { siteConfig } from "@/_utils/site";
 
 const PROJECT_CONTENT_GUTTER = "px-6 md:px-10 lg:px-12 xl:px-14";
 
@@ -22,9 +24,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return { title: "Projeto" };
+  const cover = projectCoverUrl(slug, 1200, 630);
   return {
-    title: `${project.title} // KELVIN CREPALDI // DEV`,
+    title: `${project.title} // ${siteConfig.title}`,
     description: project.excerpt,
+    openGraph: {
+      title: project.title,
+      description: project.excerpt,
+      type: "article",
+      url: `${siteConfig.url}/projects/${slug}`,
+      images: [{ url: cover, width: 1200, height: 630, alt: project.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.excerpt,
+      images: [cover],
+    },
   };
 }
 
@@ -36,6 +52,7 @@ export default async function ProjectPage({ params }: PageProps) {
 
   return (
     <div className="relative z-10 min-h-[calc(100dvh_-_var(--site-header-height))]">
+      <ProjectArchiveMobileNav currentSlug={slug} projects={PROJECTS_CATALOG} />
       <div className="flex flex-col lg:flex-row lg:items-start w-full lg:max-w-6xl lg:mx-auto">
         <ProjectArchiveSidebar currentSlug={slug} projects={PROJECTS_CATALOG} />
 

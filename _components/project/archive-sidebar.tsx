@@ -39,6 +39,7 @@ export function ProjectArchiveSidebar({
             <Link
               key={p.slug}
               href={`/projects/${p.slug}`}
+              aria-current={active ? "page" : undefined}
               className={[
                 "group flex min-w-[10.5rem] flex-col gap-0.5 border border-transparent px-3 py-2.5 transition-colors duration-200 lg:min-w-0",
                 active
