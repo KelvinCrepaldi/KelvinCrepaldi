@@ -1,4 +1,4 @@
-## Summary
+## Resumo
 
 O **Totem_Platform** é um ecossistema completo para totens de autoatendimento. Clientes configuram seus totens via um **Dashboard web** (Next.js) que se comunica com uma **API** (também Next.js) e um banco **Supabase**. Os totens rodam um app **Electron** com um sistema de iframes que carrega múltiplos aplicativos **Vite** — baixados do banco e instalados localmente, com **offline-first** e atualizações automáticas. Periféricos (maquininhas de pagamento, impressoras) são controlados via **IPC do Electron**, expostos aos apps renderer através de APIs e do `window.postMessage`.
 

@@ -52,7 +52,7 @@ const unsorted: Project[] = [
     vol: "VOL_02",
     title: "Terminal_Core",
     excerpt:
-      "Desktop application built with Electron for deep-level file system manipulation and indexing.",
+      "Aplicação desktop em Electron para manipulação e indexação profunda do sistema de arquivos.",
     tags: ["Electron", "Node"],
     lastStableBuild: "2024.02.28",
     sortOrder: 2,
@@ -65,14 +65,27 @@ const unsorted: Project[] = [
     vol: "VOL_03",
     title: "Nexus_API",
     excerpt:
-      "Distributed backend architecture handling asynchronous data ingestion from multiple remote sensors.",
+      "Arquitetura backend distribuída para ingestão assíncrona de dados de múltiplos sensores remotos.",
     tags: ["Express", "Redis"],
     lastStableBuild: "2023.11.15",
     sortOrder: 3,
     listOnHome: true,
     subtitle: "Backend distribuído para ingestão assíncrona",
     md: nexusMd,
-  }
+  },
+  {
+    slug: "void-gallery",
+    vol: "VOL_04",
+    title: "Void_Gallery",
+    excerpt:
+      "Galeria arquivística para ativos pesados (imagens e cenas 3D) com carregamento progressivo e foco no objeto.",
+    tags: ["Next.js", "Three.js"],
+    lastStableBuild: "2023.09.01",
+    sortOrder: 4,
+    listOnHome: true,
+    subtitle: "Navegação deliberada de ativos visuais pesados",
+    md: voidMd,
+  },
 ];
 
 /** Catálogo ordenado por `sortOrder` — única fonte de verdade. */
@@ -84,8 +97,13 @@ export const projectBySlug = Object.fromEntries(
   PROJECTS_CATALOG.map((p) => [p.slug, p]),
 ) as Record<string, Project>;
 
-export function homeProjects(): Project[] {
-  return PROJECTS_CATALOG.filter((p) => p.listOnHome !== false);
+export const HOME_PROJECTS_LIMIT = 3;
+
+export function homeProjects(limit = HOME_PROJECTS_LIMIT): Project[] {
+  return PROJECTS_CATALOG.filter((p) => p.listOnHome !== false).slice(
+    0,
+    limit,
+  );
 }
 
 export function getProject(slug: string): Project | undefined {
