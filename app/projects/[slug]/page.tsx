@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ProjectArchiveMobileNav } from "@/_components/project/archive-mobile-nav";
-import { ProjectArchiveSidebar } from "@/_components/project/archive-sidebar";
+import { ArchivePageShell } from "@/_components/archive/archive-page-shell";
 import { ProjectDetailHeader } from "@/_components/project/detail-header";
 import { MarkdownArticle } from "@/_components/project/markdown-article";
 import { getProject, PROJECTS_CATALOG, projectCoverUrl } from "@/_utils/projects";
@@ -51,26 +50,19 @@ export default async function ProjectPage({ params }: PageProps) {
   if (!project) notFound();
 
   return (
-    <div className="relative z-10 min-h-[calc(100dvh_-_var(--site-header-height))]">
-      <ProjectArchiveMobileNav currentSlug={slug} projects={PROJECTS_CATALOG} />
-      <div className="flex flex-col lg:flex-row lg:items-start w-full lg:max-w-6xl lg:mx-auto">
-        <ProjectArchiveSidebar currentSlug={slug} projects={PROJECTS_CATALOG} />
-
-        <div className="order-1 flex min-w-0 flex-1 flex-col text-left lg:order-2">
-          <ProjectDetailHeader
-            project={project}
-            subtitle={project.subtitle}
-            contentGutterClass={PROJECT_CONTENT_GUTTER}
-          />
-          <div
-            className={`bg-surface-container-low/60 flex flex-1 flex-col ${PROJECT_CONTENT_GUTTER} py-12 md:py-14 lg:py-16`}
-          >
-            <div className="w-full max-w-3xl">
-              <MarkdownArticle markdown={project.md} />
-            </div>
-          </div>
+    <ArchivePageShell variant="projects" currentSlug={slug}>
+      <ProjectDetailHeader
+        project={project}
+        subtitle={project.subtitle}
+        contentGutterClass={PROJECT_CONTENT_GUTTER}
+      />
+      <div
+        className={`bg-surface-container-low/60 flex flex-1 flex-col ${PROJECT_CONTENT_GUTTER} py-12 md:py-14 lg:py-16`}
+      >
+        <div className="w-full max-w-3xl">
+          <MarkdownArticle markdown={project.md} />
         </div>
       </div>
-    </div>
+    </ArchivePageShell>
   );
 }

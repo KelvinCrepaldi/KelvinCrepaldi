@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { LogArchiveMobileNav } from "@/_components/log/log-archive-mobile-nav";
-import { LogArchiveSidebar } from "@/_components/log/log-archive-sidebar";
+import { ArchivePageShell } from "@/_components/archive/archive-page-shell";
 import { LogDetailHeader } from "@/_components/log/log-detail-header";
 import { MarkdownArticle } from "@/_components/project/markdown-article";
 import { getLog, LOGS_CATALOG } from "@/_utils/logs";
@@ -48,25 +47,15 @@ export default async function LogPage({ params }: PageProps) {
   if (!log) notFound();
 
   return (
-    <div className="relative z-10 min-h-[calc(100dvh_-_var(--site-header-height))]">
-      <LogArchiveMobileNav currentSlug={slug} logs={LOGS_CATALOG} />
-      <div className="flex w-full flex-col lg:max-w-6xl lg:mx-auto lg:flex-row lg:items-start">
-        <LogArchiveSidebar currentSlug={slug} logs={LOGS_CATALOG} />
-
-        <div className="order-1 flex min-w-0 flex-1 flex-col text-left lg:order-2">
-          <LogDetailHeader
-            log={log}
-            contentGutterClass={LOG_CONTENT_GUTTER}
-          />
-          <div
-            className={`flex flex-1 flex-col bg-surface-container-low/60 ${LOG_CONTENT_GUTTER} py-12 md:py-14 lg:py-16`}
-          >
-            <div className="w-full max-w-3xl">
-              <MarkdownArticle markdown={log.md} className="log-md" />
-            </div>
-          </div>
+    <ArchivePageShell variant="logs" currentSlug={slug}>
+      <LogDetailHeader log={log} contentGutterClass={LOG_CONTENT_GUTTER} />
+      <div
+        className={`flex flex-1 flex-col bg-surface-container-low/60 ${LOG_CONTENT_GUTTER} py-12 md:py-14 lg:py-16`}
+      >
+        <div className="w-full max-w-3xl">
+          <MarkdownArticle markdown={log.md} className="log-md" />
         </div>
       </div>
-    </div>
+    </ArchivePageShell>
   );
 }
