@@ -2,6 +2,12 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import { SITE_SCROLL_ID } from "@/_components/layout/scroll-container";
+
+function getScrollElement() {
+  return document.getElementById(SITE_SCROLL_ID);
+}
+
 export function useMobileDrawers() {
   const [navOpen, setNavOpen] = useState(false);
   const [archiveOpen, setArchiveOpen] = useState(false);
@@ -41,10 +47,16 @@ export function useMobileDrawers() {
   useEffect(() => {
     if (!navOpen && !archiveOpen) return;
 
-    const prev = document.body.style.overflow;
+    const scrollEl = getScrollElement();
+    const prevScrollOverflow = scrollEl?.style.overflow ?? "";
+    const prevBodyOverflow = document.body.style.overflow;
+
+    if (scrollEl) scrollEl.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
+
     return () => {
-      document.body.style.overflow = prev;
+      if (scrollEl) scrollEl.style.overflow = prevScrollOverflow;
+      document.body.style.overflow = prevBodyOverflow;
     };
   }, [navOpen, archiveOpen]);
 

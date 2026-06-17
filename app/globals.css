@@ -5,6 +5,12 @@
 html {
   color-scheme: dark;
   background-color: rgb(54 51 34);
+  height: 100%;
+}
+
+html,
+body {
+  height: 100dvh;
 }
 
 html:not(.dark) {
@@ -131,6 +137,36 @@ html:not(.dark) {
 
 body {
   font-family: var(--font-space-grotesk), sans-serif;
+}
+
+/* Scroll principal da app — header fica fora deste container */
+.terminal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--outline) / 0.55) rgb(var(--surface-container-low));
+}
+
+.terminal-scrollbar::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-track {
+  background: rgb(var(--surface-container-low));
+  border-left: 1px solid rgb(var(--outline-variant) / 0.35);
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(var(--outline) / 0.45);
+  border: 2px solid rgb(var(--surface-container-low));
+  border-radius: 0;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--outline) / 0.7);
+}
+
+.terminal-scrollbar::-webkit-scrollbar-corner {
+  background: rgb(var(--surface-container-low));
 }
 
 .dot-texture {

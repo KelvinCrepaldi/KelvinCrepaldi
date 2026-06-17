@@ -15,8 +15,8 @@ export function ArchivePageShell({
   children,
 }: ArchivePageShellProps) {
   return (
-    <div className="relative z-10 min-h-[calc(100dvh_-_var(--site-header-height))]">
-      <div className="flex w-full flex-col md:max-w-6xl md:mx-auto md:flex-row md:items-start">
+    <div className="relative z-10">
+      <div className="flex w-full flex-col md:mx-auto md:max-w-6xl md:flex-row md:items-start">
         <ArchiveSidebar variant={variant} currentSlug={currentSlug} />
 
         <div className="order-1 flex min-w-0 flex-1 flex-col text-left md:order-2">

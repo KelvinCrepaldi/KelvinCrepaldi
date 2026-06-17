@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { ThemeToggle } from "@/_components/theme/theme-toggle";
+import { useScrollContainer } from "@/_components/layout/scroll-container";
 import { showMobileArchiveButton } from "@/_utils/layout";
 
 import { MobileArchiveDrawer } from "./mobile/mobile-archive-drawer";
@@ -17,7 +18,10 @@ const THRESHOLD_PX = 28;
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const { scrollY } = useScroll();
+  const scrollRef = useScrollContainer();
+  const { scrollY } = useScroll(
+    scrollRef ? { container: scrollRef } : {},
+  );
   const [isScrolled, setIsScrolled] = useState(false);
   const {
     navOpen,
@@ -34,8 +38,9 @@ export function SiteHeader() {
   });
 
   useEffect(() => {
-    setIsScrolled(window.scrollY > THRESHOLD_PX);
-  }, [pathname]);
+    const top = scrollRef?.current?.scrollTop ?? 0;
+    setIsScrolled(top > THRESHOLD_PX);
+  }, [pathname, scrollRef]);
 
   useEffect(() => {
     closeAll();
@@ -78,7 +83,7 @@ export function SiteHeader() {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 flex h-16 max-h-16 min-h-16 w-full max-w-full items-center justify-between px-6 transition-[colors,box-shadow,border-color] duration-300 ease-out ${
+        className={`relative z-50 flex h-16 max-h-16 min-h-16 w-full max-w-full shrink-0 items-center justify-between px-6 transition-[colors,box-shadow,border-color] duration-300 ease-out ${
           drawerOpen ? "z-[60]" : "z-50"
         } ${bottomRule || "border-b-0 border-transparent"}`}
         initial={false}
@@ -121,7 +126,7 @@ export function SiteHeader() {
                 HOME
               </Link>
               <Link
-                href="/#projects"
+                href="/projects"
                 className={isProjects ? activeProjects : inactive}
               >
                 PROJECTS

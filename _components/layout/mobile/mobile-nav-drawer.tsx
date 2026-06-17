@@ -71,7 +71,7 @@ export function MobileNavDrawer({
                   HOME
                 </Link>
                 <Link
-                  href="/#projects"
+                  href="/projects"
                   className={`${mobileLinkBase} ${isProjects ? "bg-on-surface/5" : ""}`}
                   onClick={onClose}
                 >

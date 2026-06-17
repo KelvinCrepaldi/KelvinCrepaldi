@@ -4,6 +4,10 @@ import { Space_Grotesk } from "next/font/google";
 
 import { SiteFooter } from "@/_components/layout/site-footer";
 import { SiteHeader } from "@/_components/layout/site-header";
+import {
+  ScrollContainerProvider,
+  SiteScrollViewport,
+} from "@/_components/layout/scroll-container";
 import { ThemeProvider } from "@/_components/theme/theme-provider";
 import { CrtOverlay } from "@/_components/_ui/CrtOverlay";
 import { DotTextureBackground } from "@/_components/_ui/DotTextureBackground";
@@ -62,20 +66,24 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${spaceGrotesk.variable} dark`}
     >
-      <body className="relative bg-surface text-on-surface selection:bg-on-surface selection:text-surface overflow-x-hidden font-body antialiased">
+      <body className="relative h-[100dvh] overflow-hidden bg-surface text-on-surface selection:bg-on-surface selection:text-surface font-body antialiased">
         <Script
           id="theme-init"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: themeInitScript }}
         />
         <ThemeProvider>
-          <DotTextureBackground />
-          <SiteHeader />
-          <main className="relative z-10 min-h-screen pt-[var(--site-header-height)]">
-            {children}
-          </main>
-          <SiteFooter />
-          <CrtOverlay />
+          <ScrollContainerProvider>
+            <div className="relative flex h-[100dvh] flex-col overflow-hidden">
+              <DotTextureBackground />
+              <SiteHeader />
+              <SiteScrollViewport>
+                <main className="relative z-10 min-h-full">{children}</main>
+                <SiteFooter />
+              </SiteScrollViewport>
+              <CrtOverlay />
+            </div>
+          </ScrollContainerProvider>
         </ThemeProvider>
       </body>
     </html>
