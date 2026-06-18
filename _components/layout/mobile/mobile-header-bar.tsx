@@ -10,6 +10,7 @@ type MobileHeaderBarProps = {
   headerChrome: string;
   title: string;
   titleHref: string;
+  onTitleClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
   navOpen: boolean;
   archiveOpen: boolean;
   onToggleNav: () => void;
@@ -21,6 +22,7 @@ export function MobileHeaderBar({
   headerChrome,
   title,
   titleHref,
+  onTitleClick,
   navOpen,
   archiveOpen,
   onToggleNav,
@@ -48,7 +50,7 @@ export function MobileHeaderBar({
 
       <Link
         href={titleHref}
-        onClick={onCloseDrawers}
+        onClick={onTitleClick ?? onCloseDrawers}
         className={`truncate text-center text-lg font-black tracking-widest transition-colors duration-300 ${headerChrome}`}
       >
         {title}

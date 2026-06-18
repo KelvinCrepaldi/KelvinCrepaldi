@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { useGoHome } from "@/_components/layout/scroll-container";
 import { MobileDrawerShell } from "./mobile-drawer-shell";
 
 const mobileLinkBase =
@@ -21,6 +22,7 @@ export function MobileNavDrawer({
   const isHome = pathname === "/";
   const isProjects = pathname.startsWith("/projects");
   const isLogs = pathname.startsWith("/log");
+  const goHome = useGoHome();
 
   return (
     <MobileDrawerShell
@@ -36,7 +38,7 @@ export function MobileNavDrawer({
         <Link
           href="/"
           className={`${mobileLinkBase} ${isHome ? "bg-on-surface/5" : ""}`}
-          onClick={onClose}
+          onClick={goHome(onClose)}
         >
           HOME
         </Link>

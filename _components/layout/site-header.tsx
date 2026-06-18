@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { ThemeToggle } from "@/_components/theme/theme-toggle";
-import { useScrollContainer } from "@/_components/layout/scroll-container";
+import { useScrollContainer, useGoHome } from "@/_components/layout/scroll-container";
 import {
   getMobileHeaderHref,
   getMobileHeaderTitle,
@@ -22,6 +22,7 @@ const THRESHOLD_PX = 28;
 export function SiteHeader() {
   const pathname = usePathname();
   const scrollRef = useScrollContainer();
+  const goHome = useGoHome();
   const { scrollY } = useScroll(
     scrollRef ? { container: scrollRef } : {},
   );
@@ -110,6 +111,7 @@ export function SiteHeader() {
           >
             <Link
               href="/"
+              onClick={goHome()}
               className={`text-xl font-black tracking-widest inline-block transition-colors duration-300 ${headerChrome}`}
             >
               main/kelvin :: Developer
@@ -118,7 +120,7 @@ export function SiteHeader() {
 
           <div className="hidden min-w-0 flex-1 items-center justify-end gap-6 md:flex">
             <div className="flex gap-8 font-space-grotesk text-sm font-bold uppercase tracking-tighter">
-              <Link href="/" className={isHome ? activeHome : inactive}>
+              <Link href="/" onClick={goHome()} className={isHome ? activeHome : inactive}>
                 HOME
               </Link>
               <Link
@@ -147,6 +149,11 @@ export function SiteHeader() {
             headerChrome={headerChrome}
             title={mobileHeaderTitle}
             titleHref={mobileHeaderHref}
+            onTitleClick={
+              mobileHeaderHref === "/"
+                ? goHome(closeAll)
+                : undefined
+            }
             navOpen={navOpen}
             archiveOpen={archiveOpen}
             onToggleNav={toggleNav}

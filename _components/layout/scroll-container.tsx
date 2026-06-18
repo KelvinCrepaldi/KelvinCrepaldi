@@ -1,11 +1,13 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useRef,
+  type MouseEvent,
   type ReactNode,
   type RefObject,
 } from "react";
@@ -43,7 +45,10 @@ function useHashScroll(scrollRef: RefObject<HTMLDivElement | null>) {
 
     const onHashChange = () => {
       const hash = window.location.hash;
-      if (!hash) return;
+      if (!hash) {
+        container.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
       requestAnimationFrame(() => scrollToHashTarget(hash));
     };
 
@@ -79,4 +84,21 @@ export function SiteScrollViewport({ children }: { children: ReactNode }) {
 
 export function useScrollContainer() {
   return useContext(ScrollContainerContext);
+}
+
+export function useGoHome() {
+  const router = useRouter();
+  const scrollRef = useScrollContainer();
+
+  return useCallback(
+    (onAfter?: () => void) => (event: MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      onAfter?.();
+      router.push("/");
+      requestAnimationFrame(() => {
+        scrollRef?.current?.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    },
+    [router, scrollRef],
+  );
 }
