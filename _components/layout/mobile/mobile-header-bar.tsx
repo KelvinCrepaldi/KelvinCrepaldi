@@ -31,7 +31,7 @@ export function MobileHeaderBar({
         {showArchiveButton ? (
           <motion.button
             type="button"
-            className={`relative z-[60] p-2 transition-colors duration-300 ${headerChrome}`}
+            className={`p-2 transition-colors duration-300 ${headerChrome}`}
             aria-label={archiveOpen ? "Fechar índice" : "Abrir índice de arquivo"}
             aria-expanded={archiveOpen}
             aria-controls="mobile-archive-drawer"
@@ -62,7 +62,7 @@ export function MobileHeaderBar({
         <ThemeToggle className={headerChrome} />
         <motion.button
           type="button"
-          className={`relative z-[60] p-2 transition-colors duration-300 ${headerChrome}`}
+          className={`p-2 transition-colors duration-300 ${headerChrome}`}
           aria-label={navOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={navOpen}
           aria-controls="mobile-nav-drawer"

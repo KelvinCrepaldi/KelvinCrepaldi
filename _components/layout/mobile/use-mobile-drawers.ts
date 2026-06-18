@@ -48,15 +48,13 @@ export function useMobileDrawers() {
     if (!navOpen && !archiveOpen) return;
 
     const scrollEl = getScrollElement();
-    const prevScrollOverflow = scrollEl?.style.overflow ?? "";
-    const prevBodyOverflow = document.body.style.overflow;
+    if (!scrollEl) return;
 
-    if (scrollEl) scrollEl.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
+    const prevOverflow = scrollEl.style.overflow;
+    scrollEl.style.overflow = "hidden";
 
     return () => {
-      if (scrollEl) scrollEl.style.overflow = prevScrollOverflow;
-      document.body.style.overflow = prevBodyOverflow;
+      scrollEl.style.overflow = prevOverflow;
     };
   }, [navOpen, archiveOpen]);
 

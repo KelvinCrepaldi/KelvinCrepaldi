@@ -50,7 +50,6 @@ export function SiteHeader() {
   const isProjects = pathname.startsWith("/projects");
   const isLogs = pathname.startsWith("/log");
   const showArchiveButton = showMobileArchiveButton(pathname);
-  const drawerOpen = navOpen || archiveOpen;
 
   const inactive = isScrolled
     ? "text-surface/55 hover:text-surface dark:text-on-surface/55 dark:hover:text-on-surface transition-colors duration-150"
@@ -74,36 +73,29 @@ export function SiteHeader() {
       ? "border-b border-surface/25 dark:border-on-surface/25"
       : "border-b border-on-surface/18");
 
-  const headerChrome = drawerOpen
-    ? "text-on-surface"
-    : isScrolled
-      ? "text-surface dark:text-on-surface"
-      : "text-on-surface";
+  const headerChrome = isScrolled
+    ? "text-surface dark:text-on-surface"
+    : "text-on-surface";
 
   return (
     <>
       <motion.nav
         className={`relative z-50 flex h-16 max-h-16 min-h-16 w-full max-w-full shrink-0 items-center justify-between px-6 transition-[colors,box-shadow,border-color] duration-300 ease-out ${
-          drawerOpen ? "z-[60]" : "z-50"
-        } ${bottomRule || "border-b-0 border-transparent"}`}
+          bottomRule || "border-b-0 border-transparent"
+        }`}
         initial={false}
         animate={
-          drawerOpen
+          isScrolled
             ? {
-                backgroundColor: "rgb(var(--surface))",
+                backgroundColor: "rgba(54, 51, 34, 0.94)",
+                boxShadow: "0 12px 40px rgba(0,0,0,0.18)",
+              }
+            : {
+                backgroundColor: "rgb(var(--header-unscrolled) / 0.85)",
                 boxShadow: "0 0 0 rgba(0,0,0,0)",
               }
-            : isScrolled
-              ? {
-                  backgroundColor: "rgba(54, 51, 34, 0.94)",
-                  boxShadow: "0 12px 40px rgba(0,0,0,0.18)",
-                }
-              : {
-                  backgroundColor: "rgb(var(--header-unscrolled) / 0.85)",
-                  boxShadow: "0 0 0 rgba(0,0,0,0)",
-                }
         }
-        style={{ backdropFilter: drawerOpen ? "none" : "blur(12px)" }}
+        style={{ backdropFilter: "blur(12px)" }}
         aria-label="Navegação principal"
       >
         <div className="flex w-full items-center justify-between gap-3 md:max-w-6xl md:mx-auto">
