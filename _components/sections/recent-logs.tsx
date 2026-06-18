@@ -26,11 +26,11 @@ export function RecentLogs() {
                 Field_Logs
               </h3>
             </div>
-            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm opacity-60">
+            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm text-on-surface/70">
               <BlinkingDotRow count={3} size="sm" className="opacity-70" />
               ANOTAÇÕES // blog com experiências e aprendizados do dia a dia
             </p>
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-on-surface/45">
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-terminal-accent/60">
               LATEST_ENTRIES: {total}
             </p>
           </div>
@@ -50,10 +50,10 @@ export function RecentLogs() {
                 className="group block border-b border-outline-variant/15 py-3.5 transition-colors hover:border-outline-variant/35 md:py-4"
               >
                 <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between md:gap-8">
-                  <p className="min-w-0 text-sm font-bold uppercase leading-snug tracking-tight text-on-surface group-hover:underline md:text-base">
+                  <p className="min-w-0 text-base font-bold uppercase leading-snug tracking-tight text-on-surface group-hover:underline md:text-lg">
                     {log.title}
                   </p>
-                  <p className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 md:text-right">
+                  <p className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-terminal-accent/60 md:text-right">
                     {log.logId}
                     <span className="mx-1.5 opacity-40">—</span>
                     <time dateTime={log.publishedAt.replace(/\./g, "-")}>
@@ -61,7 +61,7 @@ export function RecentLogs() {
                     </time>
                   </p>
                 </div>
-                <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-on-surface/60 md:mt-2 md:max-w-4xl">
+                <p className="mt-1.5 line-clamp-2 text-body text-on-surface/60 md:mt-2 md:max-w-4xl">
                   {log.excerpt}
                 </p>
               </Link>

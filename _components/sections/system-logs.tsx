@@ -39,7 +39,7 @@ export function SystemLogs() {
                 System_Logs
               </h3>
             </div>
-            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm opacity-60">
+            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm text-on-surface/70">
               <BlinkingDotRow count={3} size="sm" className="opacity-70" />
               ATIVIDADE // registros recentes e princípios que guiam o trabalho
             </p>
@@ -54,7 +54,7 @@ export function SystemLogs() {
 
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           <div>
-            <p className="mb-8 font-mono text-[10px] uppercase tracking-[0.4em] text-outline">
+            <p className="mb-8 font-mono text-[10px] uppercase tracking-[0.4em] text-terminal-accent/90">
               RECENT_ACTIVITY // FEED
             </p>
             <div className="space-y-4">
@@ -65,7 +65,7 @@ export function SystemLogs() {
                 lengthFactorMs={15}
               />
               <SystemLogRow
-                level={<span className="text-on-surface/60">[WAITING]</span>}
+                level={<span className="text-terminal-accent/60">[WAITING]</span>}
                 time="--:--:--"
                 message={<WaitingCursor />}
               />
@@ -80,7 +80,7 @@ export function SystemLogs() {
                 &quot;Interfaces performáticas e resilientes são a base de
                 produtos que escalam.&quot;
               </h5>
-              <p className="text-sm leading-relaxed opacity-70">
+              <p className="text-body opacity-70">
                 Desenvolvedor de Software com 2 anos de experiência em sistemas
                 web de telemedicina e gestão administrativa. Especialista em
                 interfaces dinâmicas com React, Vite e Electron, fluxos de

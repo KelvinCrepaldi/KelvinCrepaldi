@@ -33,20 +33,20 @@ export default function ProjectsIndexPage() {
         <div className="w-full max-w-3xl">
           <div className="mb-4 flex flex-wrap items-center gap-3">
             <BlinkingDotRow count={4} size="sm" />
-            <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-outline">
+            <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-terminal-accent/90">
               PROJECT_ARCHIVE // VOLUME_INDEX
             </p>
           </div>
           <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-tighter text-on-surface md:text-6xl">
             Project_Archive
           </h1>
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-on-surface/75 md:text-base">
+          <p className="mt-6 max-w-2xl text-body text-on-surface/75">
             Esta seção reúne os volumes do portfólio — produtos entregues,
             experimentos e arquiteturas que merecem contexto além do card da home.
             Cada volume documenta stack, decisões e o que foi aprendido no
             caminho.
           </p>
-          <p className="mt-4 font-mono text-[10px] uppercase tracking-widest text-on-surface/45">
+          <p className="mt-4 font-mono text-[10px] uppercase tracking-widest text-terminal-accent/60">
             TOTAL_VOLUMES: {total}
           </p>
         </div>

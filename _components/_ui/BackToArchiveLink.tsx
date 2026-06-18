@@ -10,7 +10,7 @@ export function BackToArchiveLink() {
   return (
     <MotionLink
       href="/projects"
-      className="mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface/60 hover:text-on-surface md:mb-9"
+      className="mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-terminal-accent/70 hover:text-terminal-accent/90 md:mb-9"
       whileHover={{ x: -5 }}
       transition={{ type: "spring", stiffness: 380, damping: 22 }}
     >

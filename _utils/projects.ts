@@ -88,29 +88,8 @@ const unsorted: Project[] = [
   },
 ];
 
-const TEST_PROJECT_COUNT = 16;
-
-const testProjects: Project[] = Array.from({ length: TEST_PROJECT_COUNT }, (_, i) => {
-  const n = i + 5;
-  const padded = String(n).padStart(2, "0");
-  const slug = `test-volume-${padded}`;
-
-  return {
-    slug,
-    vol: `VOL_${padded}`,
-    title: `Test_Volume_${padded}`,
-    excerpt: `Volume de teste ${padded} para validar scroll do índice lateral de projetos.`,
-    tags: ["test", "scroll"],
-    lastStableBuild: `2024.03.${padded}`,
-    sortOrder: n,
-    listOnHome: false,
-    subtitle: `Registro de teste ${padded}`,
-    md: `# Test Volume ${padded}\n\nConteúdo placeholder para teste de scroll no sidebar.`,
-  };
-});
-
 /** Catálogo ordenado por `sortOrder` — única fonte de verdade. */
-export const PROJECTS_CATALOG = [...unsorted, ...testProjects].sort(
+export const PROJECTS_CATALOG = [...unsorted].sort(
   (a, b) => a.sortOrder - b.sortOrder,
 );
 

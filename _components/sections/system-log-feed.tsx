@@ -35,9 +35,7 @@ export function logStatusClassName(
   }
 
   if (key === "OK" || key === "SYNC" || key === "DONE" || key === "SUCCESS") {
-    return dark
-      ? "font-bold text-green-400"
-      : "font-bold text-green-700 dark:text-emerald-400";
+    return "font-bold text-terminal-accent/90";
   }
 
   if (key === "INFO") {

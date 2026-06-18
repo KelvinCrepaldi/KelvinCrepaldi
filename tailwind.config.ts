@@ -51,6 +51,7 @@ const config: Config = {
         "on-surface-variant": rgb("on-surface-variant"),
         surface: rgb("surface"),
         "primary-dim": rgb("primary-dim"),
+        "terminal-accent": rgb("terminal-accent"),
         "tertiary-container": rgb("tertiary-container"),
         "inverse-primary": rgb("inverse-primary"),
         "surface-container-lowest": rgb("surface-container-lowest"),
@@ -82,9 +83,14 @@ const config: Config = {
           from: { transform: "rotate(360deg)" },
           to: { transform: "rotate(0deg)" },
         },
+        "skill-chip-in": {
+          from: { opacity: "0", transform: "translateY(6px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "spin-reverse": "spin-reverse 90s linear infinite",
+        "skill-chip-in": "skill-chip-in 0.35s ease-out forwards",
       },
     },
   },

@@ -54,7 +54,7 @@ export function MobileNavDrawer({
         >
           LOG
         </Link>
-        <Link className={mobileLinkBase} href="/#about" onClick={onClose}>
+        <Link className={mobileLinkBase} href="/#timeline" onClick={onClose}>
           ABOUT
         </Link>
         <Link className={mobileLinkBase} href="/#skills" onClick={onClose}>

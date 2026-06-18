@@ -21,6 +21,8 @@ html:not(.dark) {
 /* Alinhar <main> e sidebars ao header fixo (ver SiteHeader: h-16) */
 :root {
   --site-header-height: 4rem;
+  /* Verde terminal — alinhado ao [OK] / barra de loading (emerald) */
+  --terminal-accent: 4 120 87;
   /* Barra do header sem scroll: translúcido sobre o fundo da página */
   --header-unscrolled: 254 249 237;
   /* Tema claro — superfície = creme, texto = marrom do antigo footer */
@@ -80,6 +82,7 @@ html:not(.dark) {
 
 .dark {
   --header-unscrolled: 54 51 34;
+  --terminal-accent: 52 211 153;
   /* Tema escuro — fundo da página = antigo footer (#363322); texto = creme (#fef9ed) */
   --footer-surface: 32 30 22;
   --secondary-fixed-dim: 90 86 78;
@@ -201,7 +204,7 @@ body {
 }
 
 .project-md {
-  @apply text-left text-on-surface/90 text-sm leading-relaxed;
+  @apply text-left text-on-surface/90 text-sm leading-relaxed md:text-base;
 }
 
 .project-md h1 {
@@ -270,7 +273,7 @@ body {
 }
 
 .log-md {
-  @apply text-left text-on-surface/90 text-sm leading-relaxed;
+  @apply text-left text-on-surface/90 text-sm leading-relaxed md:text-base;
 }
 
 .log-md h1 {
@@ -403,6 +406,12 @@ body {
 
   .crt-overlay {
     display: none;
+  }
+}
+
+@layer utilities {
+  .text-body {
+    @apply text-sm leading-relaxed md:text-base;
   }
 }
 

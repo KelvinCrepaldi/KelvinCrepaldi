@@ -47,7 +47,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
       <div className="flex flex-1 flex-col p-6">
         <div className="mb-8 flex items-start justify-between">
-          <span className="inline-flex items-center gap-2 text-[10px] font-bold tracking-widest text-on-surface opacity-40">
+          <span className="inline-flex items-center gap-2 text-[10px] font-bold tracking-widest text-terminal-accent/65">
             <BlinkingDot
               size="sm"
               delay={0.2}
@@ -71,7 +71,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <h4 className="mb-4 text-2xl font-bold uppercase text-on-surface transition-all">
             {project.title}
           </h4>
-          <p className="mb-4 text-sm leading-relaxed text-on-surface/70">
+          <p className="mb-4 text-body text-on-surface/70">
             {project.excerpt}
           </p>
         </div>
@@ -81,7 +81,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <ProjectTag key={tag} label={tag} />
             ))}
           </div>
-          <div className="mt-6 border-t border-outline-variant/15 pt-2 font-mono text-[9px] opacity-40">
+          <div className="mt-6 border-t border-outline-variant/15 pt-2 font-mono text-[9px] text-terminal-accent/50">
             LAST_STABLE_BUILD: {project.lastStableBuild}
           </div>
         </div>

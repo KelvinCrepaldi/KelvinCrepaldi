@@ -28,7 +28,7 @@ export function ArchiveIndexItem({
       <span
         className={[
           "text-[9px] font-mono uppercase tracking-widest",
-          active ? "text-surface/70" : "text-outline",
+          active ? "text-surface/70" : "text-terminal-accent/70",
         ].join(" ")}
       >
         {entry.code}
@@ -39,7 +39,7 @@ export function ArchiveIndexItem({
       <span
         className={[
           "truncate font-mono text-[9px]",
-          active ? "text-surface/55" : "text-on-surface/40",
+          active ? "text-surface/55" : "text-on-surface/45",
         ].join(" ")}
       >
         {entry.meta}

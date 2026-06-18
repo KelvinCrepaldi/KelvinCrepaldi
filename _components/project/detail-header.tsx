@@ -27,7 +27,7 @@ export function ProjectDetailHeader({
       <div className="w-full max-w-3xl text-left">
         <BackToArchiveLink />
         <div className="mt-1 flex flex-col gap-4 md:gap-5">
-          <div className="flex flex-wrap items-center gap-3 text-[10px] font-mono uppercase tracking-tighter text-on-surface/50">
+          <div className="flex flex-wrap items-center gap-3 text-[10px] font-mono uppercase tracking-tighter text-terminal-accent/70">
             <BlinkingDotRow count={3} size="sm" />
             <span>{project.vol}</span>
             <span className="opacity-30">|</span>
@@ -41,7 +41,7 @@ export function ProjectDetailHeader({
               {subtitle}
             </p>
           ) : null}
-          <p className="max-w-2xl text-sm leading-relaxed text-on-surface/70">
+          <p className="max-w-2xl text-body text-on-surface/70">
             {project.excerpt}
           </p>
           <div className="flex flex-wrap gap-2 pt-1">

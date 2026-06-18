@@ -81,7 +81,7 @@ export function MobileDrawerShell({
             <div className="shrink-0 border-b border-outline-variant/25 bg-surface-container-low/60 px-4 py-2">
               <p
                 id={titleId}
-                className="text-[9px] font-mono uppercase tracking-[0.35em] text-outline"
+                className="text-[9px] font-mono uppercase tracking-[0.35em] text-terminal-accent/90"
               >
                 {title}
               </p>

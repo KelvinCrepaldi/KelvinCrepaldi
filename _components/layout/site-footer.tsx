@@ -20,13 +20,13 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-10 flex items-end justify-between gap-6 flex-wrap">
           <div>
-            <p className="text-[9px] font-mono uppercase tracking-[0.4em] text-[#fef9ed]/60">
+            <p className="text-[9px] font-mono uppercase tracking-[0.4em] text-terminal-accent/75">
               CONTACT_PROTOCOL // OPEN_CHANNEL
             </p>
             <p className="mt-3 text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#fef9ed]">
               Vamos conversar
             </p>
-            <p className="mt-2 max-w-xl text-sm text-[#fef9ed]/70">
+            <p className="mt-2 max-w-xl text-body text-[#fef9ed]/70">
               Se você tiver um projeto, uma vaga ou só quiser trocar ideia sobre
               produto e engenharia, me chama.
             </p>
@@ -102,7 +102,7 @@ export function SiteFooter() {
             <div className="font-space-grotesk text-[10px] tracking-widest uppercase space-y-2 text-[#fef9ed]/70">
               <p>© 2026 Kelvin Crepaldi — Desenvolvedor de Software</p>
               <p>Curitiba, Brasil</p>
-              <p className="text-[#fef9ed]/45">ROOT // FOOTER_NODE</p>
+              <p className="text-terminal-accent/55">ROOT // FOOTER_NODE</p>
             </div>
           </div>
         </div>

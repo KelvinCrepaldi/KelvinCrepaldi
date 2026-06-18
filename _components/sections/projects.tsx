@@ -64,11 +64,11 @@ export function Projects() {
                 Selected_Works
               </h3>
             </div>
-            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm opacity-60">
+            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm text-on-surface/70">
               <BlinkingDotRow count={3} size="sm" className="opacity-70" />
               PROJETOS // cases e entregas selecionados da minha trajetória
             </p>
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-on-surface/45">
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-terminal-accent/60">
               TOTAL_RECORDS: {total}
             </p>
           </div>

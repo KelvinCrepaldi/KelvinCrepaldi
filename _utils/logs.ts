@@ -70,30 +70,12 @@ const unsorted: LogPost[] = [
   },
 ];
 
-const TEST_LOG_COUNT = 15;
-
-const testLogs: LogPost[] = Array.from({ length: TEST_LOG_COUNT }, (_, i) => {
-  const n = i + 6;
-  const padded = String(n).padStart(3, "0");
-  const slug = `test-log-${padded}`;
-
-  return {
-    slug,
-    logId: `LOG_${padded}`,
-    title: `Test_Log_${padded}`,
-    excerpt: `Entrada de teste ${padded} para validar scroll do índice lateral de logs.`,
-    publishedAt: `2024.${String(Math.max(1, 12 - Math.floor(i / 2))).padStart(2, "0")}.${String((i % 28) + 1).padStart(2, "0")}`,
-    tags: ["test", "scroll"],
-    md: `# Test Log ${padded}\n\nConteúdo placeholder para teste de scroll no sidebar.`,
-  };
-});
-
 function parsePublishedAt(date: string): number {
   return new Date(date.replace(/\./g, "-")).getTime();
 }
 
 /** Catálogo ordenado por data de publicação (mais recente primeiro). */
-export const LOGS_CATALOG = [...unsorted, ...testLogs]
+export const LOGS_CATALOG = [...unsorted]
   .filter((p) => p.draft !== true)
   .sort((a, b) => parsePublishedAt(b.publishedAt) - parsePublishedAt(a.publishedAt));
 

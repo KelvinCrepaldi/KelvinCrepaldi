@@ -1,3 +1,5 @@
+"use client";
+
 import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -5,14 +7,19 @@ function clampInt(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, Math.round(n)));
 }
 
-export default function LoadingAnimation({
-  durationSec,
-}: {
-  durationSec: number;
-}) {
+type SkillsCategoryBootProps = {
+  durationSec?: number;
+  onComplete?: () => void;
+};
+
+export function SkillsCategoryBoot({
+  durationSec = 1.2,
+  onComplete,
+}: SkillsCategoryBootProps) {
   const ref = useRef<HTMLSpanElement | null>(null);
   const isInView = useInView(ref, { once: true, amount: 0.35 });
   const [pct, setPct] = useState(0);
+  const completedRef = useRef(false);
 
   const durationMs = Math.max(0.4, durationSec) * 800;
   const done = pct >= 100;
@@ -33,10 +40,17 @@ export default function LoadingAnimation({
     return () => cancelAnimationFrame(raf);
   }, [isInView, durationMs, done]);
 
+  useEffect(() => {
+    if (!done || completedRef.current) return;
+    completedRef.current = true;
+    onComplete?.();
+  }, [done, onComplete]);
+
   return (
     <span
       ref={ref}
-      className="font-mono text-[10px] font-bold uppercase shrink-0 px-2 py-0.5 tabular-nums"
+      className="shrink-0 font-mono text-[10px] font-bold uppercase tabular-nums"
+      aria-live="polite"
     >
       {done ? (
         <span className="text-terminal-accent/90">[OK]</span>

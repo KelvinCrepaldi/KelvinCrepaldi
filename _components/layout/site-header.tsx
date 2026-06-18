@@ -130,7 +130,7 @@ export function SiteHeader() {
               <Link href="/log" className={isLogs ? activeLogs : inactive}>
                 LOG
               </Link>
-              <Link className={inactive} href="/#about">
+              <Link className={inactive} href="/#timeline">
                 ABOUT
               </Link>
               <Link className={inactive} href="/#skills">

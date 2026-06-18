@@ -17,8 +17,8 @@ export function SystemLogRow({
     <div
       className={
         tone === "dark"
-          ? "flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[11px] font-mono leading-snug"
-          : "flex items-start gap-3 text-[11px] font-mono leading-snug"
+          ? "flex flex-wrap items-baseline gap-x-3 gap-y-1 text-xs font-mono leading-snug sm:text-sm"
+          : "flex items-start gap-3 text-xs font-mono leading-snug sm:text-sm"
       }
     >
       <span className="shrink-0">{level}</span>

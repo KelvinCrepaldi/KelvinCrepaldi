@@ -73,7 +73,7 @@ export function Timeline() {
           </ClockCirclesBackground>
         </div>
       )}
-      <div className="w-full relative lg:max-w-5xl lg:mx-auto">
+      <div className="relative w-full lg:mx-auto lg:max-w-6xl">
         <div className="relative z-10 mb-16 flex flex-col md:flex-row justify-between items-end gap-4">
           <div>
             <div className="flex items-center gap-3 flex-wrap">
@@ -82,11 +82,11 @@ export function Timeline() {
                 Timeline
               </h3>
             </div>
-            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm opacity-60">
+            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm text-on-surface/70">
               <BlinkingDotRow count={3} size="sm" className="opacity-70" />
               TRAJETÓRIA // experiência profissional e formação ao longo do tempo
             </p>
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-on-surface/45">
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-terminal-accent/60">
               TOTAL_RECORDS: {total}
             </p>
           </div>
@@ -129,12 +129,12 @@ export function Timeline() {
                     <h4 className="text-xl md:text-2xl font-bold tracking-tight text-on-surface mb-2">
                       {entry.title}
                     </h4>
-                    <p className="text-sm text-on-surface/70 mb-4">
+                    <p className="mb-4 text-body text-on-surface/70">
                       {entry.subtitle}
                       <span className="mx-2">•</span>
                       {entry.period}
                     </p>
-                    <p className="text-sm leading-relaxed text-on-surface/80">
+                    <p className="text-body text-on-surface/80">
                       {entry.description}
                     </p>
                   </div>
