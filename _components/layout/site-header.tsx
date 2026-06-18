@@ -7,7 +7,10 @@ import { useEffect, useState } from "react";
 
 import { ThemeToggle } from "@/_components/theme/theme-toggle";
 import { useScrollContainer } from "@/_components/layout/scroll-container";
-import { showMobileArchiveButton } from "@/_utils/layout";
+import {
+  getMobileHeaderHref,
+  getMobileHeaderTitle,
+} from "@/_utils/layout";
 
 import { MobileArchiveDrawer } from "./mobile/mobile-archive-drawer";
 import { MobileHeaderBar } from "./mobile/mobile-header-bar";
@@ -49,7 +52,8 @@ export function SiteHeader() {
   const isHome = pathname === "/";
   const isProjects = pathname.startsWith("/projects");
   const isLogs = pathname.startsWith("/log");
-  const showArchiveButton = showMobileArchiveButton(pathname);
+  const mobileHeaderTitle = getMobileHeaderTitle(pathname);
+  const mobileHeaderHref = getMobileHeaderHref(pathname);
 
   const inactive = isScrolled
     ? "text-surface/55 hover:text-surface dark:text-on-surface/55 dark:hover:text-on-surface transition-colors duration-150"
@@ -141,7 +145,8 @@ export function SiteHeader() {
 
           <MobileHeaderBar
             headerChrome={headerChrome}
-            showArchiveButton={showArchiveButton}
+            title={mobileHeaderTitle}
+            titleHref={mobileHeaderHref}
             navOpen={navOpen}
             archiveOpen={archiveOpen}
             onToggleNav={toggleNav}

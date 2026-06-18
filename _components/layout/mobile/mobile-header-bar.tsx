@@ -8,7 +8,8 @@ import { ThemeToggle } from "@/_components/theme/theme-toggle";
 
 type MobileHeaderBarProps = {
   headerChrome: string;
-  showArchiveButton: boolean;
+  title: string;
+  titleHref: string;
   navOpen: boolean;
   archiveOpen: boolean;
   onToggleNav: () => void;
@@ -18,7 +19,8 @@ type MobileHeaderBarProps = {
 
 export function MobileHeaderBar({
   headerChrome,
-  showArchiveButton,
+  title,
+  titleHref,
   navOpen,
   archiveOpen,
   onToggleNav,
@@ -26,39 +28,33 @@ export function MobileHeaderBar({
   onCloseDrawers,
 }: MobileHeaderBarProps) {
   return (
-    <div className="grid w-full grid-cols-[2.5rem_1fr_2.5rem] items-center gap-2 md:hidden">
-      <div className="flex justify-start">
-        {showArchiveButton ? (
-          <motion.button
-            type="button"
-            className={`p-2 transition-colors duration-300 ${headerChrome}`}
-            aria-label={archiveOpen ? "Fechar índice" : "Abrir índice de arquivo"}
-            aria-expanded={archiveOpen}
-            aria-controls="mobile-archive-drawer"
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.05 }}
-            onClick={onToggleArchive}
-          >
-            {archiveOpen ? (
-              <X className="h-7 w-7" strokeWidth={2} />
-            ) : (
-              <PanelLeft className="h-7 w-7" strokeWidth={2} />
-            )}
-          </motion.button>
+    <div className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-x-2 md:hidden">
+      <motion.button
+        type="button"
+        className={`p-2 transition-colors duration-300 ${headerChrome}`}
+        aria-label={archiveOpen ? "Fechar índice" : "Abrir índice de arquivo"}
+        aria-expanded={archiveOpen}
+        aria-controls="mobile-archive-drawer"
+        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.05 }}
+        onClick={onToggleArchive}
+      >
+        {archiveOpen ? (
+          <X className="h-7 w-7" strokeWidth={2} />
         ) : (
-          <span className="h-11 w-11" aria-hidden />
+          <PanelLeft className="h-7 w-7" strokeWidth={2} />
         )}
-      </div>
+      </motion.button>
 
       <Link
-        href="/"
+        href={titleHref}
         onClick={onCloseDrawers}
-        className={`truncate text-center text-sm font-black tracking-widest transition-colors duration-300 ${headerChrome}`}
+        className={`truncate text-center text-lg font-black tracking-widest transition-colors duration-300 ${headerChrome}`}
       >
-        main/kelvin
+        {title}
       </Link>
 
-      <div className="flex items-center justify-end gap-0.5">
+      <div className="flex items-center justify-end gap-2">
         <ThemeToggle className={headerChrome} />
         <motion.button
           type="button"
