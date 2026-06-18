@@ -1,3 +1,5 @@
+import { ScrollDownIndicator } from "@/_components/_ui/animations/ScrollDownIndicator";
+
 import { Intro } from "./intro";
 import { TechStack } from "./tech-stack";
 
@@ -21,6 +23,9 @@ export function Hero() {
       <div className="w-full lg:max-w-6xl lg:mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
         <Intro />
         <TechStack items={DEFAULT_STACK} />
+      </div>
+      <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-10">
+        <ScrollDownIndicator />
       </div>
     </section>
   );
