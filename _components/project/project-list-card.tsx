@@ -26,7 +26,7 @@ export function ProjectListCard({ project }: ProjectListCardProps) {
       className="card-scanlines group relative flex w-full min-h-0 flex-col overflow-hidden border border-outline-variant/25 bg-surface text-left transition-colors duration-300 hover:border-on-surface/50 md:flex-row"
     >
       <div className="relative aspect-[2/1] w-full shrink-0 overflow-hidden md:aspect-auto md:w-64 md:min-h-[176px] lg:w-72">
-        <div className="absolute inset-y-0 left-[-9%] h-full w-[118%] translate-x-[-6%] transition-transform duration-0 ease-linear will-change-transform group-hover:translate-x-[5%] group-hover:duration-[10000ms] motion-reduce:translate-x-0 motion-reduce:group-hover:translate-x-0 motion-reduce:transition-none">
+        <div className="absolute inset-y-0 left-[-9%] h-full w-[118%] translate-x-[5%] transition-transform duration-0 ease-linear will-change-transform group-hover:translate-x-[-6%] group-hover:duration-[10000ms] motion-reduce:translate-x-0 motion-reduce:group-hover:translate-x-0 motion-reduce:transition-none">
           <Image
             src={coverSrc}
             alt={`Capa do projeto ${project.title}`}
@@ -37,14 +37,14 @@ export function ProjectListCard({ project }: ProjectListCardProps) {
           />
         </div>
         <div
-          className="pointer-events-none absolute inset-0 bg-primary opacity-100 mix-blend-color transition-opacity duration-500 ease-out group-hover:opacity-0"
+          className="pointer-events-none absolute inset-0 z-10 bg-primary opacity-100 mix-blend-color transition-opacity duration-500 ease-out group-hover:opacity-0"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-surface/15 to-surface transition-opacity duration-500 group-hover:via-surface/25 md:to-surface"
+          className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-transparent from-[35%] via-surface/70 via-[72%] to-surface"
           aria-hidden
         />
-        <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,rgba(0,0,0,0.35)_2px,rgba(0,0,0,0.35)_3px)] opacity-[0.12] mix-blend-overlay transition-opacity duration-500 group-hover:opacity-[0.08]" />
+        <div className="pointer-events-none absolute inset-0 z-30 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,rgba(0,0,0,0.35)_2px,rgba(0,0,0,0.35)_3px)] opacity-[0.12] mix-blend-overlay transition-opacity duration-500 group-hover:opacity-[0.08]" />
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col p-4 md:p-5">
