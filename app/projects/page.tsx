@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { ArchivePageShell } from "@/_components/archive/archive-page-shell";
 import { ProjectListCard } from "@/_components/project/project-list-card";
+import { ScrollToTop } from "@/_components/_ui/ScrollToTop";
 import { publishedProjects } from "@/_utils/projects";
 import { siteConfig } from "@/_utils/site";
 
@@ -58,6 +59,8 @@ export default function ProjectsIndexPage() {
             </li>
           ))}
         </ul>
+
+        <ScrollToTop />
       </div>
     </ArchivePageShell>
   );

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArchivePageShell } from "@/_components/archive/archive-page-shell";
 import { ProjectDetailHeader } from "@/_components/project/detail-header";
 import { MarkdownArticle } from "@/_components/project/markdown-article";
+import { ScrollToTop } from "@/_components/_ui/ScrollToTop";
 import { getProject, PROJECTS_CATALOG, projectCoverUrl } from "@/_utils/projects";
 import { siteConfig } from "@/_utils/site";
 
@@ -61,6 +62,7 @@ export default async function ProjectPage({ params }: PageProps) {
       >
         <div className="w-full max-w-3xl">
           <MarkdownArticle markdown={project.md} />
+          <ScrollToTop />
         </div>
       </div>
     </ArchivePageShell>

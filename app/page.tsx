@@ -6,6 +6,7 @@ import {
   SystemLogs,
   Timeline,
 } from "@/_components/sections";
+import { ScrollToTop } from "@/_components/_ui/ScrollToTop";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <Timeline />
       <Skills />
       <SystemLogs />
+      <ScrollToTop variant="above-footer" />
     </>
   );
 }

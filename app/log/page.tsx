@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { ArchivePageShell } from "@/_components/archive/archive-page-shell";
 import { LogCard } from "@/_components/log/log-card";
+import { ScrollToTop } from "@/_components/_ui/ScrollToTop";
 import { publishedLogs } from "@/_utils/logs";
 import { siteConfig } from "@/_utils/site";
 
@@ -58,6 +59,8 @@ export default function LogIndexPage() {
             </li>
           ))}
         </ul>
+
+        <ScrollToTop />
       </div>
     </ArchivePageShell>
   );

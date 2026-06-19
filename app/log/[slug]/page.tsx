@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArchivePageShell } from "@/_components/archive/archive-page-shell";
 import { LogDetailHeader } from "@/_components/log/log-detail-header";
 import { MarkdownArticle } from "@/_components/project/markdown-article";
+import { ScrollToTop } from "@/_components/_ui/ScrollToTop";
 import { getLog, LOGS_CATALOG } from "@/_utils/logs";
 import { siteConfig } from "@/_utils/site";
 
@@ -54,6 +55,7 @@ export default async function LogPage({ params }: PageProps) {
       >
         <div className="w-full max-w-3xl">
           <MarkdownArticle markdown={log.md} className="log-md" />
+          <ScrollToTop />
         </div>
       </div>
     </ArchivePageShell>
