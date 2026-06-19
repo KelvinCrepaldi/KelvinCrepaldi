@@ -9,7 +9,7 @@ export type Project = {
   title: string;
   excerpt: string;
   tags: string[];
-  lastStableBuild: string;
+  lastUpdate: string;
   sortOrder: number;
   /** Texto longo em Markdown (corpo da página do projeto) */
   md: string;
@@ -41,7 +41,7 @@ const unsorted: Project[] = [
     excerpt:
       "Plataforma completa de totens interativos: Dashboard Next.js + API, apps Vite no Electron, offline-first e integração com periféricos.",
     tags: ["Next.js", "Electron", "Vite", "Supabase"],
-    lastStableBuild: "2024.08.15",
+    lastUpdate: "2024.08.15",
     sortOrder: 1,
     listOnHome: true,
     subtitle: "Plataforma de totens interativos com configuração em nuvem",
@@ -54,7 +54,7 @@ const unsorted: Project[] = [
     excerpt:
       "Aplicação desktop em Electron para manipulação e indexação profunda do sistema de arquivos.",
     tags: ["Electron", "Node"],
-    lastStableBuild: "2024.02.28",
+    lastUpdate: "2024.02.28",
     sortOrder: 2,
     listOnHome: true,
     subtitle: "Aplicação desktop para indexação profunda",
@@ -67,7 +67,7 @@ const unsorted: Project[] = [
     excerpt:
       "Arquitetura backend distribuída para ingestão assíncrona de dados de múltiplos sensores remotos.",
     tags: ["Express", "Redis"],
-    lastStableBuild: "2023.11.15",
+    lastUpdate: "2023.11.15",
     sortOrder: 3,
     listOnHome: true,
     subtitle: "Backend distribuído para ingestão assíncrona",
@@ -80,7 +80,7 @@ const unsorted: Project[] = [
     excerpt:
       "Galeria arquivística para ativos pesados (imagens e cenas 3D) com carregamento progressivo e foco no objeto.",
     tags: ["Next.js", "Three.js"],
-    lastStableBuild: "2023.09.01",
+    lastUpdate: "2023.09.01",
     sortOrder: 4,
     listOnHome: true,
     subtitle: "Navegação deliberada de ativos visuais pesados",

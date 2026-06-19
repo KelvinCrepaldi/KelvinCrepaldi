@@ -1,10 +1,10 @@
 "use client";
 
-import { LayoutGrid } from "lucide-react";
+import { FolderKanban } from "lucide-react";
 
 import { useIsMobileLayout } from "@/hooks/useIsMobileLayout";
 import { useProjectsCatalog } from "@/hooks/useProjectsCatalog";
-import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
+import { SectionHeader } from "@/_components/_ui/SectionHeader";
 import {
   ClockCircleCanvas,
   ClockCirclesBackground,
@@ -56,29 +56,12 @@ export function Projects() {
         </ClockCirclesBackground>
       )}
       <div className="w-full lg:max-w-6xl lg:mx-auto">
-        <div className="relative z-10 mb-16 flex flex-col md:flex-row justify-between items-end gap-4">
-          <div>
-            <div className="flex items-center gap-3 flex-wrap">
-              <BlinkingDotRow count={4} size="sm" className="mb-1" />
-              <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-on-surface">
-                Selected_Works
-              </h3>
-            </div>
-            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm text-on-surface/70">
-              <BlinkingDotRow count={3} size="sm" className="opacity-70" />
-              PROJETOS // cases e entregas selecionados da minha trajetória
-            </p>
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-terminal-accent/60">
-              TOTAL_RECORDS: {total}
-            </p>
-          </div>
-          <div className="h-px bg-outline-variant flex-grow mx-8 hidden md:block mb-4" />
-          <LayoutGrid
-            className="w-10 h-10 md:w-12 md:h-12 opacity-20 text-on-surface shrink-0"
-            strokeWidth={1.25}
-            aria-hidden
-          />
-        </div>
+        <SectionHeader
+          title="Projetos"
+          subtitle="PROJETOS // cases e entregas selecionados da minha trajetória"
+          icon={FolderKanban}
+          meta={`TOTAL_RECORDS: ${total}`}
+        />
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />

@@ -47,23 +47,23 @@ export function MobileNavDrawer({
           className={`${mobileLinkBase} ${isProjects ? "bg-on-surface/5" : ""}`}
           onClick={onClose}
         >
-          PROJECTS
+          Projetos
         </Link>
         <Link
           href="/log"
           className={`${mobileLinkBase} ${isLogs ? "bg-on-surface/5" : ""}`}
           onClick={onClose}
         >
-          LOG
+          Anotações
         </Link>
         <Link className={mobileLinkBase} href="/#timeline" onClick={onClose}>
-          ABOUT
+          Sobre
         </Link>
         <Link className={mobileLinkBase} href="/#skills" onClick={onClose}>
-          SKILLS
+          Habilidades
         </Link>
         <Link className={mobileLinkBase} href="/#contact" onClick={onClose}>
-          CONTACT
+          Contato
         </Link>
       </nav>
     </MobileDrawerShell>

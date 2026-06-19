@@ -1,10 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa6";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const iconLink =
   "flex items-center justify-center w-10 h-10 rounded-none border border-[#fef9ed]/25 text-[#fef9ed]/80 hover:text-white hover:border-[#fef9ed]/60";
+
+const contactLink =
+  "inline-flex items-center gap-3 border border-[#fef9ed]/20 bg-[#fef9ed]/[0.04] px-5 py-4 text-base font-bold uppercase tracking-widest text-[#fef9ed] hover:bg-[#fef9ed]/[0.07] hover:border-[#fef9ed]/40 transition-colors md:text-lg";
 
 const GITHUB_URL = "https://github.com/KelvinCrepaldi";
 const LINKEDIN_URL = "https://www.linkedin.com/in/kelvincrepaldi/";
@@ -24,11 +28,7 @@ export function SiteFooter() {
               CONTACT_PROTOCOL // OPEN_CHANNEL
             </p>
             <p className="mt-3 text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#fef9ed]">
-              Vamos conversar
-            </p>
-            <p className="mt-2 max-w-xl text-body text-[#fef9ed]/70">
-              Se você tiver um projeto, uma vaga ou só quiser trocar ideia sobre
-              produto e engenharia, me chama.
+              Contato
             </p>
           </div>
 
@@ -72,25 +72,20 @@ export function SiteFooter() {
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 border-t border-[#fef9ed]/15 pt-10">
           <div className="md:col-span-7">
-            <div className="space-y-3">
-              <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="inline-flex items-center gap-2 border border-[#fef9ed]/20 bg-[#fef9ed]/[0.04] px-4 py-3 text-xs font-bold uppercase tracking-widest text-[#fef9ed] hover:bg-[#fef9ed]/[0.07] hover:border-[#fef9ed]/40 transition-colors"
-                >
-                  <Mail className="h-4 w-4" strokeWidth={2} aria-hidden />
-                  {EMAIL}
-                </a>
-                <a
-                  href={`https://wa.me/${WHATSAPP}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-[#fef9ed]/20 bg-[#fef9ed]/[0.04] px-4 py-3 text-xs font-bold uppercase tracking-widest text-[#fef9ed] hover:bg-[#fef9ed]/[0.07] hover:border-[#fef9ed]/40 transition-colors"
-                >
-                  <Phone className="h-4 w-4" strokeWidth={2} aria-hidden />
-                  +55 (41) 99674-8781
-                </a>
-              </div>
+            <div className="flex flex-col gap-4">
+              <a href={`mailto:${EMAIL}`} className={contactLink}>
+                <Mail className="h-5 w-5 shrink-0" strokeWidth={2} aria-hidden />
+                {EMAIL}
+              </a>
+              <a
+                href={`https://wa.me/${WHATSAPP}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={contactLink}
+              >
+                <FaWhatsapp className="h-5 w-5 shrink-0" aria-hidden />
+                +55 (41) 99674-8781
+              </a>
 
               <p className="text-xs text-[#fef9ed]/55 font-mono">
                 TIMEZONE: AMERICA/SAO_PAULO • RESPONSE_SLA: 24H

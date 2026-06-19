@@ -2,18 +2,17 @@ import type { Metadata } from "next";
 
 import { ArchivePageShell } from "@/_components/archive/archive-page-shell";
 import { LogCard } from "@/_components/log/log-card";
-import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
 import { publishedLogs } from "@/_utils/logs";
 import { siteConfig } from "@/_utils/site";
 
 const LOG_CONTENT_GUTTER = "px-6 md:px-10 lg:px-12 xl:px-14";
 
 export const metadata: Metadata = {
-  title: `Field_Logs // ${siteConfig.title}`,
+  title: `Anotações // ${siteConfig.title}`,
   description:
     "Notas de campo, experiências e aprendizados — transmissões do dia a dia como desenvolvedor.",
   openGraph: {
-    title: "Field_Logs",
+    title: "Anotações",
     description:
       "Notas de campo, experiências e aprendizados — transmissões do dia a dia como desenvolvedor.",
     url: `${siteConfig.url}/log`,
@@ -31,14 +30,11 @@ export default function LogIndexPage() {
         className={`border-b border-outline-variant/20 bg-surface pt-8 pb-10 md:pt-10 md:pb-12 ${LOG_CONTENT_GUTTER}`}
       >
         <div className="w-full max-w-3xl">
-          <div className="mb-4 flex flex-wrap items-center gap-3">
-            <BlinkingDotRow count={4} size="sm" />
-            <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-terminal-accent/90">
-              FIELD_LOGS // TRANSMISSION_ARCHIVE
-            </p>
-          </div>
+          <p className="mb-4 text-[10px] font-mono uppercase tracking-[0.4em] text-terminal-accent/90">
+            ANOTAÇÕES // TRANSMISSION_ARCHIVE
+          </p>
           <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-tighter text-on-surface md:text-6xl">
-            Field_Logs
+            Anotações
           </h1>
           <p className="mt-6 max-w-2xl text-body text-on-surface/75">
             Esta seção reúne notas de campo, experiências e reflexões do dia a

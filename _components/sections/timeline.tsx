@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LayoutGrid } from "lucide-react";
+import { Route } from "lucide-react";
 
 import { useIsMobileLayout } from "@/hooks/useIsMobileLayout";
-import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
+import { SectionHeader } from "@/_components/_ui/SectionHeader";
 import {
   ClockCircleCanvas,
   ClockCircleNode,
@@ -15,14 +15,14 @@ const ENTRIES = [
   {
     title: "Desenvolvedor de Software",
     subtitle: "Adam Robo",
-    period: "Mar 2024 — Atual",
+    period: "mar. de 2024 — Atual",
     description:
       "Planejamento, arquitetura e desenvolvimento de sistemas web com React, Vite e Electron. Criação de formulários dinâmicos, componentes reutilizáveis e fluxos complexos, reduzindo o tempo de preenchimento para poucos segundos. Suporte técnico em integrações com APIs internas e sistemas offline-first. Atuação direta na definição técnica e estrutural das aplicações, incluindo organização de múltiplos módulos e tomada de decisões críticas. Atendimento simultâneo de mais de 600 clientes sem falhas, com redução de 30% no tempo de carregamento.",
   },
   {
     title: "Desenvolvimento Web Full Stack",
     subtitle: "Kenzie Academy Brasil",
-    period: "Mai 2021 — Jun 2022",
+    period: "mai de 2021 — jun. de 2022",
     description:
       "Curso intensivo de 2.000 horas cobrindo tecnologias Front-end e Back-end. Entre as linguagens e ferramentas: HTML5, CSS3, JavaScript (ES6+), React, Redux, Python (Django e Flask) e SQL, além de soft skills para o mercado de trabalho.",
   },
@@ -74,29 +74,12 @@ export function Timeline() {
         </div>
       )}
       <div className="relative w-full lg:mx-auto lg:max-w-6xl">
-        <div className="relative z-10 mb-16 flex flex-col md:flex-row justify-between items-end gap-4">
-          <div>
-            <div className="flex items-center gap-3 flex-wrap">
-              <BlinkingDotRow count={4} size="sm" className="mb-1" />
-              <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-on-surface">
-                Timeline
-              </h3>
-            </div>
-            <p className="mt-2 flex flex-wrap items-center gap-2 font-mono text-sm text-on-surface/70">
-              <BlinkingDotRow count={3} size="sm" className="opacity-70" />
-              TRAJETÓRIA // experiência profissional e formação ao longo do tempo
-            </p>
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-terminal-accent/60">
-              TOTAL_RECORDS: {total}
-            </p>
-          </div>
-          <div className="h-px bg-outline-variant flex-grow mx-8 hidden md:block mb-4" />
-          <LayoutGrid
-            className="w-10 h-10 md:w-12 md:h-12 opacity-20 text-on-surface shrink-0"
-            strokeWidth={1.25}
-            aria-hidden
-          />
-        </div>
+        <SectionHeader
+          title="Timeline"
+          subtitle="TRAJETÓRIA // experiência profissional e formação ao longo do tempo"
+          icon={Route}
+          meta={`TOTAL_RECORDS: ${total}`}
+        />
 
         <div className="relative">
           <div

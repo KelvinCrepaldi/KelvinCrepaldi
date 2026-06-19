@@ -127,19 +127,19 @@ export function SiteHeader() {
                 href="/projects"
                 className={isProjects ? activeProjects : inactive}
               >
-                PROJECTS
+                Projetos
               </Link>
               <Link href="/log" className={isLogs ? activeLogs : inactive}>
-                LOG
+                Anotações
               </Link>
               <Link className={inactive} href="/#timeline">
-                ABOUT
+                Sobre
               </Link>
               <Link className={inactive} href="/#skills">
-                SKILLS
+                Habilidades
               </Link>
               <Link className={inactive} href="/#contact">
-                CONTACT
+                Contato
               </Link>
             </div>
             <ThemeToggle className={headerChrome} />
