@@ -38,8 +38,8 @@ export default function ProjectsIndexPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-body text-on-surface/75">
             Esta seção reúne os volumes do portfólio — produtos entregues,
-            experimentos e arquiteturas que merecem contexto além do card da home.
-            Cada volume documenta stack, decisões e o que foi aprendido no
+            experimentos e arquiteturas que merecem contexto além do card da
+            home. Cada volume documenta stack, decisões e o que foi aprendido no
             caminho.
           </p>
           <p className="mt-4 font-mono text-[10px] uppercase tracking-widest text-terminal-accent/60">
@@ -51,7 +51,7 @@ export default function ProjectsIndexPage() {
       <div
         className={`flex flex-1 flex-col bg-surface-container-low/60 ${PROJECT_CONTENT_GUTTER} py-12 md:py-14 lg:py-16`}
       >
-        <ul className="flex w-full flex-col gap-1" role="list">
+        <ul className="flex w-full flex-col gap-5" role="list">
           {projects.map((project) => (
             <li key={project.slug} className="w-full">
               <ProjectListCard project={project} />
