@@ -4,6 +4,10 @@ import firstIncidentMd from "@/_content/logs/first-production-incident.md";
 import typescriptMigrationMd from "@/_content/logs/typescript-migration.md";
 import curitibaMeetupMd from "@/_content/logs/curitiba-dev-meetup.md";
 
+import { parseDotDate } from "./dates";
+
+export { formatLogDate } from "./dates";
+
 export type LogPost = {
   slug: string;
   logId: string;
@@ -71,7 +75,7 @@ const unsorted: LogPost[] = [
 ];
 
 function parsePublishedAt(date: string): number {
-  return new Date(date.replace(/\./g, "-")).getTime();
+  return parseDotDate(date).getTime();
 }
 
 /** Catálogo ordenado por data de publicação (mais recente primeiro). */
@@ -93,24 +97,4 @@ export function latestLogs(count = 5): LogPost[] {
 
 export function getLog(slug: string): LogPost | undefined {
   return logBySlug[slug];
-}
-
-export function formatLogDate(publishedAt: string): string {
-  const [year, month, day] = publishedAt.split(".");
-  const months = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ];
-  const m = months[parseInt(month, 10) - 1] ?? month;
-  return `${day} ${m} ${year}`;
 }

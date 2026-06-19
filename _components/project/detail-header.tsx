@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FauxTerminalWindow } from "@/_components/_ui/faux-terminal-window";
 import { BackToArchiveLink } from "@/_components/_ui/BackToArchiveLink";
 import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
+import { formatDotDate } from "@/_utils/dates";
 import { projectCoverUrl, type Project } from "@/_utils/projects";
 import { ProjectTag } from "./project-tag";
 
@@ -31,7 +32,7 @@ export function ProjectDetailHeader({
             <BlinkingDotRow count={3} size="sm" />
             <span>{project.vol}</span>
             <span className="opacity-30">|</span>
-            <span>LAST_STABLE_BUILD: {project.lastStableBuild}</span>
+            <span>LAST_UPDATE: {formatDotDate(project.lastUpdate)}</span>
           </div>
           <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-tighter text-on-surface md:text-6xl lg:text-7xl">
             {project.title}

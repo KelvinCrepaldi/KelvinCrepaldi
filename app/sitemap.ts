@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { LOGS_CATALOG } from "@/_utils/logs";
+import { parseDotDate } from "@/_utils/dates";
 import { PROJECTS_CATALOG } from "@/_utils/projects";
 import { siteConfig } from "@/_utils/site";
 
@@ -9,14 +10,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const projectEntries = PROJECTS_CATALOG.map((project) => ({
     url: `${base}/projects/${project.slug}`,
-    lastModified: new Date(project.lastStableBuild.replace(/\./g, "-")),
+    lastModified: parseDotDate(project.lastUpdate),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   const logEntries = LOGS_CATALOG.map((log) => ({
     url: `${base}/log/${log.slug}`,
-    lastModified: new Date(log.publishedAt.replace(/\./g, "-")),
+    lastModified: parseDotDate(log.publishedAt),
     changeFrequency: "monthly" as const,
     priority: 0.75,
   }));

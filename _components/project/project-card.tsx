@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { formatDotDate } from "@/_utils/dates";
 import { projectCoverUrl, type Project } from "@/_utils/projects";
 
 import { BlinkingDot } from "@/_components/_ui/animations/BlinkingDot";
@@ -82,7 +83,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             ))}
           </div>
           <div className="mt-6 border-t border-outline-variant/15 pt-2 font-mono text-[9px] text-terminal-accent/50">
-            LAST_STABLE_BUILD: {project.lastStableBuild}
+            LAST_UPDATE: {formatDotDate(project.lastUpdate)}
           </div>
         </div>
       </div>
