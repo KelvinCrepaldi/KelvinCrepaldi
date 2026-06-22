@@ -21,7 +21,7 @@ export function SiteFooter() {
       id="contact"
       className="relative z-10 bg-footer-surface text-[#fef9ed] w-full px-6 sm:px-8 md:px-12 pt-16 pb-24 md:pt-24 md:pb-28"
     >
-      <div className="mx-auto w-full max-w-6xl">
+      <div className="mx-auto w-full max-w-content">
         <div className="mb-10 flex items-end justify-between gap-6 flex-wrap">
           <div>
             <p className="text-[9px] font-mono uppercase tracking-[0.4em] text-terminal-accent/75">

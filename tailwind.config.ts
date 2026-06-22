@@ -78,6 +78,9 @@ const config: Config = {
         xl: "0px",
         full: "0px",
       },
+      maxWidth: {
+        content: "var(--content-max-width)",
+      },
       keyframes: {
         "spin-reverse": {
           from: { transform: "rotate(360deg)" },

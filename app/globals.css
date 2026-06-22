@@ -21,6 +21,7 @@ html:not(.dark) {
 /* Alinhar <main> e sidebars ao header fixo (ver SiteHeader: h-16) */
 :root {
   --site-header-height: 4rem;
+  --content-max-width: 80rem;
   /* Verde terminal — alinhado ao [OK] / barra de loading (emerald) */
   --terminal-accent: 4 120 87;
   /* Barra do header sem scroll: translúcido sobre o fundo da página */

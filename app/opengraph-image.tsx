@@ -22,17 +22,7 @@ export default function OpenGraphImage() {
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        <p
-          style={{
-            fontSize: 22,
-            letterSpacing: "0.35em",
-            textTransform: "uppercase",
-            opacity: 0.65,
-            marginBottom: 24,
-          }}
-        >
-          SYSTEM_OPERATOR // ACTIVE
-        </p>
+
         <p
           style={{
             fontSize: 72,

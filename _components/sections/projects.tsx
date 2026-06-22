@@ -55,7 +55,7 @@ export function Projects() {
           />
         </ClockCirclesBackground>
       )}
-      <div className="w-full lg:max-w-6xl lg:mx-auto">
+      <div className="w-full lg:max-w-content lg:mx-auto">
         <SectionHeader
           title="Projetos"
           subtitle="PROJETOS // cases e entregas selecionados da minha trajetória"

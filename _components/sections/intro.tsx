@@ -8,7 +8,7 @@ import { StatusDot } from "@/_components/_ui/animations/StatusDot";
 export function Intro() {
   return (
     <div className="md:col-span-8 flex flex-col justify-center">
-      <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-none text-on-surface mb-4">
+      <h1 className="text-6xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-none text-on-surface mb-4">
         Kelvin
         <br />
         Crepaldi

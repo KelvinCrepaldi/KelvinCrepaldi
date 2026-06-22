@@ -30,7 +30,7 @@ export function SystemLogs() {
       id="system-logs"
       className="relative z-10 px-6 md:px-12 pt-24 pb-36 md:pb-44 bg-surface-container-low overflow-hidden"
     >
-      <div className="w-full lg:max-w-6xl lg:mx-auto">
+      <div className="w-full lg:max-w-content lg:mx-auto">
         <SectionHeader
           title="Atividade"
           subtitle="ATIVIDADE // registros recentes e princípios que guiam o trabalho"

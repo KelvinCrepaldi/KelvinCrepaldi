@@ -73,7 +73,7 @@ export function Timeline() {
           </ClockCirclesBackground>
         </div>
       )}
-      <div className="relative w-full lg:mx-auto lg:max-w-6xl">
+      <div className="relative w-full lg:mx-auto lg:max-w-content">
         <SectionHeader
           title="Timeline"
           subtitle="TRAJETÓRIA // experiência profissional e formação ao longo do tempo"

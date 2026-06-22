@@ -103,7 +103,7 @@ export function SiteHeader() {
         style={{ backdropFilter: "blur(12px)" }}
         aria-label="Navegação principal"
       >
-        <div className="flex w-full items-center justify-between gap-3 md:max-w-6xl md:mx-auto">
+        <div className="flex w-full items-center justify-between gap-3 md:max-w-content md:mx-auto">
           <motion.div
             className="hidden md:block"
             whileHover={{ scale: 1.02 }}

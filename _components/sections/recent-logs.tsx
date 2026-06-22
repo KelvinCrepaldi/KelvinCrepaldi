@@ -15,9 +15,9 @@ export function RecentLogs() {
   return (
     <section
       id="log"
-      className="relative z-10 overflow-hidden border-t border-outline-variant/30 bg-surface px-6 md:px-12 pt-24 pb-36 md:pb-44"
+      className="relative z-10 border-t border-outline-variant/30 bg-surface px-6 md:px-12 pt-24 pb-36 md:pb-44"
     >
-      <div className="w-full lg:max-w-6xl lg:mx-auto">
+      <div className="w-full lg:max-w-content lg:mx-auto">
         <SectionHeader
           title="Anotações"
           subtitle="ANOTAÇÕES // blog com experiências e aprendizados do dia a dia"
@@ -25,7 +25,7 @@ export function RecentLogs() {
           meta={`LATEST_ENTRIES: ${total}`}
         />
 
-        <ul className="relative z-10 flex flex-col" role="list">
+        <ul className="flex flex-col" role="list">
           {logs.map((log) => (
             <li key={log.slug}>
               <Link
@@ -52,7 +52,7 @@ export function RecentLogs() {
           ))}
         </ul>
 
-        <div className="relative z-10 mt-10 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <AnimatedPrimaryButton
             href="/log"
             icon={ArrowUpRight}

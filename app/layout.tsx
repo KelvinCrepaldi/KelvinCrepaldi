@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Space_Grotesk } from "next/font/google";
 
 import { SiteFooter } from "@/_components/layout/site-footer";
@@ -41,20 +40,6 @@ export const metadata: Metadata = {
   },
 };
 
-const themeInitScript = `
-(function(){
-  try {
-    var k = 'kelvin-portfolio-theme-user';
-    var t = localStorage.getItem(k);
-    var dark;
-    if (t === 'dark') dark = true;
-    else if (t === 'light') dark = false;
-    else dark = true;
-    document.documentElement.classList.toggle('dark', dark);
-  } catch (e) {}
-})();
-`;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,11 +52,6 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} dark`}
     >
       <body className="relative h-[100dvh] overflow-hidden bg-surface text-on-surface selection:bg-on-surface selection:text-surface font-body antialiased">
-        <Script
-          id="theme-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: themeInitScript }}
-        />
         <ThemeProvider>
           <ScrollContainerProvider>
             <div className="relative flex h-[100dvh] flex-col overflow-hidden">
