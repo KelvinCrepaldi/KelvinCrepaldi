@@ -1,18 +1,15 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { renderMarkdown } from "@/_utils/render-markdown";
 
 type MarkdownArticleProps = {
   markdown: string;
   className?: string;
 };
 
-export function MarkdownArticle({
+export async function MarkdownArticle({
   markdown,
   className = "project-md",
 }: MarkdownArticleProps) {
-  return (
-    <article className={className}>
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
-    </article>
-  );
+  const content = await renderMarkdown(markdown);
+
+  return <article className={className}>{content}</article>;
 }

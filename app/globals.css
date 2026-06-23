@@ -236,7 +236,7 @@ body {
   @apply text-primary underline underline-offset-4 hover:opacity-80;
 }
 
-.project-md code {
+.project-md :not(pre) > code {
   @apply font-mono text-xs bg-surface-container px-1 py-0.5 border border-outline-variant/30;
 }
 
@@ -246,6 +246,22 @@ body {
 
 .project-md pre code {
   @apply p-0 border-0 bg-transparent;
+}
+
+.project-md [data-rehype-pretty-code-figure] {
+  @apply mb-4;
+}
+
+.project-md [data-rehype-pretty-code-figure] pre {
+  @apply font-mono text-xs leading-relaxed bg-surface-container p-4 border border-outline-variant/30 overflow-x-auto m-0;
+}
+
+.project-md [data-rehype-pretty-code-figure] code {
+  @apply block p-0 border-0 bg-transparent text-xs leading-relaxed;
+}
+
+.project-md [data-rehype-pretty-code-figure] code .line {
+  @apply px-0 min-h-[1.25rem];
 }
 
 .project-md blockquote {
@@ -305,7 +321,7 @@ body {
   @apply text-primary underline underline-offset-4 hover:opacity-80;
 }
 
-.log-md code {
+.log-md :not(pre) > code {
   @apply font-mono text-xs bg-surface-container px-1 py-0.5 border border-outline-variant/30;
 }
 
@@ -315,6 +331,22 @@ body {
 
 .log-md pre code {
   @apply p-0 border-0 bg-transparent;
+}
+
+.log-md [data-rehype-pretty-code-figure] {
+  @apply mb-4;
+}
+
+.log-md [data-rehype-pretty-code-figure] pre {
+  @apply font-mono text-xs leading-relaxed bg-surface-container p-4 border border-outline-variant/30 overflow-x-auto m-0;
+}
+
+.log-md [data-rehype-pretty-code-figure] code {
+  @apply block p-0 border-0 bg-transparent text-xs leading-relaxed;
+}
+
+.log-md [data-rehype-pretty-code-figure] code .line {
+  @apply px-0 min-h-[1.25rem];
 }
 
 .log-md blockquote {
@@ -340,6 +372,23 @@ body {
 
 .log-md img {
   @apply my-6 w-full max-w-full rounded-sm border border-outline-variant/30 object-cover;
+}
+
+/* Shiki — só cor do texto; fundo do pre = surface-container */
+.project-md [data-rehype-pretty-code-figure] code[data-theme] span,
+.log-md [data-rehype-pretty-code-figure] code[data-theme] span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
+
+html.dark .project-md [data-rehype-pretty-code-figure] code[data-theme] span,
+html.dark .log-md [data-rehype-pretty-code-figure] code[data-theme] span {
+  color: var(--shiki-dark);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+  text-decoration: var(--shiki-dark-text-decoration);
 }
 
 /* CRT — linhas a descer; na home só com hover; com --always fica sempre (página projeto) */

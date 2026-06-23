@@ -1,8 +1,4 @@
-import offlineFirstSyncMd from "@/_content/logs/offline-first-sync.md";
-import electronIpcMd from "@/_content/logs/electron-ipc-peripherals.md";
-import firstIncidentMd from "@/_content/logs/first-production-incident.md";
-import typescriptMigrationMd from "@/_content/logs/typescript-migration.md";
-import curitibaMeetupMd from "@/_content/logs/curitiba-dev-meetup.md";
+import apiExpressTypeOrm from "@/_content/logs/api_express_typeOrm.md"
 
 import { parseDotDate } from "./dates";
 
@@ -23,54 +19,14 @@ export type LogPost = {
 
 const unsorted: LogPost[] = [
   {
-    slug: "offline-first-sync",
+    slug: "API_Express_TypeORM",
     logId: "LOG_001",
-    title: "Offline_First_Sync",
+    title: "API_Express+TypeORM",
     excerpt:
-      "Lições de sincronização offline em totens: filas idempotentes, checkpoints e o que aprendi quando o relógio do cliente mentiu.",
-    publishedAt: "2025.06.14",
-    tags: ["offline-first", "Electron", "totens"],
-    md: offlineFirstSyncMd,
-  },
-  {
-    slug: "electron-ipc-peripherals",
-    logId: "LOG_002",
-    title: "Electron_IPC_Peripherals",
-    excerpt:
-      "Como padronizamos IPC, preload e postMessage para impressoras e maquininhas sem virar um emaranhado de canais.",
-    publishedAt: "2025.05.28",
-    tags: ["Electron", "IPC", "hardware"],
-    md: electronIpcMd,
-  },
-  {
-    slug: "first-production-incident",
-    logId: "LOG_003",
-    title: "First_Production_Incident",
-    excerpt:
-      "Primeiro incidente sério em produção: cache, versão divergente e o post-mortem que mudou nosso checklist de deploy.",
-    publishedAt: "2025.04.02",
-    tags: ["produção", "deploy", "post-mortem"],
-    md: firstIncidentMd,
-  },
-  {
-    slug: "typescript-migration",
-    logId: "LOG_004",
-    title: "TypeScript_Migration",
-    excerpt:
-      "Migração gradual de JS para TS em monorepo: onde começar, o que tipar primeiro e por que strict pode esperar.",
-    publishedAt: "2025.02.18",
-    tags: ["TypeScript", "arquitetura", "DX"],
-    md: typescriptMigrationMd,
-  },
-  {
-    slug: "curitiba-dev-meetup",
-    logId: "LOG_005",
-    title: "Curitiba_Dev_Meetup",
-    excerpt:
-      "Notas de um meetup local em Curitiba — comunidade, CI com orçamento zero e por que ainda vale ir presencialmente.",
-    publishedAt: "2025.01.09",
-    tags: ["comunidade", "carreira", "Curitiba"],
-    md: curitibaMeetupMd,
+      "Anotações para implementação de API com Express + TypeORM (com autenticação, middleware global e arquitetura organizada)",
+    publishedAt: "2026.06.22",
+    tags: ["Express", "Back-end"],
+    md: apiExpressTypeOrm,
   },
 ];
 
