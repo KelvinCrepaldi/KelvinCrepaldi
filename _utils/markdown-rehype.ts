@@ -14,5 +14,10 @@ export const prettyCodeOptions = {
     dark: portfolioDarkSyntax,
   },
   keepBackground: false,
-  defaultLang: "plaintext",
+  // Só blocos fenced; inline (`code`) não deve virar figure com display:block
+  bypassInlineCode: true,
+  defaultLang: {
+    block: "plaintext",
+    inline: "",
+  },
 } as Options;

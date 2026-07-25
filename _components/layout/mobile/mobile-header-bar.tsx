@@ -61,8 +61,8 @@ export function MobileHeaderBar({
       </Link>
 
       <div className="flex items-center justify-end gap-2">
-        <ThemeToggle className={headerChrome} />
         <LanguageSelect className={headerChrome} />
+        <ThemeToggle className={headerChrome} />
         <motion.button
           type="button"
           className={`p-2 transition-colors duration-300 ${headerChrome}`}

@@ -145,8 +145,10 @@ export function SiteHeader() {
                 {t.nav.contact}
               </Link>
             </div>
-            <LanguageSelect className={headerChrome} />
-            <ThemeToggle className={headerChrome} />
+            <div className="flex items-center gap-1">
+              <LanguageSelect className={headerChrome} />
+              <ThemeToggle className={headerChrome} />
+            </div>
           </div>
 
           <MobileHeaderBar

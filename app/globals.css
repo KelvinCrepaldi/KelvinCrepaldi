@@ -245,6 +245,7 @@ body {
 .project-md td code {
   display: inline;
   white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .project-md pre {
@@ -255,7 +256,8 @@ body {
   @apply p-0 border-0 bg-transparent;
 }
 
-.project-md [data-rehype-pretty-code-figure] {
+/* Só blocos fenced — nunca aplicar em código inline */
+.project-md [data-rehype-pretty-code-figure]:has(pre) {
   @apply mb-4;
 }
 
@@ -263,11 +265,11 @@ body {
   @apply font-mono text-xs leading-relaxed bg-surface-container p-4 border border-outline-variant/30 overflow-x-auto m-0;
 }
 
-.project-md [data-rehype-pretty-code-figure] code {
+.project-md [data-rehype-pretty-code-figure] pre code {
   @apply block p-0 border-0 bg-transparent text-xs leading-relaxed;
 }
 
-.project-md [data-rehype-pretty-code-figure] code .line {
+.project-md [data-rehype-pretty-code-figure] pre code .line {
   @apply px-0 min-h-[1.25rem];
 }
 
@@ -337,6 +339,7 @@ body {
 .log-md td code {
   display: inline;
   white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .log-md pre {
@@ -347,7 +350,8 @@ body {
   @apply p-0 border-0 bg-transparent;
 }
 
-.log-md [data-rehype-pretty-code-figure] {
+/* Só blocos fenced — nunca aplicar em código inline */
+.log-md [data-rehype-pretty-code-figure]:has(pre) {
   @apply mb-4;
 }
 
@@ -355,11 +359,11 @@ body {
   @apply font-mono text-xs leading-relaxed bg-surface-container p-4 border border-outline-variant/30 overflow-x-auto m-0;
 }
 
-.log-md [data-rehype-pretty-code-figure] code {
+.log-md [data-rehype-pretty-code-figure] pre code {
   @apply block p-0 border-0 bg-transparent text-xs leading-relaxed;
 }
 
-.log-md [data-rehype-pretty-code-figure] code .line {
+.log-md [data-rehype-pretty-code-figure] pre code .line {
   @apply px-0 min-h-[1.25rem];
 }
 
