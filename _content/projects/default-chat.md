@@ -2,7 +2,7 @@
 
 O **DefaultChat** é um app de conversa em tempo real. Dá para criar conta, adicionar amigos, conversar em privado e entrar em grupos públicos — tudo atualizando na hora, como um chat de verdade.
 
-Foi feito para rodar na sua máquina (com Docker ou com Node e Postgres). Não é um serviço online 24h: é um projeto de portfólio para mostrar autenticação, amizades e mensagens ao vivo funcionando juntas.
+Foi feito para rodar na sua máquina. Não é um serviço online 24h: é um projeto de portfólio para mostrar autenticação, amizades e mensagens ao vivo funcionando juntas.
 
 ---
 
@@ -24,47 +24,49 @@ Foi feito para rodar na sua máquina (com Docker ou com Node e Postgres). Não �
 
 ## Como instalar
 
-A forma mais simples é com Docker. Também dá para subir front e back separados, se preferir.
+Fluxo atual: o **Docker sobe só a API e o Postgres**; o **front roda na máquina** com pnpm.
 
-### Opção rápida — Docker
+### Requisitos
 
-Na pasta do projeto, com as portas 3000 e 3001 livres:
+- Docker Desktop (ou Docker Engine + Compose)
+- Node.js 20+ e pnpm
+- Portas 3000 (front) e 3001 (API) livres
+
+### 1. API e banco (Docker)
+
+Na pasta do projeto:
 
 ```bash
 docker compose up --build
 ```
 
-Isso sobe o banco, a API e o front. Na primeira vez o build pode demorar alguns minutos.
+Isso sobe o Postgres e a API. O front **não** entra no Compose.
 
-Para ver os logs ou encerrar:
+### 2. Front (local)
 
-```bash
-docker compose logs -f
-docker compose down
-```
-
-### Opção manual — Node + Postgres
-
-Com Node 20+ e um PostgreSQL local, crie o banco, configure o back-end e o front-end.
-
-**Banco** (exemplo):
-
-```sql
-CREATE USER defaultchat WITH PASSWORD 'defaultchat';
-CREATE DATABASE defaultchat OWNER defaultchat;
-```
-
-**API:**
+Em outro terminal:
 
 ```bash
-cd backend
-npm install
+cd frontend
+pnpm install
 cp .env.example .env
-npm run typeorm migration:run
-npm run dev
+pnpm run dev
 ```
 
-No `.env` do back-end, preencha pelo menos:
+No `.env` do front:
+
+| Variável | Exemplo |
+| --- | --- |
+| NEXT_PUBLIC_API_URL | http://localhost:3001 |
+| API_URL | http://localhost:3001 |
+| NEXTAUTH_SECRET | outro-segredo-longo |
+| NEXTAUTH_URL | http://localhost:3000 |
+
+### Alternativa sem Docker
+
+Com um Postgres local, suba a API na pasta `backend` (`npm install`, configure o `.env`, rode as migrations e `npm run dev`). Depois o front com pnpm, como acima.
+
+No `.env` do back-end, o essencial é:
 
 | Variável | Exemplo |
 | --- | --- |
@@ -77,27 +79,9 @@ No `.env` do back-end, preencha pelo menos:
 | SECRET_KEY | um-segredo-longo |
 | CORS_ORIGIN | http://localhost:3000 |
 
-**Front-end** (outro terminal):
-
-```bash
-cd frontend
-npm install --legacy-peer-deps
-cp .env.example .env
-npm run dev
-```
-
-No `.env` do front:
-
-| Variável | Exemplo |
-| --- | --- |
-| NEXT_PUBLIC_API_URL | http://localhost:3001 |
-| API_URL | http://localhost:3001 |
-| NEXTAUTH_SECRET | outro-segredo-longo |
-| NEXTAUTH_URL | http://localhost:3000 |
-
 ### Como testar rápido
 
-1. Abra o app no navegador e crie uma conta
+1. Compose (ou API local) no ar + front em http://localhost:3000 → criar conta
 2. Em outra janela (ou navegador), crie um segundo usuário
 3. Busque o outro perfil, envie pedido de amizade e aceite
 4. Abra o chat 1:1 ou entre em um grupo e converse
@@ -115,7 +99,7 @@ No `.env` do front:
 
 | Camada | Tecnologias |
 | --- | --- |
-| Front | Next.js, React, NextAuth, Socket.io, Tailwind CSS |
+| Front | Next.js, React, NextAuth, Socket.io, Tailwind CSS, pnpm |
 | Back | Express, Socket.io, TypeORM, JWT |
 | Banco | PostgreSQL (Docker Compose) |
 
