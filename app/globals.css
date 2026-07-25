@@ -240,6 +240,13 @@ body {
   @apply font-mono text-xs bg-surface-container px-1 py-0.5 border border-outline-variant/30;
 }
 
+.project-md p code,
+.project-md li code,
+.project-md td code {
+  display: inline;
+  white-space: normal;
+}
+
 .project-md pre {
   @apply font-mono text-xs bg-surface-container p-4 border border-outline-variant/30 overflow-x-auto mb-4;
 }
@@ -323,6 +330,13 @@ body {
 
 .log-md :not(pre) > code {
   @apply font-mono text-xs bg-surface-container px-1 py-0.5 border border-outline-variant/30;
+}
+
+.log-md p code,
+.log-md li code,
+.log-md td code {
+  display: inline;
+  white-space: normal;
 }
 
 .log-md pre {

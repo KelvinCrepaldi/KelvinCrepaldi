@@ -1,7 +1,6 @@
-import totemMd from "@/_content/projects/totem-platform.md";
-import terminalMd from "@/_content/projects/terminal-core.md";
-import nexusMd from "@/_content/projects/nexus-api.md";
-import voidMd from "@/_content/projects/void-gallery.md";
+import piratesPunchMd from "@/_content/projects/pirates-punch.md";
+import defaultChatMd from "@/_content/projects/default-chat.md";
+import leitorDeBoletoMd from "@/_content/projects/leitor-de-boleto.md";
 
 export type Project = {
   slug: string;
@@ -16,75 +15,69 @@ export type Project = {
   subtitle: string;
   /** `false` = não entra na grelha da home */
   listOnHome?: boolean;
+  /** Capa local em `/public` (ex.: `/projects/slug/cover.png`). Sem isso, usa Picsum. */
+  cover?: string;
 };
 
 const PICSUM_BASE = "https://picsum.photos";
 
 /**
- * Capa placeholder estável por `slug` (Lorem Picsum com seed).
- * Mesma URL no card da home e no cabeçalho do detalhe — só variar `width`/`height` conforme o layout.
+ * Capa do projeto: path local (`cover`) ou placeholder Picsum estável por `slug`.
+ * Mesma URL no card da home e no cabeçalho do detalhe — `width`/`height` só afetam o fallback Picsum.
  */
 export function projectCoverUrl(
   slug: string,
   width = 1200,
   height = 675,
 ): string {
+  const local = projectBySlug[slug]?.cover;
+  if (local) return local;
   const safe = encodeURIComponent(slug);
   return `${PICSUM_BASE}/seed/${safe}/${width}/${height}`;
 }
 
 const unsorted: Project[] = [
   {
-    slug: "totem-platform",
+    slug: "pirates-punch",
     vol: "VOL_01",
-    title: "Totem_Platform",
+    title: "Pirates_Punch",
     excerpt:
-      "Plataforma completa de totens interativos: Dashboard Next.js + API, apps Vite no Electron, offline-first e integração com periféricos.",
-    tags: ["Next.js", "Electron", "Vite", "Supabase"],
-    lastUpdate: "2024.08.15",
+      "E-commerce full-stack com tema pirata: catálogo, auth JWT com cookies httpOnly, carrinho, checkout e perfil sobre API Express + PostgreSQL.",
+    tags: ["Next.js", "Express", "TypeORM", "PostgreSQL"],
+    lastUpdate: "2026.07.01",
     sortOrder: 1,
     listOnHome: true,
-    subtitle: "Plataforma de totens interativos com configuração em nuvem",
-    md: totemMd,
+    subtitle: "Loja full-stack com API REST, seed e fluxo até o pedido",
+    cover: "/projects/pirates-punch/cover.png",
+    md: piratesPunchMd,
   },
   {
-    slug: "terminal-core",
+    slug: "default-chat",
     vol: "VOL_02",
-    title: "Terminal_Core",
+    title: "Default_Chat",
     excerpt:
-      "Aplicação desktop em Electron para manipulação e indexação profunda do sistema de arquivos.",
-    tags: ["Electron", "Node"],
-    lastUpdate: "2024.02.28",
+      "Chat em tempo real 1:1 e grupos públicos: amizades, Socket.io, NextAuth e PostgreSQL — demo local com Docker Compose.",
+    tags: ["Next.js", "Socket.io", "NextAuth", "PostgreSQL"],
+    lastUpdate: "2026.06.15",
     sortOrder: 2,
     listOnHome: true,
-    subtitle: "Aplicação desktop para indexação profunda",
-    md: terminalMd,
+    subtitle: "Chat em tempo real com amigos e grupos públicos",
+    cover: "/projects/default-chat/cover.png",
+    md: defaultChatMd,
   },
   {
-    slug: "nexus-api",
+    slug: "leitor-de-boleto",
     vol: "VOL_03",
-    title: "Nexus_API",
+    title: "Leitor_de_Boleto",
     excerpt:
-      "Arquitetura backend distribuída para ingestão assíncrona de dados de múltiplos sensores remotos.",
-    tags: ["Express", "Redis"],
-    lastUpdate: "2023.11.15",
+      "API que valida linhas digitáveis FEBRABAN (título 47 e convênio 48), extrai código de barras, valor e vencimento — com Jest.",
+    tags: ["Express", "TypeScript", "Jest", "FEBRABAN"],
+    lastUpdate: "2026.05.20",
     sortOrder: 3,
     listOnHome: true,
-    subtitle: "Backend distribuído para ingestão assíncrona",
-    md: nexusMd,
-  },
-  {
-    slug: "void-gallery",
-    vol: "VOL_04",
-    title: "Void_Gallery",
-    excerpt:
-      "Galeria arquivística para ativos pesados (imagens e cenas 3D) com carregamento progressivo e foco no objeto.",
-    tags: ["Next.js", "Three.js"],
-    lastUpdate: "2023.09.01",
-    sortOrder: 4,
-    listOnHome: true,
-    subtitle: "Navegação deliberada de ativos visuais pesados",
-    md: voidMd,
+    subtitle: "Validador de boletos no padrão brasileiro",
+    cover: "/projects/leitor-de-boleto/cover.jpg",
+    md: leitorDeBoletoMd,
   },
 ];
 
