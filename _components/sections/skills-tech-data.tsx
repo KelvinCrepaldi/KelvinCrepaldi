@@ -104,18 +104,6 @@ export const BANCADA_TOOLS: TechWithIcon[] = [
   { name: "Linux", icon: SiLinux },
 ];
 
-export const SOFT_SKILLS = [
-  "Scrum",
-  "Kanban",
-  "Comunicação",
-  "Proatividade",
-  "Liderança",
-  "Coordenação de equipe",
-  "Mentoria",
-  "Planejamento",
-  "Adaptabilidade",
-] as const;
-
 export type SkillCategoryCode = "01" | "02" | "03" | "04" | "05";
 
 export type TechSkillCategory = {
@@ -135,41 +123,3 @@ export type SoftSkillCategory = {
 };
 
 export type SkillCategory = TechSkillCategory | SoftSkillCategory;
-
-export const SKILL_CATEGORIES: SkillCategory[] = [
-  {
-    code: "01",
-    title: "Front-end",
-    subtitle: "Frameworks e linguagens de interface",
-    kind: "tech",
-    items: FRONT_FRAMEWORKS,
-  },
-  {
-    code: "02",
-    title: "Back-end",
-    subtitle: "Runtime, APIs e banco de dados",
-    kind: "tech",
-    items: BACKEND_STACK,
-  },
-  {
-    code: "03",
-    title: "Ecossistema",
-    subtitle: "UI, estado, i18n e base web",
-    kind: "tech",
-    items: ECOSYSTEM_LIBS,
-  },
-  {
-    code: "04",
-    title: "Ferramentas",
-    subtitle: "IDE, versionamento, infra e produtividade",
-    kind: "tech",
-    items: BANCADA_TOOLS,
-  },
-  {
-    code: "05",
-    title: "Metodologias & Soft Skills",
-    subtitle: "Como trabalho no dia a dia",
-    kind: "soft",
-    items: SOFT_SKILLS,
-  },
-];

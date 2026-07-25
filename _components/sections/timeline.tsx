@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 
+import { useTranslations } from "@/_components/i18n/locale-provider";
 import { useIsMobileLayout } from "@/hooks/useIsMobileLayout";
 import { SectionHeader } from "@/_components/_ui/SectionHeader";
 import {
@@ -10,25 +11,10 @@ import {
   ClockCirclesBackground,
 } from "@/_components/_ui/animations/ClockCircles";
 
-const ENTRIES = [
-  {
-    title: "Desenvolvedor de Software",
-    subtitle: "Adam Robo",
-    period: "mar. de 2024 — Atual",
-    description:
-      "Planejamento, arquitetura e desenvolvimento de sistemas web com React, Vite e Electron. Criação de formulários dinâmicos, componentes reutilizáveis e fluxos complexos, reduzindo o tempo de preenchimento para poucos segundos. Suporte técnico em integrações com APIs internas e sistemas offline-first. Atuação direta na definição técnica e estrutural das aplicações, incluindo organização de múltiplos módulos e tomada de decisões críticas. Atendimento simultâneo de mais de 600 clientes sem falhas, com redução de 30% no tempo de carregamento.",
-  },
-  {
-    title: "Desenvolvimento Web Full Stack",
-    subtitle: "Kenzie Academy Brasil",
-    period: "mai de 2021 — jun. de 2022",
-    description:
-      "Curso intensivo de 2.000 horas cobrindo tecnologias Front-end e Back-end. Entre as linguagens e ferramentas: HTML5, CSS3, JavaScript (ES6+), React, Redux, Python (Django e Flask) e SQL, além de soft skills para o mercado de trabalho.",
-  },
-] as const;
-
 export function Timeline() {
   const isMobile = useIsMobileLayout();
+  const t = useTranslations();
+  const entries = t.timeline.entries;
 
   return (
     <section
@@ -73,8 +59,8 @@ export function Timeline() {
       )}
       <div className="relative w-full lg:mx-auto lg:max-w-content">
         <SectionHeader
-          title="Timeline"
-          subtitle="experiência profissional e formação ao longo do tempo"
+          title={t.timeline.title}
+          subtitle={t.timeline.subtitle}
         />
 
         <div className="relative">
@@ -84,12 +70,12 @@ export function Timeline() {
           />
 
           <ul className="space-y-20 md:space-y-28">
-            {ENTRIES.map((entry, idx) => {
+            {entries.map((entry, idx) => {
               const isLeft = idx % 2 === 0;
 
               return (
                 <motion.li
-                  key={entry.title}
+                  key={`${entry.title}-${idx}`}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}

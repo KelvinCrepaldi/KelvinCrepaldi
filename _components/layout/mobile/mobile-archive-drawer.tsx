@@ -1,6 +1,7 @@
 "use client";
 
 import { ArchiveIndexContent } from "@/_components/archive/archive-index-content";
+import { useTranslations } from "@/_components/i18n/locale-provider";
 import {
   getLogSlugFromPath,
   getProjectSlugFromPath,
@@ -21,6 +22,7 @@ export function MobileArchiveDrawer({
 }: MobileArchiveDrawerProps) {
   const projectSlug = getProjectSlugFromPath(pathname);
   const logSlug = getLogSlugFromPath(pathname);
+  const t = useTranslations();
 
   return (
     <MobileDrawerShell
@@ -29,7 +31,7 @@ export function MobileArchiveDrawer({
       id="mobile-archive-drawer"
       titleId="mobile-archive-title"
       title="ARCHIVE_TERMINAL // INDEX"
-      closeLabel="Fechar índice"
+      closeLabel={t.nav.closeArchive}
       onClose={onClose}
     >
       <ArchiveIndexContent

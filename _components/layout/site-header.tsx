@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { LanguageSelect } from "@/_components/i18n/language-select";
+import { useTranslations } from "@/_components/i18n/locale-provider";
 import { ThemeToggle } from "@/_components/theme/theme-toggle";
 import { useScrollContainer, useGoHome } from "@/_components/layout/scroll-container";
 import {
@@ -23,6 +25,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const scrollRef = useScrollContainer();
   const goHome = useGoHome();
+  const t = useTranslations();
   const { scrollY } = useScroll(
     scrollRef ? { container: scrollRef } : {},
   );
@@ -101,7 +104,7 @@ export function SiteHeader() {
               }
         }
         style={{ backdropFilter: "blur(12px)" }}
-        aria-label="Navegação principal"
+        aria-label={t.nav.ariaMain}
       >
         <div className="flex w-full items-center justify-between gap-3 md:max-w-content md:mx-auto">
           <motion.div
@@ -121,27 +124,28 @@ export function SiteHeader() {
           <div className="hidden min-w-0 flex-1 items-center justify-end gap-6 md:flex">
             <div className="flex gap-8 font-space-grotesk text-sm font-bold uppercase tracking-tighter">
               <Link href="/" onClick={goHome()} className={isHome ? activeHome : inactive}>
-                HOME
+                {t.nav.home}
               </Link>
               <Link
                 href="/projects"
                 className={isProjects ? activeProjects : inactive}
               >
-                Projetos
+                {t.nav.projects}
               </Link>
               <Link href="/log" className={isLogs ? activeLogs : inactive}>
-                Anotações
+                {t.nav.logs}
               </Link>
               <Link className={inactive} href="/#timeline">
-                Sobre
+                {t.nav.about}
               </Link>
               <Link className={inactive} href="/#skills">
-                Habilidades
+                {t.nav.skills}
               </Link>
               <Link className={inactive} href="/#contact">
-                Contato
+                {t.nav.contact}
               </Link>
             </div>
+            <LanguageSelect className={headerChrome} />
             <ThemeToggle className={headerChrome} />
           </div>
 

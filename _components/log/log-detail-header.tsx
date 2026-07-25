@@ -1,15 +1,18 @@
 import { BackToLogLink } from "@/_components/log/back-to-log-link";
 import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
-import { formatLogDate, type LogPost } from "@/_utils/logs";
+import { formatLogDate, type ResolvedLogPost } from "@/_utils/logs";
+import type { Locale } from "@/_i18n/locales";
 import { LogTag } from "./log-tag";
 
 type LogDetailHeaderProps = {
-  log: LogPost;
+  log: ResolvedLogPost;
+  locale: Locale;
   contentGutterClass?: string;
 };
 
 export function LogDetailHeader({
   log,
+  locale,
   contentGutterClass = "px-6 md:px-10 lg:px-12 xl:px-14",
 }: LogDetailHeaderProps) {
   return (
@@ -23,7 +26,7 @@ export function LogDetailHeader({
             <BlinkingDotRow count={3} size="sm" />
             <span>{log.logId}</span>
             <span className="opacity-30">|</span>
-            <span>PUBLISHED_AT: {formatLogDate(log.publishedAt)}</span>
+            <span>PUBLISHED_AT: {formatLogDate(log.publishedAt, locale)}</span>
           </div>
           <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-tighter text-on-surface md:text-6xl lg:text-7xl">
             {log.title}

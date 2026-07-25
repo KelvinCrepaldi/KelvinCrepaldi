@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa6";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 
+import { useTranslations } from "@/_components/i18n/locale-provider";
+
 const iconLink =
   "flex items-center justify-center w-10 h-10 rounded-none border border-[#fef9ed]/25 text-[#fef9ed]/80 hover:text-white hover:border-[#fef9ed]/60";
 
@@ -16,6 +18,8 @@ const EMAIL = "kelvin.crepaldi@hotmail.com";
 const WHATSAPP = "5541996748781";
 
 export function SiteFooter() {
+  const t = useTranslations();
+
   return (
     <footer
       id="contact"
@@ -23,7 +27,7 @@ export function SiteFooter() {
     >
       <div className="mx-auto w-full max-w-content">
         <p className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#fef9ed]">
-          Contato
+          {t.footer.contact}
         </p>
 
         <div className="mt-10 flex flex-col items-start gap-4 border-t border-[#fef9ed]/15 pt-10">
@@ -91,12 +95,12 @@ export function SiteFooter() {
             >
               <MapPin className="h-3.5 w-3.5" strokeWidth={2} />
             </motion.span>
-            Curitiba, Paraná, Brasil
+            {t.footer.location}
           </p>
         </div>
 
         <p className="mt-12 font-space-grotesk text-[10px] tracking-widest uppercase text-[#fef9ed]/55">
-          © 2026 Kelvin Crepaldi — Desenvolvedor de Software
+          {t.footer.copyright}
         </p>
       </div>
     </footer>

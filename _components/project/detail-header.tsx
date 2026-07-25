@@ -4,12 +4,18 @@ import { FauxTerminalWindow } from "@/_components/_ui/faux-terminal-window";
 import { BackToArchiveLink } from "@/_components/_ui/BackToArchiveLink";
 import { BlinkingDotRow } from "@/_components/_ui/animations/BlinkingDotRow";
 import { formatDotDate } from "@/_utils/dates";
-import { projectCoverUrl, type Project } from "@/_utils/projects";
+import {
+  projectCoverUrl,
+  type ResolvedProject,
+} from "@/_utils/projects";
+import type { Locale } from "@/_i18n/locales";
 import { ProjectTag } from "./project-tag";
 
 type ProjectDetailHeaderProps = {
-  project: Project;
+  project: ResolvedProject;
   subtitle?: string;
+  coverAlt: string;
+  locale: Locale;
   /** Classes de padding horizontal (devem coincidir com a zona do Markdown) */
   contentGutterClass?: string;
 };
@@ -17,6 +23,8 @@ type ProjectDetailHeaderProps = {
 export function ProjectDetailHeader({
   project,
   subtitle,
+  coverAlt,
+  locale,
   contentGutterClass = "px-6 md:px-10 lg:px-12 xl:px-14",
 }: ProjectDetailHeaderProps) {
   const heroSrc = projectCoverUrl(project.slug, 1600, 720);
@@ -32,7 +40,7 @@ export function ProjectDetailHeader({
             <BlinkingDotRow count={3} size="sm" />
             <span>{project.vol}</span>
             <span className="opacity-30">|</span>
-            <span>LAST_UPDATE: {formatDotDate(project.lastUpdate)}</span>
+            <span>LAST_UPDATE: {formatDotDate(project.lastUpdate, locale)}</span>
           </div>
           <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-tighter text-on-surface md:text-6xl lg:text-7xl">
             {project.title}
@@ -60,7 +68,7 @@ export function ProjectDetailHeader({
       >
         <Image
           src={heroSrc}
-          alt={`Capa do projeto ${project.title}`}
+          alt={coverAlt}
           fill
           priority
           sizes="(max-width: 1024px) 100vw, min(1152px, 90vw)"

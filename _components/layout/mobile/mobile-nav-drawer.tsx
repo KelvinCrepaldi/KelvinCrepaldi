@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { useTranslations } from "@/_components/i18n/locale-provider";
 import { useGoHome } from "@/_components/layout/scroll-container";
 import { MobileDrawerShell } from "./mobile-drawer-shell";
 
@@ -23,6 +24,7 @@ export function MobileNavDrawer({
   const isProjects = pathname.startsWith("/projects");
   const isLogs = pathname.startsWith("/log");
   const goHome = useGoHome();
+  const t = useTranslations();
 
   return (
     <MobileDrawerShell
@@ -31,39 +33,39 @@ export function MobileNavDrawer({
       id="mobile-nav-drawer"
       titleId="mobile-nav-title"
       title="NAV_TERMINAL // MOBILE_SESSION"
-      closeLabel="Fechar menu"
+      closeLabel={t.nav.closeMenu}
       onClose={onClose}
     >
-      <nav className="flex flex-col font-space-grotesk" aria-label="Secções">
+      <nav className="flex flex-col font-space-grotesk" aria-label={t.nav.sections}>
         <Link
           href="/"
           className={`${mobileLinkBase} ${isHome ? "bg-on-surface/5" : ""}`}
           onClick={goHome(onClose)}
         >
-          HOME
+          {t.nav.home}
         </Link>
         <Link
           href="/projects"
           className={`${mobileLinkBase} ${isProjects ? "bg-on-surface/5" : ""}`}
           onClick={onClose}
         >
-          Projetos
+          {t.nav.projects}
         </Link>
         <Link
           href="/log"
           className={`${mobileLinkBase} ${isLogs ? "bg-on-surface/5" : ""}`}
           onClick={onClose}
         >
-          Anotações
+          {t.nav.logs}
         </Link>
         <Link className={mobileLinkBase} href="/#timeline" onClick={onClose}>
-          Sobre
+          {t.nav.about}
         </Link>
         <Link className={mobileLinkBase} href="/#skills" onClick={onClose}>
-          Habilidades
+          {t.nav.skills}
         </Link>
         <Link className={mobileLinkBase} href="/#contact" onClick={onClose}>
-          Contato
+          {t.nav.contact}
         </Link>
       </nav>
     </MobileDrawerShell>

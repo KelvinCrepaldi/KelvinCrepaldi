@@ -1,5 +1,8 @@
-import apiExpressTypeOrm from "@/_content/logs/api_express_typeOrm.md"
+import apiExpressTypeOrm from "@/_content/logs/api_express_typeOrm.md";
+import apiExpressTypeOrmEn from "@/_content/logs/api_express_typeOrm.en.md";
 
+import type { Locale } from "@/_i18n/locales";
+import { L, pickLocalized, type LocalizedText } from "@/_i18n/localize";
 import { parseDotDate } from "./dates";
 
 export { formatLogDate } from "./dates";
@@ -8,25 +11,40 @@ export type LogPost = {
   slug: string;
   logId: string;
   title: string;
-  excerpt: string;
+  excerpt: LocalizedText;
   publishedAt: string;
   tags: string[];
   /** Texto longo em Markdown (corpo da página do log) */
-  md: string;
+  md: LocalizedText;
   /** `true` = não entra no catálogo público */
   draft?: boolean;
 };
+
+export type ResolvedLogPost = Omit<LogPost, "excerpt" | "md"> & {
+  excerpt: string;
+  md: string;
+};
+
+export function resolveLog(log: LogPost, locale: Locale): ResolvedLogPost {
+  return {
+    ...log,
+    excerpt: pickLocalized(log.excerpt, locale),
+    md: pickLocalized(log.md, locale),
+  };
+}
 
 const unsorted: LogPost[] = [
   {
     slug: "API_Express_TypeORM",
     logId: "LOG_001",
     title: "API_Express+TypeORM",
-    excerpt:
+    excerpt: L(
       "Anotações para implementação de API com Express + TypeORM (com autenticação, middleware global e arquitetura organizada)",
+      "Notes on implementing an API with Express + TypeORM (authentication, global middleware, and organized architecture)",
+    ),
     publishedAt: "2026.06.22",
     tags: ["Express", "Back-end"],
-    md: apiExpressTypeOrm,
+    md: L(apiExpressTypeOrm, apiExpressTypeOrmEn),
   },
 ];
 

@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Menu, PanelLeft, X } from "lucide-react";
 import Link from "next/link";
 
+import { LanguageSelect } from "@/_components/i18n/language-select";
+import { useTranslations } from "@/_components/i18n/locale-provider";
 import { ThemeToggle } from "@/_components/theme/theme-toggle";
 
 type MobileHeaderBarProps = {
@@ -29,12 +31,14 @@ export function MobileHeaderBar({
   onToggleArchive,
   onCloseDrawers,
 }: MobileHeaderBarProps) {
+  const t = useTranslations();
+
   return (
     <div className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-x-2 md:hidden">
       <motion.button
         type="button"
         className={`p-2 transition-colors duration-300 ${headerChrome}`}
-        aria-label={archiveOpen ? "Fechar índice" : "Abrir índice de arquivo"}
+        aria-label={archiveOpen ? t.nav.closeArchive : t.nav.openArchive}
         aria-expanded={archiveOpen}
         aria-controls="mobile-archive-drawer"
         whileTap={{ scale: 0.9 }}
@@ -58,10 +62,11 @@ export function MobileHeaderBar({
 
       <div className="flex items-center justify-end gap-2">
         <ThemeToggle className={headerChrome} />
+        <LanguageSelect className={headerChrome} />
         <motion.button
           type="button"
           className={`p-2 transition-colors duration-300 ${headerChrome}`}
-          aria-label={navOpen ? "Fechar menu" : "Abrir menu"}
+          aria-label={navOpen ? t.nav.closeMenu : t.nav.openMenu}
           aria-expanded={navOpen}
           aria-controls="mobile-nav-drawer"
           whileTap={{ scale: 0.9 }}

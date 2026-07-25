@@ -5,8 +5,9 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { useLocale, useTranslations } from "@/_components/i18n/locale-provider";
 import { formatDotDate } from "@/_utils/dates";
-import { projectCoverUrl, type Project } from "@/_utils/projects";
+import { projectCoverUrl, resolveProject, type Project } from "@/_utils/projects";
 
 import {
   TechHoverEffects,
@@ -22,6 +23,9 @@ type ProjectListCardProps = {
 };
 
 export function ProjectListCard({ project }: ProjectListCardProps) {
+  const { locale } = useLocale();
+  const t = useTranslations();
+  const resolved = resolveProject(project, locale);
   const coverSrc = projectCoverUrl(project.slug, 960, 576);
 
   return (
@@ -40,7 +44,7 @@ export function ProjectListCard({ project }: ProjectListCardProps) {
         <div className="absolute inset-y-0 left-[-9%] h-full w-[118%] translate-x-[5%] transition-transform duration-0 ease-linear will-change-transform group-hover:translate-x-[-6%] group-hover:duration-[10000ms] motion-reduce:translate-x-0 motion-reduce:group-hover:translate-x-0 motion-reduce:transition-none">
           <Image
             src={coverSrc}
-            alt={`Capa do projeto ${project.title}`}
+            alt={t.projects.coverAlt.replace("{title}", resolved.title)}
             fill
             sizes="(max-width: 768px) 100vw, 320px"
             className="object-cover grayscale transition-[filter] duration-700 ease-out group-hover:grayscale-0"
@@ -89,10 +93,10 @@ export function ProjectListCard({ project }: ProjectListCardProps) {
 
         <div className="flex-grow">
           <h4 className="mb-2 text-lg font-bold uppercase text-on-surface transition-all md:mb-3 md:text-xl">
-            {project.title}
+            {resolved.title}
           </h4>
           <p className="mb-3 line-clamp-2 text-body text-on-surface/70">
-            {project.excerpt}
+            {resolved.excerpt}
           </p>
         </div>
 
@@ -103,7 +107,7 @@ export function ProjectListCard({ project }: ProjectListCardProps) {
             ))}
           </div>
           <div className="mt-4 border-t border-outline-variant/15 pt-2 font-mono text-[9px] text-terminal-accent/50">
-            LAST_UPDATE: {formatDotDate(project.lastUpdate)}
+            LAST_UPDATE: {formatDotDate(project.lastUpdate, locale)}
           </div>
         </div>
       </div>

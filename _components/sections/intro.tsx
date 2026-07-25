@@ -3,12 +3,15 @@
 import { motion } from "framer-motion";
 import { Download, Github, Linkedin, MapPin } from "lucide-react";
 
+import { useTranslations } from "@/_components/i18n/locale-provider";
 import { AnimatedIconLink } from "@/_components/_ui/animations/AnimatedIconLink";
 import { StatusDot } from "@/_components/_ui/animations/StatusDot";
 
 const CV_HREF = "/Kelvin_Crepaldi_CV.pdf";
 
 export function Intro() {
+  const t = useTranslations();
+
   return (
     <div className="md:col-span-8 flex flex-col justify-center">
       <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none text-on-surface mb-4">
@@ -20,9 +23,7 @@ export function Intro() {
         Full Stack Developer <StatusDot />
       </h2>
       <p className="max-w-xl text-sm md:text-base leading-relaxed text-on-surface/75 mb-6">
-        Desenvolvedor de aplicações web e desktop, do planejamento à entrega —
-        interface, APIs, banco de dados e infraestrutura. Foco em consistência,
-        performance e manutenção a longo prazo.
+        {t.intro.bio}
       </p>
       <p className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-on-surface/70 mb-12">
         <motion.span
@@ -37,7 +38,7 @@ export function Intro() {
         >
           <MapPin className="w-3 h-3" strokeWidth={2} />
         </motion.span>
-        Curitiba, Brasil
+        {t.intro.location}
       </p>
       <div className="flex flex-wrap items-center gap-4 mb-12">
         <div className="flex items-center gap-3">
@@ -54,10 +55,10 @@ export function Intro() {
           <AnimatedIconLink
             href={CV_HREF}
             download="Kelvin_Crepaldi_CV.pdf"
-            aria-label="Baixar Curriculum Vitae"
+            aria-label={t.intro.downloadCv}
             icon={Download}
           >
-            Curriculum Vitae
+            {t.intro.cvLabel}
           </AnimatedIconLink>
         </div>
       </div>

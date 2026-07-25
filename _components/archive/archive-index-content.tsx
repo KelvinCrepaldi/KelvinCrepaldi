@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "@/_components/i18n/locale-provider";
+
 import { ArchiveIndexSection } from "./archive-index-section";
 import { logArchiveEntries } from "./map-logs";
 import { projectArchiveEntries } from "./map-projects";
@@ -17,6 +21,8 @@ export function ArchiveIndexContent({
   showProjects = true,
   showLogs = true,
 }: ArchiveIndexContentProps) {
+  const t = useTranslations();
+
   return (
     <>
       {showProjects ? (
@@ -26,7 +32,7 @@ export function ArchiveIndexContent({
           footer=":: SELECT_ENTRY_TO_MOUNT_VOLUME"
           entries={projectArchiveEntries()}
           activeSlug={projectSlug}
-          ariaLabel="Lista de projetos"
+          ariaLabel={t.archive.projectsList}
           onNavigate={onNavigate}
         />
       ) : null}
@@ -38,7 +44,7 @@ export function ArchiveIndexContent({
           footer=":: SELECT_ENTRY_TO_MOUNT_LOG"
           entries={logArchiveEntries()}
           activeSlug={logSlug}
-          ariaLabel="Lista de logs"
+          ariaLabel={t.archive.logsList}
           onNavigate={onNavigate}
           className={showProjects ? "mt-6 border-t-2 border-outline-variant/30 pt-2" : ""}
         />

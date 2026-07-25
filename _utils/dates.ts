@@ -1,3 +1,5 @@
+import { localeToIntl, type Locale } from "@/_i18n/locales";
+
 const DOT_DATE_PATTERN = /^(\d{4})\.(\d{2})\.(\d{2})$/;
 
 export function parseDotDate(date: string): Date {
@@ -10,8 +12,8 @@ export function parseDotDate(date: string): Date {
   return new Date(Number(year), Number(month) - 1, Number(day));
 }
 
-export function formatDotDate(date: string): string {
-  return new Intl.DateTimeFormat("pt-BR", {
+export function formatDotDate(date: string, locale: Locale = "pt-BR"): string {
+  return new Intl.DateTimeFormat(localeToIntl(locale), {
     day: "numeric",
     month: "short",
     year: "numeric",

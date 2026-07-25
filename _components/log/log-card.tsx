@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
-import { formatLogDate, type LogPost } from "@/_utils/logs";
+import { useLocale } from "@/_components/i18n/locale-provider";
+import { formatLogDate, resolveLog, type LogPost } from "@/_utils/logs";
 
 import {
   TechHoverEffects,
@@ -19,6 +20,9 @@ type LogCardProps = {
 };
 
 export function LogCard({ log }: LogCardProps) {
+  const { locale } = useLocale();
+  const resolved = resolveLog(log, locale);
+
   return (
     <MotionLink
       href={`/log/${log.slug}`}
@@ -36,16 +40,16 @@ export function LogCard({ log }: LogCardProps) {
           {log.logId}
         </span>
         <p className="font-mono text-[9px] uppercase tracking-wider text-terminal-accent/55">
-          {formatLogDate(log.publishedAt)}
+          {formatLogDate(log.publishedAt, locale)}
         </p>
       </div>
 
       <div className="relative z-[1] min-w-0 flex-1">
         <h4 className="text-base font-bold uppercase leading-snug tracking-tight text-on-surface md:text-lg">
-          {log.title}
+          {resolved.title}
         </h4>
         <p className="mt-1 line-clamp-2 text-body text-on-surface/65 md:max-w-3xl">
-          {log.excerpt}
+          {resolved.excerpt}
         </p>
         <div className="mt-2 flex flex-wrap gap-1.5">
           {log.tags.map((tag) => (

@@ -3,6 +3,8 @@
 import { Moon, Sun } from "lucide-react";
 import { motion } from "framer-motion";
 
+import { useTranslations } from "@/_components/i18n/locale-provider";
+
 import { useTheme } from "./theme-provider";
 
 type ThemeToggleProps = {
@@ -12,6 +14,7 @@ type ThemeToggleProps = {
 
 export function ThemeToggle({ className = "" }: ThemeToggleProps) {
   const { theme, toggleTheme, ready } = useTheme();
+  const t = useTranslations();
   const isDark = theme === "dark";
 
   if (!ready) {
@@ -28,8 +31,8 @@ export function ThemeToggle({ className = "" }: ThemeToggleProps) {
       type="button"
       onClick={toggleTheme}
       className={`relative z-[60] inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-none border border-transparent transition-colors duration-300 hover:bg-on-surface/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-surface/40 ${className}`.trim()}
-      aria-label={isDark ? "Ativar tema claro" : "Ativar tema escuro"}
-      title={isDark ? "Tema claro" : "Tema escuro"}
+      aria-label={isDark ? t.theme.enableLight : t.theme.enableDark}
+      title={isDark ? t.theme.light : t.theme.dark}
       whileTap={{ scale: 0.92 }}
       whileHover={{ scale: 1.06 }}
     >

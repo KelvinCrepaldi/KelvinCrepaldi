@@ -1,8 +1,8 @@
 "use client";
 
+import { useTranslations } from "@/_components/i18n/locale-provider";
 import { useScrollContainer } from "@/_components/layout/scroll-container";
 import { AnimatedChevronStack } from "@/_components/_ui/animations/AnimatedChevronStack";
-
 type ScrollToTopProps = {
   className?: string;
   /** Mais respiro antes do footer (homepage). */
@@ -22,6 +22,7 @@ export function ScrollToTop({
   variant = "default",
 }: ScrollToTopProps) {
   const scrollRef = useScrollContainer();
+  const t = useTranslations();
 
   return (
     <div
@@ -33,11 +34,11 @@ export function ScrollToTop({
           scrollRef?.current?.scrollTo({ top: 0, behavior: "smooth" })
         }
         className="group flex flex-col items-center gap-2 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-on-surface/40"
-        aria-label="Subir para o topo"
+        aria-label={t.scrollToTop.aria}
       >
         <AnimatedChevronStack direction="up" />
         <span className="font-mono text-sm uppercase tracking-wider text-on-surface/70 transition-colors group-hover:text-on-surface/90">
-          subir
+          {t.scrollToTop.label}
         </span>
       </button>
     </div>

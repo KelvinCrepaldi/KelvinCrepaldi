@@ -7,6 +7,7 @@ import {
   ScrollContainerProvider,
   SiteScrollViewport,
 } from "@/_components/layout/scroll-container";
+import { LocaleProvider } from "@/_components/i18n/locale-provider";
 import { ThemeProvider } from "@/_components/theme/theme-provider";
 import { CrtOverlay } from "@/_components/_ui/CrtOverlay";
 import { DotTextureBackground } from "@/_components/_ui/DotTextureBackground";
@@ -14,6 +15,8 @@ import { DotTextureBackground } from "@/_components/_ui/DotTextureBackground";
 import { siteConfig } from "@/_utils/site";
 
 import "./globals.css";
+
+const localeBootScript = `(function(){try{var k='kelvin-portfolio-locale';var s=localStorage.getItem(k);var raw=(s==='en'||s==='pt-BR')?s:((navigator.languages&&navigator.languages[0])||navigator.language||'');var l=s==='en'||s==='pt-BR'?s:(/^pt/i.test(raw)?'pt-BR':(raw?'en':'pt-BR'));document.documentElement.lang=l;document.cookie=k+'='+l+';path=/;max-age=31536000;SameSite=Lax';}catch(e){}})();`;
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -51,19 +54,24 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${spaceGrotesk.variable} dark`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: localeBootScript }} />
+      </head>
       <body className="relative h-[100dvh] overflow-hidden bg-surface text-on-surface selection:bg-on-surface selection:text-surface font-body antialiased">
         <ThemeProvider>
-          <ScrollContainerProvider>
-            <div className="relative flex h-[100dvh] flex-col overflow-hidden">
-              <DotTextureBackground />
-              <SiteHeader />
-              <SiteScrollViewport>
-                <main className="relative z-10 min-h-full">{children}</main>
-                <SiteFooter />
-              </SiteScrollViewport>
-              <CrtOverlay />
-            </div>
-          </ScrollContainerProvider>
+          <LocaleProvider>
+            <ScrollContainerProvider>
+              <div className="relative flex h-[100dvh] flex-col overflow-hidden">
+                <DotTextureBackground />
+                <SiteHeader />
+                <SiteScrollViewport>
+                  <main className="relative z-10 min-h-full">{children}</main>
+                  <SiteFooter />
+                </SiteScrollViewport>
+                <CrtOverlay />
+              </div>
+            </ScrollContainerProvider>
+          </LocaleProvider>
         </ThemeProvider>
       </body>
     </html>
