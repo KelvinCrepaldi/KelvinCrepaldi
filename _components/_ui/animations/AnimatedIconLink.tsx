@@ -11,7 +11,13 @@ type AnimatedIconLinkProps = {
   children?: ReactNode;
   download?: string | boolean;
   className?: string;
+  /** Abre em nova aba (padrão para http/https, exceto download) */
+  external?: boolean;
 };
+
+function isHttpUrl(href: string) {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
 
 export function AnimatedIconLink({
   href,
@@ -20,14 +26,20 @@ export function AnimatedIconLink({
   children,
   download,
   className = "",
+  external,
 }: AnimatedIconLinkProps) {
   const withLabel = children != null;
+  const openExternal =
+    external ?? (download == null && isHttpUrl(href));
 
   return (
     <motion.a
       href={href}
       download={download}
       aria-label={ariaLabel}
+      {...(openExternal
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
       className={[
         "group relative inline-flex h-10 items-center justify-center overflow-hidden",
         "border border-outline-variant bg-transparent text-on-surface",
