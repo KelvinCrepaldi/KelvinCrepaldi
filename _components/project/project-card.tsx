@@ -8,6 +8,10 @@ import Link from "next/link";
 import { formatDotDate } from "@/_utils/dates";
 import { projectCoverUrl, type Project } from "@/_utils/projects";
 
+import {
+  TechHoverEffects,
+  techHoverMotion,
+} from "@/_components/_ui/animations/TechHoverEffects";
 import { BlinkingDot } from "@/_components/_ui/animations/BlinkingDot";
 import { ProjectTag } from "./project-tag";
 
@@ -27,52 +31,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
       whileHover="hover"
       whileTap="tap"
       initial="rest"
-      variants={{
-        rest: { x: 0, y: 0 },
-        hover: { x: 0, y: 0 },
-        tap: { x: 1, y: 1 },
-      }}
+      variants={techHoverMotion}
       transition={{ duration: 0.08, ease: "linear" }}
     >
-      {/* Cantos técnicos */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute left-0 top-0 z-[5] h-2.5 w-2.5 border-l border-t border-on-surface opacity-0 transition-opacity duration-150 group-hover:opacity-100"
-      />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute right-0 top-0 z-[5] h-2.5 w-2.5 border-r border-t border-on-surface opacity-0 transition-opacity duration-150 group-hover:opacity-100"
-      />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute bottom-0 left-0 z-[5] h-2.5 w-2.5 border-b border-l border-on-surface opacity-0 transition-opacity duration-150 group-hover:opacity-100"
-      />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute bottom-0 right-0 z-[5] h-2.5 w-2.5 border-b border-r border-on-surface opacity-0 transition-opacity duration-150 group-hover:opacity-100"
-      />
-
-      {/* Scanlines CRT */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[4] opacity-0 transition-opacity duration-200 group-hover:opacity-100 motion-reduce:hidden max-md:hidden"
-      >
-        <span className="absolute inset-0 animate-[scanlines-down_0.45s_linear_infinite] bg-[repeating-linear-gradient(0deg,transparent_0,transparent_2px,rgb(var(--on-surface)/0.08)_2px,rgb(var(--on-surface)/0.08)_4px)] bg-[length:100%_4px]" />
-      </span>
-
-      {/* Flash de boot / glitch */}
-      <motion.span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[4] bg-on-surface/10"
-        variants={{
-          rest: { opacity: 0 },
-          hover: {
-            opacity: [0, 0.55, 0, 0.25, 0],
-            transition: { duration: 0.28, times: [0, 0.15, 0.35, 0.55, 1] },
-          },
-          tap: { opacity: 0.15 },
-        }}
-      />
+      <TechHoverEffects />
 
       <div className="relative z-[1] aspect-video w-full shrink-0 overflow-hidden">
         <div className="absolute inset-y-0 left-[-9%] h-full w-[118%] translate-x-[5%] transition-transform duration-0 ease-linear will-change-transform group-hover:translate-x-[-6%] group-hover:duration-[10000ms] motion-reduce:translate-x-0 motion-reduce:group-hover:translate-x-0 motion-reduce:transition-none">

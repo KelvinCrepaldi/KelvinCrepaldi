@@ -8,6 +8,10 @@ import Link from "next/link";
 import { formatDotDate } from "@/_utils/dates";
 import { projectCoverUrl, type Project } from "@/_utils/projects";
 
+import {
+  TechHoverEffects,
+  techHoverMotion,
+} from "@/_components/_ui/animations/TechHoverEffects";
 import { BlinkingDot } from "@/_components/_ui/animations/BlinkingDot";
 import { ProjectTag } from "./project-tag";
 
@@ -23,9 +27,16 @@ export function ProjectListCard({ project }: ProjectListCardProps) {
   return (
     <MotionLink
       href={`/projects/${project.slug}`}
-      className="card-scanlines group relative flex w-full min-h-0 flex-col overflow-hidden border border-outline-variant/25 bg-surface text-left transition-colors duration-300 hover:border-on-surface/50 md:flex-row"
+      className="group relative flex w-full min-h-0 flex-col overflow-hidden border border-outline-variant/25 bg-surface text-left transition-[border-color,box-shadow] duration-150 ease-out hover:border-on-surface hover:shadow-[2px_2px_0_0_rgb(var(--on-surface)/0.35)] md:flex-row"
+      whileHover="hover"
+      whileTap="tap"
+      initial="rest"
+      variants={techHoverMotion}
+      transition={{ duration: 0.08, ease: "linear" }}
     >
-      <div className="relative aspect-[2/1] w-full shrink-0 overflow-hidden md:aspect-auto md:w-64 md:min-h-[176px] lg:w-72">
+      <TechHoverEffects />
+
+      <div className="relative z-[1] aspect-[2/1] w-full shrink-0 overflow-hidden md:aspect-auto md:w-64 md:min-h-[176px] lg:w-72">
         <div className="absolute inset-y-0 left-[-9%] h-full w-[118%] translate-x-[5%] transition-transform duration-0 ease-linear will-change-transform group-hover:translate-x-[-6%] group-hover:duration-[10000ms] motion-reduce:translate-x-0 motion-reduce:group-hover:translate-x-0 motion-reduce:transition-none">
           <Image
             src={coverSrc}
@@ -47,7 +58,7 @@ export function ProjectListCard({ project }: ProjectListCardProps) {
         <div className="pointer-events-none absolute inset-0 z-30 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,rgba(0,0,0,0.35)_2px,rgba(0,0,0,0.35)_3px)] opacity-[0.12] mix-blend-overlay transition-opacity duration-500 group-hover:opacity-[0.08]" />
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col p-4 md:p-5">
+      <div className="relative z-[1] flex min-w-0 flex-1 flex-col p-4 md:p-5">
         <div className="mb-3 flex items-start justify-between md:mb-4">
           <span className="inline-flex items-center gap-2 text-[10px] font-bold tracking-widest text-terminal-accent/65">
             <BlinkingDot
@@ -59,9 +70,15 @@ export function ProjectListCard({ project }: ProjectListCardProps) {
           </span>
           <motion.span
             className="inline-flex text-on-surface"
-            initial={false}
-            whileHover={{ x: 3, y: -3 }}
-            transition={{ type: "spring", stiffness: 400, damping: 18 }}
+            variants={{
+              rest: { x: 0, y: 0 },
+              hover: {
+                x: [0, -1, 1, -1, 0],
+                y: [0, -1, 1, -1, 0],
+                transition: { duration: 0.22, times: [0, 0.25, 0.5, 0.75, 1] },
+              },
+              tap: { x: 0, y: 0 },
+            }}
           >
             <ArrowUpRight
               className="h-5 w-5 opacity-40 transition-opacity group-hover:opacity-100"

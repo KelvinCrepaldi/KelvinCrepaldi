@@ -1,5 +1,4 @@
 import { ScrollDownIndicator } from "@/_components/_ui/animations/ScrollDownIndicator";
-import { TechnicalCornerMarks } from "@/_components/_ui/TechnicalCornerMarks";
 
 import { Intro } from "./intro";
 import { TechStack } from "./tech-stack";
@@ -20,8 +19,6 @@ export function Hero() {
       id="about"
       className="relative flex min-h-[calc(100dvh-var(--site-header-height))] flex-col overflow-hidden px-6 md:px-12 pt-16 pb-8 md:pt-32 md:pb-10"
     >
-      <TechnicalCornerMarks />
-
       <div className="relative z-10 w-full flex-1 lg:mx-auto lg:max-w-content">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
           <Intro />

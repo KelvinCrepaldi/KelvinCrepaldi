@@ -6,6 +6,10 @@ import Link from "next/link";
 
 import { formatLogDate, type LogPost } from "@/_utils/logs";
 
+import {
+  TechHoverEffects,
+  techHoverMotion,
+} from "@/_components/_ui/animations/TechHoverEffects";
 import { LogTag } from "./log-tag";
 
 const MotionLink = motion.create(Link);
@@ -18,9 +22,16 @@ export function LogCard({ log }: LogCardProps) {
   return (
     <MotionLink
       href={`/log/${log.slug}`}
-      className="card-scanlines group relative flex w-full flex-col gap-2.5 border border-outline-variant/25 bg-surface px-4 py-3.5 text-left transition-colors duration-300 hover:border-on-surface/50 md:flex-row md:items-center md:gap-5 md:px-5 md:py-4"
+      className="group relative flex w-full flex-col gap-2.5 overflow-hidden border border-outline-variant/25 bg-surface px-4 py-3.5 text-left transition-[border-color,box-shadow] duration-150 ease-out hover:border-on-surface hover:shadow-[2px_2px_0_0_rgb(var(--on-surface)/0.35)] md:flex-row md:items-center md:gap-5 md:px-5 md:py-4"
+      whileHover="hover"
+      whileTap="tap"
+      initial="rest"
+      variants={techHoverMotion}
+      transition={{ duration: 0.08, ease: "linear" }}
     >
-      <div className="flex shrink-0 flex-row items-baseline gap-2 md:w-28 md:flex-col md:items-start md:gap-0.5 lg:w-32">
+      <TechHoverEffects />
+
+      <div className="relative z-[1] flex shrink-0 flex-row items-baseline gap-2 md:w-28 md:flex-col md:items-start md:gap-0.5 lg:w-32">
         <span className="text-[9px] font-bold tracking-widest text-terminal-accent/65">
           {log.logId}
         </span>
@@ -29,7 +40,7 @@ export function LogCard({ log }: LogCardProps) {
         </p>
       </div>
 
-      <div className="min-w-0 flex-1">
+      <div className="relative z-[1] min-w-0 flex-1">
         <h4 className="text-base font-bold uppercase leading-snug tracking-tight text-on-surface md:text-lg">
           {log.title}
         </h4>
@@ -44,10 +55,16 @@ export function LogCard({ log }: LogCardProps) {
       </div>
 
       <motion.span
-        className="inline-flex shrink-0 self-start text-on-surface md:self-center"
-        initial={false}
-        whileHover={{ x: 3, y: -3 }}
-        transition={{ type: "spring", stiffness: 400, damping: 18 }}
+        className="relative z-[1] inline-flex shrink-0 self-start text-on-surface md:self-center"
+        variants={{
+          rest: { x: 0, y: 0 },
+          hover: {
+            x: [0, -1, 1, -1, 0],
+            y: [0, -1, 1, -1, 0],
+            transition: { duration: 0.22, times: [0, 0.25, 0.5, 0.75, 1] },
+          },
+          tap: { x: 0, y: 0 },
+        }}
       >
         <ArrowUpRight
           className="h-4 w-4 opacity-40 transition-opacity group-hover:opacity-100"
