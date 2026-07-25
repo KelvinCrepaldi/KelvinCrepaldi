@@ -18,7 +18,7 @@ Comecei pelo back-end (regras de negócio e banco de dados) e só depois montei 
 
 ## Links
 
-- [Repositório no GitHub](https://github.com/KelvinCrepaldi/piratespunchdrinks-api)
+- [Repositório no GitHub](https://github.com/KelvinCrepaldi/pirates-punch-ecommerce)
 
 ---
 
