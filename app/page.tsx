@@ -3,7 +3,6 @@ import {
   Projects,
   RecentLogs,
   Skills,
-  SystemLogs,
   Timeline,
 } from "@/_components/sections";
 import { ScrollToTop } from "@/_components/_ui/ScrollToTop";
@@ -13,10 +12,9 @@ export default function HomePage() {
     <>
       <Hero />
       <Projects />
-      <RecentLogs />
       <Timeline />
       <Skills />
-      <SystemLogs />
+      <RecentLogs />
       <ScrollToTop variant="above-footer" />
     </>
   );

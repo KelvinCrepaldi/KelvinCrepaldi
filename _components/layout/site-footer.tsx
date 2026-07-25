@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa6";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 
 const iconLink =
   "flex items-center justify-center w-10 h-10 rounded-none border border-[#fef9ed]/25 text-[#fef9ed]/80 hover:text-white hover:border-[#fef9ed]/60";
@@ -22,16 +22,11 @@ export function SiteFooter() {
       className="relative z-10 bg-footer-surface text-[#fef9ed] w-full px-6 sm:px-8 md:px-12 pt-16 pb-24 md:pt-24 md:pb-28"
     >
       <div className="mx-auto w-full max-w-content">
-        <div className="mb-10 flex items-end justify-between gap-6 flex-wrap">
-          <div>
-            <p className="text-[9px] font-mono uppercase tracking-[0.4em] text-terminal-accent/75">
-              CONTACT_PROTOCOL // OPEN_CHANNEL
-            </p>
-            <p className="mt-3 text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#fef9ed]">
-              Contato
-            </p>
-          </div>
+        <p className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#fef9ed]">
+          Contato
+        </p>
 
+        <div className="mt-10 flex flex-col items-start gap-4 border-t border-[#fef9ed]/15 pt-10">
           <div className="flex gap-3">
             <motion.a
               href={GITHUB_URL}
@@ -68,39 +63,41 @@ export function SiteFooter() {
               <Mail className="w-4 h-4" strokeWidth={2} />
             </motion.a>
           </div>
+
+          <a href={`mailto:${EMAIL}`} className={contactLink}>
+            <Mail className="h-5 w-5 shrink-0" strokeWidth={2} aria-hidden />
+            {EMAIL}
+          </a>
+          <a
+            href={`https://wa.me/${WHATSAPP}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={contactLink}
+          >
+            <FaWhatsapp className="h-5 w-5 shrink-0" aria-hidden />
+            +55 (41) 99674-8781
+          </a>
+
+          <p className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#fef9ed]/70">
+            <motion.span
+              aria-hidden
+              className="inline-flex"
+              animate={{ opacity: [0.25, 1, 0.25] }}
+              transition={{
+                duration: 1.6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <MapPin className="h-3.5 w-3.5" strokeWidth={2} />
+            </motion.span>
+            Curitiba, Paraná, Brasil
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 border-t border-[#fef9ed]/15 pt-10">
-          <div className="md:col-span-7">
-            <div className="flex flex-col gap-4">
-              <a href={`mailto:${EMAIL}`} className={contactLink}>
-                <Mail className="h-5 w-5 shrink-0" strokeWidth={2} aria-hidden />
-                {EMAIL}
-              </a>
-              <a
-                href={`https://wa.me/${WHATSAPP}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={contactLink}
-              >
-                <FaWhatsapp className="h-5 w-5 shrink-0" aria-hidden />
-                +55 (41) 99674-8781
-              </a>
-
-              <p className="text-xs text-[#fef9ed]/55 font-mono">
-                TIMEZONE: AMERICA/SAO_PAULO • RESPONSE_SLA: 24H
-              </p>
-            </div>
-          </div>
-
-          <div className="md:col-span-5">
-            <div className="font-space-grotesk text-[10px] tracking-widest uppercase space-y-2 text-[#fef9ed]/70">
-              <p>© 2026 Kelvin Crepaldi — Desenvolvedor de Software</p>
-              <p>Curitiba, Brasil</p>
-              <p className="text-terminal-accent/55">ROOT // FOOTER_NODE</p>
-            </div>
-          </div>
-        </div>
+        <p className="mt-12 font-space-grotesk text-[10px] tracking-widest uppercase text-[#fef9ed]/55">
+          © 2026 Kelvin Crepaldi — Desenvolvedor de Software
+        </p>
       </div>
     </footer>
   );

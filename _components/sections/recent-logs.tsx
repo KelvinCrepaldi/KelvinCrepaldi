@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, NotebookPen } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import { useLogsCatalog } from "@/hooks/useLogsCatalog";
 import { formatLogDate } from "@/_utils/logs";
@@ -10,7 +10,6 @@ import { AnimatedPrimaryButton } from "@/_components/_ui/animations/AnimatedPrim
 
 export function RecentLogs() {
   const logs = useLogsCatalog("latest", 5);
-  const total = String(logs.length).padStart(3, "0");
 
   return (
     <section
@@ -20,9 +19,7 @@ export function RecentLogs() {
       <div className="w-full lg:max-w-content lg:mx-auto">
         <SectionHeader
           title="Anotações"
-          subtitle="ANOTAÇÕES // blog com experiências e aprendizados do dia a dia"
-          icon={NotebookPen}
-          meta={`LATEST_ENTRIES: ${total}`}
+          subtitle="blog com experiências e aprendizados do dia a dia"
         />
 
         <ul className="flex flex-col" role="list">

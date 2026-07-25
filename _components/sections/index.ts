@@ -5,5 +5,3 @@ export { Projects } from "./projects";
 export { RecentLogs } from "./recent-logs";
 export { Timeline } from "./timeline";
 export { Skills } from "./skills";
-export { SystemLogs } from "./system-logs";
-export { SystemLogRow } from "./system-log-row";

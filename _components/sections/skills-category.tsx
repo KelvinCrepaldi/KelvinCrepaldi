@@ -8,48 +8,56 @@ import type { SkillCategory } from "./skills-tech-data";
 
 type SkillsCategoryProps = {
   category: SkillCategory;
-  isFirst?: boolean;
+  index?: number;
 };
 
-export function SkillsCategory({ category, isFirst = false }: SkillsCategoryProps) {
+export function SkillsCategory({
+  category,
+  index = 0,
+}: SkillsCategoryProps) {
   const [mounted, setMounted] = useState(false);
+  const isLast = index === 4;
+  const isRightCol = index % 2 === 1 && !isLast;
 
   return (
     <section
-      className={
-        isFirst
-          ? "px-5 py-8 sm:px-6 sm:py-10 md:px-8"
-          : "border-t border-outline-variant/30 px-5 py-8 sm:px-6 sm:py-10 md:px-8"
-      }
+      className={[
+        "px-4 py-4 sm:px-5 sm:py-5",
+        index > 0 ? "border-t border-outline-variant/30" : "",
+        /* first desktop row: right cell must not inherit mobile top border */
+        index === 1 ? "md:border-t-0" : "",
+        isRightCol ? "md:border-l md:border-outline-variant/30" : "",
+        isLast ? "md:col-span-2" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
-      <div className="mb-5 flex flex-wrap items-start justify-between gap-3 sm:mb-6">
-        <div className="min-w-0">
-          <p className="font-mono text-xs font-bold uppercase tracking-widest text-terminal-accent/85 sm:text-sm">
-            [{category.code}] {category.title}
-          </p>
-          <p className="mt-1 text-body text-on-surface/55">
-            {category.subtitle}
-          </p>
-        </div>
-        <SkillsCategoryBoot onComplete={() => setMounted(true)} />
+      <div className="mb-2.5 flex items-center justify-between gap-2">
+        <p className="min-w-0 font-mono text-[11px] font-bold uppercase tracking-widest text-terminal-accent/85 sm:text-xs">
+          [{category.code}] {category.title}
+        </p>
+        <SkillsCategoryBoot
+          durationSec={0.25}
+          onComplete={() => setMounted(true)}
+        />
       </div>
 
-      <div className="flex flex-wrap gap-2 sm:gap-2.5">
+      <div className="flex flex-wrap gap-1.5">
         {category.kind === "tech"
-          ? category.items.map((tech, index) => (
+          ? category.items.map((tech, i) => (
               <SkillChip
                 key={tech.name}
                 label={tech.name}
                 icon={tech.icon}
-                index={index}
+                index={i}
                 visible={mounted}
               />
             ))
-          : category.items.map((item, index) => (
+          : category.items.map((item, i) => (
               <SkillChip
                 key={item}
                 label={item}
-                index={index}
+                index={i}
                 visible={mounted}
               />
             ))}

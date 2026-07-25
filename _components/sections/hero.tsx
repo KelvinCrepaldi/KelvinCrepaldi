@@ -5,14 +5,13 @@ import { Intro } from "./intro";
 import { TechStack } from "./tech-stack";
 
 const DEFAULT_STACK = [
-  { label: "Next.js", index: "01" },
-  { label: "React", index: "02" },
-  { label: "TypeScript", index: "03" },
-  { label: "Node.js", index: "04" },
-  { label: "Supabase", index: "05" },
-  { label: "Electron", index: "06" },
-  { label: "Express", index: "07" },
-  { label: "Docker", index: "08" },
+  { label: "React", index: "01" },
+  { label: "TypeScript", index: "02" },
+  { label: "Next.js", index: "03" },
+  { label: "Electron", index: "04" },
+  { label: "Node.js", index: "05" },
+  { label: "Express", index: "06" },
+  { label: "Cursor", index: "07" },
 ];
 
 export function Hero() {

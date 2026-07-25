@@ -13,15 +13,15 @@ type SkillsCategoryBootProps = {
 };
 
 export function SkillsCategoryBoot({
-  durationSec = 1.2,
+  durationSec = 0.25,
   onComplete,
 }: SkillsCategoryBootProps) {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.35 });
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [pct, setPct] = useState(0);
   const completedRef = useRef(false);
 
-  const durationMs = Math.max(0.4, durationSec) * 800;
+  const durationMs = Math.max(0.12, durationSec) * 1000;
   const done = pct >= 100;
 
   useEffect(() => {

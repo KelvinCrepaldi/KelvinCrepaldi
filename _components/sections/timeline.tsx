@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Route } from "lucide-react";
 
 import { useIsMobileLayout } from "@/hooks/useIsMobileLayout";
 import { SectionHeader } from "@/_components/_ui/SectionHeader";
@@ -30,7 +29,6 @@ const ENTRIES = [
 
 export function Timeline() {
   const isMobile = useIsMobileLayout();
-  const total = String(ENTRIES.length).padStart(3, "0");
 
   return (
     <section
@@ -76,9 +74,7 @@ export function Timeline() {
       <div className="relative w-full lg:mx-auto lg:max-w-content">
         <SectionHeader
           title="Timeline"
-          subtitle="TRAJETÓRIA // experiência profissional e formação ao longo do tempo"
-          icon={Route}
-          meta={`TOTAL_RECORDS: ${total}`}
+          subtitle="experiência profissional e formação ao longo do tempo"
         />
 
         <div className="relative">

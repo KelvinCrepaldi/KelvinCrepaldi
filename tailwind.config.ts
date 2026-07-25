@@ -87,14 +87,15 @@ const config: Config = {
           to: { transform: "rotate(0deg)" },
         },
         "skill-chip-in": {
-          from: { opacity: "0", transform: "translateY(6px)" },
+          from: { opacity: "0", transform: "translateY(2px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
         "spin-reverse": "spin-reverse 90s linear infinite",
-        "skill-chip-in": "skill-chip-in 0.35s ease-out forwards",
+        "skill-chip-in": "skill-chip-in 0.12s ease-out forwards",
       },
+
     },
   },
   plugins: [],

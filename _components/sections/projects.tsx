@@ -1,7 +1,5 @@
 "use client";
 
-import { FolderKanban } from "lucide-react";
-
 import { useIsMobileLayout } from "@/hooks/useIsMobileLayout";
 import { useProjectsCatalog } from "@/hooks/useProjectsCatalog";
 import { SectionHeader } from "@/_components/_ui/SectionHeader";
@@ -14,7 +12,6 @@ import { ProjectCard } from "@/_components/project/project-card";
 export function Projects() {
   const isMobile = useIsMobileLayout();
   const projects = useProjectsCatalog("home");
-  const total = String(projects.length).padStart(3, "0");
 
   return (
     <section
@@ -58,9 +55,7 @@ export function Projects() {
       <div className="w-full lg:max-w-content lg:mx-auto">
         <SectionHeader
           title="Projetos"
-          subtitle="PROJETOS // cases e entregas selecionados da minha trajetória"
-          icon={FolderKanban}
-          meta={`TOTAL_RECORDS: ${total}`}
+          subtitle="cases e entregas selecionados da minha trajetória"
         />
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
           {projects.map((project) => (
